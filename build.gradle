@@ -1,0 +1,5 @@
+version = 0.1
+description = "Root project for betting game"
+
+apply plugin: 'idea'
+apply plugin: 'eclipse'
