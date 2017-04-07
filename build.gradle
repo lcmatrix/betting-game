@@ -1,5 +1,14 @@
+group = 'betting-game'
 version = 0.1
 description = "Root project for betting game"
 
 apply plugin: 'idea'
 apply plugin: 'eclipse'
+
+task showconfig {
+    description = "Inspecting subprojects"
+    project.subprojects.each {proj ->
+        println("Subproject Path: " + proj.path)
+        println("Subproject Buildfile: " + proj.buildFile)
+    }
+}

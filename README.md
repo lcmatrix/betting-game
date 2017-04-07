@@ -1,4 +1,4 @@
-# betting-game
+# Betting game
 Small betting tool for private use
 
 ## Technology
