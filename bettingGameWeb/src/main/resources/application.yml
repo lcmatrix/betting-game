@@ -1,0 +1,15 @@
+spring:
+  mvc:
+    static-path-pattern: "/static/**"
+
+  datasource:
+    data-username:
+    data-password:
+    username:
+    password:
+    schema:
+  messages:
+    basename:
+      - i18n/AdminMessages
+      - i18n/CommonMessages
+

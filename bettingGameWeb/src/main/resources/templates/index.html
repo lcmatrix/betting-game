@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Betting Game</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../static/css/styles.css" data-th-href="@{/static/css/styles.css}" />
+        <link rel="icon" href="../static/img/favicon.ico" data-th-href="@{/static/img/favicon.ico}" />
+        <title data-th-text="#{app.title}">Betting Game</title>
     </head>
     <body>
-        <h1 data-th-text="#{app.title}">Betting Game</h1>
-        <p data-th-text="#{app.intro}">Todo</p>
+        <header>
+            <nav>
+                <ul>
+                    <li>Test</li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <h1 data-th-text="#{app.title}">Betting Game</h1>
+            <p data-th-text="#{app.intro}">Todo</p>
+        </section>
+        <footer data-th-insert="footer :: copy">
+            <div>Copyright</div>
+        </footer>
     </body>
 </html>
