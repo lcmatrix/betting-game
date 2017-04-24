@@ -1,13 +1,7 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../static/css/styles.css" data-th-href="@{/static/css/styles.css}" />
-        <link rel="icon" href="../static/img/favicon.ico" data-th-href="@{/static/img/favicon.ico}" />
-        <title data-th-text="#{app.title}">Betting Game</title>
-    </head>
-    <body>
+<html data-th-replace="~{layout/public_layout :: layout}">
+<body>
+    <div class="container">
         <header>
             <nav>
                 <ul>
@@ -15,12 +9,9 @@
                 </ul>
             </nav>
         </header>
-        <section>
-            <h1 data-th-text="#{app.title}">Betting Game</h1>
-            <p data-th-text="#{app.intro}">Todo</p>
-        </section>
-        <footer data-th-insert="footer :: copy">
-            <div>Copyright</div>
-        </footer>
-    </body>
+        <div data-th-fragment="mainContent">
+            <p>Say hello world!</p>
+        </div>
+    </div>
+</body>
 </html>
