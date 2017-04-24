@@ -1,6 +1,6 @@
 spring:
   mvc:
-    static-path-pattern: "/static/**"
+    static-path-pattern: /static/**
 
   datasource:
     data-username:
@@ -9,7 +9,7 @@ spring:
     password:
     schema:
   messages:
-    basename:
-      - i18n/AdminMessages
-      - i18n/CommonMessages
+    basename: i18n/AdminMessages,i18n/CommonMessages
 
+  thymeleaf:
+    mode: HTML
