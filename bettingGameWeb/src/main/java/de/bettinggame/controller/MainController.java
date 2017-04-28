@@ -12,11 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * TODO Doku
- *
+ * Controller for index/startpage.
  */
 @Controller
-public class MainController {
+public class MainController extends AbstractController {
 
     @GetMapping("/")
     public String index() {

@@ -11,20 +11,45 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../static/css/styles.css" data-th-href="@{/static/css/styles.css}" />
+    <link rel="stylesheet" href="../../static/css/styles.css" data-th-href="@{/static/css/styles.css}" />
     <link rel="icon" href="../static/img/favicon.ico" data-th-href="@{/static/img/favicon.ico}" />
     <title data-th-text="#{app.title}">Betting Game</title>
 </head>
 <body>
     <div class="container">
         <header>
-            <ul class="nav nav-tabs">
-                <li><a href="#">Test</a></li>
-                <li><a href="#">Test 2</a></li>
-            </ul>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menulinks" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" data-th-href="@{/}" href="#">
+                            <span data-th-text="#{app.title}">Titel</span>
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="menulinks">
+                        <ul class="nav navbar-nav">
+                            <li data-th-each="navItem : ${navigation}">
+                                <a data-th-href="@{${navItem.url}}" href="#">
+                                    <span data-th-text="#{${navItem.messageKey}}">Test</span>
+                                </a>
+                            </li>
+                            <li data-th-remove="all"><a href="#">Test 2</a></li>
+                            <li data-th-remove="all"><a href="#">Test 3</a></li>
+                            <li data-th-remove="all"><a href="#">Test 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </header>
         <section>
             <h1 data-th-text="#{app.title}">Betting Game</h1>
