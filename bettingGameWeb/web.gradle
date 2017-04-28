@@ -5,7 +5,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE"
     }
 }
 
@@ -13,14 +13,14 @@ plugins {
     id 'idea'
     id 'eclipse'
     id 'java'
-    id 'org.springframework.boot' version '1.5.2.RELEASE'
+    id 'org.springframework.boot' version '1.5.3.RELEASE'
 }
 
 version = '0.1'
 description = "WebApp betting game"
 
 // due to spring dependency management plugin it is possible to define/overwrite version properties of dependencies
-/*ext['spring-boot.version'] = '1.5.2.RELEASE'
+/*ext['spring-boot.version'] = '1.5.3.RELEASE'
 ext['thymeleaf.version'] = '3.0.5.RELEASE'
 ext['thymeleaf-spring4.version'] = '3.0.5.RELEASE'
 ext['thymeleaf-layout-dialect.version'] = '2.2.1'
