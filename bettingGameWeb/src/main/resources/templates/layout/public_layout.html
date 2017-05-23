@@ -39,8 +39,8 @@
                     <div class="collapse navbar-collapse" id="menulinks">
                         <ul class="nav navbar-nav">
                             <li data-th-each="navItem : ${navigation}">
-                                <a data-th-href="@{${navItem.url}}" href="#">
-                                    <span data-th-text="#{${navItem.messageKey}}">Test</span>
+                                <a data-th-href="@{${navItem.url}}" href="#" data-th-text="#{${navItem.messageKey}}">
+                                    Test
                                 </a>
                             </li>
                             <li data-th-remove="all"><a href="#">Test 2</a></li>

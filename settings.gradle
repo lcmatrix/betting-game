@@ -1,5 +1,5 @@
-rootProject.name = 'betting-game'
+rootProject.name = 'betting-game-parent'
 include("bettingGameWeb")
 
 // set bettingGameWeb buildfile
-findProject(":bettingGameWeb").buildFileName = new File("web.gradle")
+project(":bettingGameWeb").buildFileName = new File("web.gradle")

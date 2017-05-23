@@ -10,12 +10,11 @@ buildscript {
 }
 
 plugins {
-    id 'idea'
-    id 'eclipse'
     id 'java'
     id 'org.springframework.boot' version '1.5.3.RELEASE'
 }
 
+group 'de.betting-game'
 version = '0.1'
 description = "WebApp betting game"
 
@@ -40,8 +39,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 
     // both variants are possible to declare dependencies
-    compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.5.RELEASE'
-    compile("org.thymeleaf:thymeleaf-spring4:3.0.5.RELEASE")
+    compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.6.RELEASE'
+    compile("org.thymeleaf:thymeleaf-spring4:3.0.6.RELEASE")
     compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.2.1'
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
