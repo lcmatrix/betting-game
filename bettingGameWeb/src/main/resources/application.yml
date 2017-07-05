@@ -13,3 +13,8 @@ spring:
 
   thymeleaf:
     mode: HTML
+
+logging:
+  file: application.log
+  level:
+    root: debug
