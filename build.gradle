@@ -1,5 +1,5 @@
 group = 'de.betting-game'
-version = 0.1
+version = '0.1.0'
 description = "Root project for betting game"
 
 subprojects {
@@ -10,7 +10,7 @@ subprojects {
             }
         }
         dependencies {
-            classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE"
+            classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.4.RELEASE"
         }
     }
 
