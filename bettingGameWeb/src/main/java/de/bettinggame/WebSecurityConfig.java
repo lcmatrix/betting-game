@@ -14,27 +14,32 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * @author nose
- *         <p>
- *         TODO: comment me
+ * Web security configuration.
  */
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests().antMatchers("/", "/static/**", "/index", "/favicon.ico").permitAll()
-                .antMatchers("/secure/**").hasAnyRole("ROLE_USER", "ROLE_ADMIN")
+                .authorizeRequests()
+                    .antMatchers("/", "/static/**", "/index", "/favicon.ico").permitAll()
+                    .antMatchers("/secure/**").hasAnyRole("ROLE_USER", "ROLE_ADMIN")
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .failureForwardUrl("/error").permitAll()
-                .successForwardUrl("/index");
+                    .loginPage("/login")
+                    .failureForwardUrl("/error")
+                    .successForwardUrl("/index")
+                    .permitAll()
+                .and()
+                .logout()
+                    .logoutSuccessUrl("/index")
+                    .invalidateHttpSession(true)
+                    .permitAll();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("USER", "ADMIN");
+        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("USER", "ADMIN")
+        .and().withUser("user").password("user").roles("USER");
     }
 }
