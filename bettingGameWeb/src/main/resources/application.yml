@@ -8,6 +8,11 @@ spring:
     username:
     password:
     schema:
+    url: jdbc:mariadb://localhost/bettinggame
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
   messages:
     basename: i18n/AdminMessages,i18n/CommonMessages
 
@@ -17,4 +22,11 @@ spring:
 logging:
   file: application.log
   level:
-    root: debug
+    root: info
+    de.bettinggame: debug
+
+endpoints:
+  flyway:
+    sensitive: false
+  metrics:
+    sensitive: false

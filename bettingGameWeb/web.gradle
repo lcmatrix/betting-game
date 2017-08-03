@@ -12,6 +12,7 @@
 plugins {
     id 'java'
     id 'org.springframework.boot' version '1.5.6.RELEASE'
+    //id "com.gorylenko.gradle-git-properties" version "1.4.17"
 }
 
 group 'de.betting-game'
@@ -30,10 +31,13 @@ bootRun {
 }
 
 dependencies {
+    compile project(":model")
+
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
 
     // both variants are possible to declare dependencies
     compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.7.RELEASE'
