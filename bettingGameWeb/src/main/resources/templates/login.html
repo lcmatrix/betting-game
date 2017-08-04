@@ -2,25 +2,31 @@
 <html data-th-replace="~{layout/public_layout :: layout}">
 <body>
     <div class="container">
-        <header>
-            <nav>
-                <ul>
-                    <li>Test</li>
-                </ul>
-            </nav>
-        </header>
         <div data-th-fragment="mainContent">
             <form method="post" action="index.html" data-th-action="@{/login}">
-                <div class="form-group">
-                    <label for="username" data-th-text="#{login.form.label.username}">Username:</label>
-                    <input type="text" id="username" name="username" placeholder="Username" data-th-placeholder="#{login.form.label.username}"/>
+                <div class="form-group row">
+                    <div class="col-xs-12 col-md-2">
+                        <label for="username" data-th-text="#{login.form.label.username}">Username:</label>
+                    </div>
+                    <div class="col-xs-12 col-md-10">
+                        <input type="text" id="username" name="username"
+                           placeholder="Username" data-th-placeholder="#{login.form.label.username}"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="password" data-th-text="#{login.form.label.password}">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="Password" data-th-placeholder="#{login.form.label.password}"/>
+                <div class="form-group row">
+                    <div class="col-xs-12 col-md-2">
+                        <label for="password" data-th-text="#{login.form.label.password}">Password:</label>
+                    </div>
+                    <div class="col-xs-12 col-md-10">
+                        <input type="password" id="password" name="password"
+                           placeholder="Password" data-th-placeholder="#{login.form.label.password}"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input class="btn btn-default" type="submit" value="Login" data-th-attr="value=#{login.submit.button}"/>
+                <div class="form-group row">
+                    <div class="col-xs-12 col-md-2"></div>
+                    <div class="col-xs-12 col-md-10">
+                        <input class="btn btn-default" type="submit" value="Login" data-th-attr="value=#{login.submit.button}"/>
+                    </div>
                 </div>
             </form>
         </div>
