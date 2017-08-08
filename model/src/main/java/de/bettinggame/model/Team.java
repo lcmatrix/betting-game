@@ -10,4 +10,6 @@ import javax.persistence.Table;
 @Table(name = "teams")
 public class Team extends AbstractIdEntity{
 
+    public Team() {
+    }
 }
