@@ -49,7 +49,9 @@
         <h1 data-th-text="#{app.title}">Betting Game</h1>
         <p data-th-text="#{app.intro}">Todo</p>
     </section>
-    <div data-th-replace="~{:: mainContent}">Content goes here</div>
+    <section class="content">
+        <div data-th-replace="~{:: mainContent}">Content goes here</div>
+    </section>
     <footer data-th-insert="~{footer :: copy}">
         <div>Copyright</div>
     </footer>
