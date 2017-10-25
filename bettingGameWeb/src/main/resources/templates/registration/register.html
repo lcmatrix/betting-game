@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layout/public_layout :: layout}">
+<body>
+    <div class="container">
+        <div data-th-fragment="mainContent">
+            <form method="post" action="register.html" data-th-action="@{/register/register}" data-th-object="${registerUser}">
+                <div class="form-group row">
+                    <div class="col-xs-12 col-md-2">
+                        <label for="username" data-th-text="#{register.form.label.username}">Username:</label>
+                    </div>
+                    <div class="col-xs-12 col-md-10">
+                        <input type="text" id="username" name="username" data-th-field="*{username}"
+                           placeholder="Username" data-th-placeholder="#{register.form.label.username}"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-12 col-md-2">
+                        <label for="email" data-th-text="#{register.form.label.password}">Password:</label>
+                    </div>
+                    <div class="col-xs-12 col-md-10">
+                        <input type="password" id="password" name="password" data-th-field="*{password}"
+                               placeholder="Password" data-th-placeholder="#{register.form.label.password}"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-12 col-md-2">
+                        <label for="email" data-th-text="#{register.form.label.email}">E-Mail:</label>
+                    </div>
+                    <div class="col-xs-12 col-md-10">
+                        <input type="input" id="email" name="email" data-th-field="*{email}"
+                           placeholder="E-Mail" data-th-placeholder="#{register.form.label.email}"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-12 col-md-2"></div>
+                    <div class="col-xs-12 col-md-10">
+                        <input class="btn btn-default" type="submit" value="Register" data-th-attr="value=#{register.submit.button}"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

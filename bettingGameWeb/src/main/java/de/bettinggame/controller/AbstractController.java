@@ -1,7 +1,9 @@
 package de.bettinggame.controller;
 
-import de.bettinggame.ui.Navigation;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+
+import de.bettinggame.ui.Navigation;
 
 /**
  * Abstract base controller.
@@ -13,6 +15,8 @@ public abstract class AbstractController {
      */
     @ModelAttribute("navigation")
     public Navigation[] getNavigation() {
+        boolean authenticated = SecurityContextHolder.getContext().getAuthentication().isAuthenticated();
+        Navigation.getNavigationListForAuthentication(authenticated);
         return Navigation.values();
     }
 }
