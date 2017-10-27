@@ -22,10 +22,11 @@ subprojects {
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
-task showconfig {
+// just to understand gradle :)
+/*task showconfig {
     description = "Inspecting subprojects"
     project.subprojects.each {proj ->
         println("Subproject Path: " + proj.path)
         println("Subproject Buildfile: " + proj.buildFile)
     }
-}
+}*/

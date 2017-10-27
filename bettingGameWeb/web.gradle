@@ -13,6 +13,9 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '1.5.8.RELEASE'
     //id "com.gorylenko.gradle-git-properties" version "1.4.17"
+    id 'checkstyle'
+    id 'pmd'
+    id 'findbugs'
 }
 
 group 'de.betting-game'
@@ -25,6 +28,57 @@ ext['thymeleaf.version'] = '3.0.5.RELEASE'
 ext['thymeleaf-spring4.version'] = '3.0.5.RELEASE'
 ext['thymeleaf-layout-dialect.version'] = '2.2.1'
 */
+
+
+
+checkstyle {
+    configFile = file("$rootProject.projectDir/config/checkstyle/checkstyle.xml")
+    ignoreFailures = true
+}
+
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled false
+        html.enabled true
+        html.stylesheet resources.text.fromFile("$rootProject.projectDir/config/checkstyle/checkstyle-noframes-severity-sorted.xsl")
+    }
+    
+    onlyIf {
+        project.hasProperty("withChecks") && withChecks == "true"
+    }
+}
+
+findbugs {
+    ignoreFailures = true
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled false
+        html.enabled true
+        html.stylesheet resources.text.fromFile("$rootProject.projectDir/config/findbugs/default.xsl")
+    }
+
+    onlyIf {
+        project.hasProperty("withChecks") && withChecks == "true"
+    }
+}
+
+pmd {
+    ignoreFailures true
+    //ruleSets = ["basic", "braces", "unnecessary", "unusedcode"]
+    ruleSetFiles = files("$rootProject.projectDir/config/pmd/ruleset.xml")
+
+}
+
+tasks.withType(Pmd) {
+    onlyIf {
+        hasProperty("withChecks") && withChecks == "true"
+    }
+}
+
+
 
 bootRun {
     addResources = true
