@@ -39,7 +39,7 @@ checkstyle {
 
 tasks.withType(Checkstyle) {
     reports {
-        xml.enabled false
+        xml.enabled true
         html.enabled true
         html.stylesheet resources.text.fromFile("$rootProject.projectDir/config/checkstyle/checkstyle-noframes-severity-sorted.xsl")
     }
@@ -55,7 +55,7 @@ findbugs {
 
 tasks.withType(FindBugs) {
     reports {
-        xml.enabled false
+        xml.enabled true
         html.enabled true
         html.stylesheet resources.text.fromFile("$rootProject.projectDir/config/findbugs/default.xsl")
     }
