@@ -4,31 +4,51 @@
     <div class="container">
         <div data-th-fragment="mainContent">
             <form method="post" action="register.html" data-th-action="@{/register/register}" data-th-object="${registerUser}">
+                <div class="from-group row" data-th-if="${#fields.hasAnyErrors()}">
+                    <div class="alert alert-danger">
+                        <p data-th-text="#{common.form.error}">Fehler</p>
+                        <ul>
+                            <li data-th-each="error : ${#fields.errors()}" data-th-text="#{${error}}"></li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-xs-12 col-md-2">
                         <label for="username" data-th-text="#{register.form.label.username}">Username:</label>
                     </div>
-                    <div class="col-xs-12 col-md-10">
+                    <div class="col-xs-12 col-md-6">
                         <input type="text" id="username" name="username" data-th-field="*{username}"
-                           placeholder="Username" data-th-placeholder="#{register.form.label.username}"/>
+                           placeholder="Username" data-th-placeholder="#{register.form.label.username}"
+                            data-th-errorClass="errorFormElement"/>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <p data-th-if="${#fields.hasErrors('username')}" data-th-errors="#{*[username}}">Fehler</li>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-xs-12 col-md-2">
                         <label for="email" data-th-text="#{register.form.label.password}">Password:</label>
                     </div>
-                    <div class="col-xs-12 col-md-10">
+                    <div class="col-xs-12 col-md-6">
                         <input type="password" id="password" name="password" data-th-field="*{password}"
-                               placeholder="Password" data-th-placeholder="#{register.form.label.password}"/>
+                               placeholder="Password" data-th-placeholder="#{register.form.label.password}"
+                               data-th-errorClass="errorFormElement"/>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <p data-th-if="${#fields.hasErrors('password')}" data-th-text="*{password}" data-th-class="errorMessage">Incorrect</p>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-xs-12 col-md-2">
                         <label for="email" data-th-text="#{register.form.label.email}">E-Mail:</label>
                     </div>
-                    <div class="col-xs-12 col-md-10">
+                    <div class="col-xs-12 col-md-6">
                         <input type="input" id="email" name="email" data-th-field="*{email}"
-                           placeholder="E-Mail" data-th-placeholder="#{register.form.label.email}"/>
+                           placeholder="E-Mail" data-th-placeholder="#{register.form.label.email}"
+                           data-th-errorClass="errorFormElement"/>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <p data-th-if="${#fields.hasErrors('email')}" data-th-text="*{email}" data-th-cass="errorMessage">Incorrect</p>
                     </div>
                 </div>
                 <div class="form-group row">

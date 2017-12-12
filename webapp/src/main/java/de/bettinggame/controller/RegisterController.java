@@ -10,6 +10,8 @@ package de.bettinggame.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import de.bettinggame.model.User;
 import de.bettinggame.model.repository.UserRepository;
 import de.bettinggame.webobjects.RegisterUser;
+
+import javax.validation.Valid;
 
 /**
  * Register controller to create an account.
@@ -40,9 +44,12 @@ public class RegisterController extends AbstractController {
     }
 
     @PostMapping("/register")
-    public String postRegisterForm(@ModelAttribute RegisterUser registerUserForm) {
+    public String postRegisterForm(@Valid RegisterUser registerUserForm, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "registration/register";
+        }
         User user = registerUserForm.createUser();
-        userRepository.save(user);
+        user.create(userRepository);
         return "redirect:/register/confirmation";
     }
 
