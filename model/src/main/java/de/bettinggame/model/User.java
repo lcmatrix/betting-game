@@ -1,5 +1,7 @@
 package de.bettinggame.model;
 
+import de.bettinggame.model.repository.UserRepository;
+
 import javax.persistence.*;
 
 /**
@@ -33,5 +35,9 @@ public class User extends AbstractIdEntity {
 
     public String getEmail() {
         return email;
+    }
+
+    public void create(UserRepository repo) {
+        repo.save(this);
     }
 }
