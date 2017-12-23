@@ -9,7 +9,9 @@ CREATE TABLE users (
 
 CREATE TABLE teams (
     id INTEGER NOT NULL AUTO_INCREMENT,
-    name VARCHAR(150) NOT NULL,
+    country VARCHAR(150) NOT NULL,
+    isocode VARCHAR(2) NOT NULL,
+    groupChar VARCHAR(1) NOT NULL,
     CONSTRAINT pk_teams PRIMARY KEY (id)
 );
 
