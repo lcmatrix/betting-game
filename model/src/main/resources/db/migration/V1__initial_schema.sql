@@ -18,6 +18,8 @@ CREATE TABLE teams (
 CREATE TABLE matches (
     id INTEGER NOT NULL AUTO_INCREMENT,
     starttime DATETIME NOT NULL,
+    location VARCHAR(200) NOT NULL,
+    level VARCHAR(50) NOT NULL,
     team_a_id INTEGER NOT NULL,
     team_b_id INTEGER NOT NULL,
     CONSTRAINT pk_matches PRIMARY KEY (id),
