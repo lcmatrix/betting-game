@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layout/public_layout :: layout}">
+<body>
+    <div class="container">
+        <div data-th-fragment="mainContent">
+            <div class="row">
+                <div class="col-sm-12 col-md-6" data-th-each="group : ${groups}">
+                    <h4 data-th-text="#{groups.table.caption(${group.groupChar})}">Group A</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <th data-th-text="#{groups.table.header.position}">Pos.</th>
+                            <th data-th-text="#{groups.table.header.country}">Country</th>
+                            <th data-th-text="#{groups.table.header.points}">Points</th>
+                            <th data-th-text="#{groups.table.header.goals}">Goals</th>
+                            <th data-th-text="#{groups.table.header.goalsAgainst}">Goals against</th>
+                        </thead>
+                        <tbody>
+                            <tr data-th-class="${stat.index &lt; 2}? 'success' : ''" data-th-each="team,stat : ${group.teams}">
+                                <td data-th-text="${stat.count}">1.</td>
+                                <td data-th-text="${team.name}">Germany</td>
+                                <td data-th-text="${team.points}">9</td>
+                                <td data-th-text="${team.goals}">10</td>
+                                <td data-th-text="${team.goalsAgainst}">4</td>
+                            </tr>
+                            <tr class="success" data-th-remove="all">
+                                <td>2.</td>
+                                <td>England</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>4</td>
+                            </tr>
+                            <tr data-th-remove="all">
+                                <td>3.</td>
+                                <td>France</td>
+                                <td>4</td>
+                                <td>3</td>
+                                <td>4</td>
+                            </tr>
+                            <tr data-th-remove="all">
+                                <td>4.</td>
+                                <td>Spain</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
