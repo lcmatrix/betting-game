@@ -1,4 +1,4 @@
-INSERT INTO teams (`country`, `isocode`, `groupChar`) VALUES
+INSERT INTO teams (`country`, `isocode`, `group_char`) VALUES
   ('Russian Federation', 'RU', 'A'),
   ('Saudi Arabia', 'SA', 'A'),
   ('Egypt', 'EG', 'A'),

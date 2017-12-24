@@ -8,14 +8,11 @@
 
 package de.bettinggame.model;
 
-import javax.persistence.Embeddable;
-
 /**
  * Enumeration of groups.
  *
  * @author norman
  */
-@Embeddable
 public enum Group {
     A,
     B,

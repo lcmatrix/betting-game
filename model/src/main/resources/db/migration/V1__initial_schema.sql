@@ -11,7 +11,7 @@ CREATE TABLE teams (
     id INTEGER NOT NULL AUTO_INCREMENT,
     country VARCHAR(150) NOT NULL,
     isocode VARCHAR(2) NOT NULL,
-    groupChar VARCHAR(1) NOT NULL,
+    group_char VARCHAR(1) NOT NULL,
     CONSTRAINT pk_teams PRIMARY KEY (id)
 );
 

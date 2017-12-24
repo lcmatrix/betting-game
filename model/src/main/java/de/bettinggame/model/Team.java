@@ -1,7 +1,6 @@
 package de.bettinggame.model;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "teams")
-public class Team extends AbstractIdEntity{
+public class Team extends AbstractIdEntity {
 
     /**
      * Country.
@@ -29,7 +28,7 @@ public class Team extends AbstractIdEntity{
     /**
      * Group.
      */
-    @Embedded
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Group groupChar;
 

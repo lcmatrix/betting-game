@@ -8,14 +8,11 @@
 
 package de.bettinggame.model;
 
-import javax.persistence.Embeddable;
-
 /**
  * Enumeration for tournament level.
  *
  * @author norman
  */
-@Embeddable
 public enum TournamentLevel {
     PRELIMINARY,
     EIGTH_FINAL,

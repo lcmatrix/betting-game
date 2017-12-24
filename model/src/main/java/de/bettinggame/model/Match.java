@@ -3,7 +3,6 @@ package de.bettinggame.model;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -18,7 +17,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "matches")
-public class Match extends AbstractIdEntity{
+public class Match extends AbstractIdEntity {
     /**
      * Kick-off date and time.
      */
@@ -35,7 +34,7 @@ public class Match extends AbstractIdEntity{
     /**
      * Level in tournament.
      */
-    @Embedded
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TournamentLevel level;
 
