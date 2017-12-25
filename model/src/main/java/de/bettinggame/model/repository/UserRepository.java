@@ -1,11 +1,3 @@
-/*
- * Created on 04.08.2017
- * 
- * Copyright(c) 1995 - 2017 T-Systems Multimedia Solutions GmbH
- * Riesaer Str. 5, 01129 Dresden
- * All rights reserved.
- */
-
 package de.bettinggame.model.repository;
 
 import org.springframework.data.repository.CrudRepository;

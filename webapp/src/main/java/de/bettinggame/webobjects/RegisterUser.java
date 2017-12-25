@@ -1,17 +1,9 @@
-/*
- * Created on 04.08.2017
- * 
- * Copyright(c) 1995 - 2017 T-Systems Multimedia Solutions GmbH
- * Riesaer Str. 5, 01129 Dresden
- * All rights reserved.
- */
-
 package de.bettinggame.webobjects;
-
-import de.bettinggame.model.User;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import de.bettinggame.model.User;
 
 /**
  * Form object for registration.
