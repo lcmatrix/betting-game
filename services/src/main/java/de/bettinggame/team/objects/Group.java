@@ -1,4 +1,4 @@
-package de.bettinggame.webobjects.groups;
+package de.bettinggame.team.objects;
 
 import java.util.ArrayList;
 import java.util.List;

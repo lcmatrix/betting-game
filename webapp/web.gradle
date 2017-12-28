@@ -73,6 +73,7 @@ bootRun {
 
 dependencies {
     compile project(":model")
+    compile project(":services")
 
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-devtools")

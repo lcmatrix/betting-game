@@ -1,7 +1,9 @@
 rootProject.name = 'betting-game-parent'
 include("webapp")
 include "model"
+include "services"
 
 // set bettingGameWeb buildfile
 project(":webapp").buildFileName = new File("web.gradle")
 project(":model").buildFileName = "model.gradle"
+project(":services").buildFileName = "services.gradle"

@@ -39,6 +39,19 @@ public class Team extends AbstractIdEntity {
     }
 
     /**
+     * Constructor with all arguments.
+     *
+     * @param country country
+     * @param isocode ISO-3166-alpha-2 code
+     * @param groupChar group
+     */
+    public Team(String country, String isocode, Group groupChar) {
+        this.country = country;
+        this.isoCode = isocode;
+        this.groupChar = groupChar;
+    }
+
+    /**
      * Getter for country.
      *
      * @return country
