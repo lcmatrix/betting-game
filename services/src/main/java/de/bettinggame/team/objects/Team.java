@@ -53,7 +53,7 @@ public class Team {
     public Team(de.bettinggame.model.Team team) {
         this.name = team.getCountry();
         this.isocode = team.getIsoCode();
-        setLocalizedCountryName();
+        setLocalisedCountryName();
     }
 
     /**
@@ -71,7 +71,7 @@ public class Team {
         this.points = points;
         this.goals = goals;
         this.goalsAgainst = goalsAgainst;
-        setLocalizedCountryName();
+        setLocalisedCountryName();
     }
 
     public String getFlagIconPath() {
@@ -95,9 +95,9 @@ public class Team {
     }
 
     /**
-     * Try to set the name/country of this team by ISO-code, localized for browser language.
+     * Try to set the name/country of this team by ISO-code, localised for browser language.
      */
-    private void setLocalizedCountryName() {
+    private void setLocalisedCountryName() {
         Locale displayLocale = LocaleContextHolder.getLocale();
         List<Locale> allLocales = Arrays.asList(Locale.getAvailableLocales());
         List<String> countryNames = allLocales.stream()
