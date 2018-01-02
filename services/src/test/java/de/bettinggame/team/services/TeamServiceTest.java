@@ -39,7 +39,7 @@ public class TeamServiceTest {
     public MockitoRule mockito = MockitoJUnit.rule();
 
     @Mock
-    private TeamRepository teamRepository = Mockito.mock(TeamRepository.class);
+    private TeamRepository teamRepository;
 
     @InjectMocks
     private TeamService teamService = new TeamService();
