@@ -1,4 +1,4 @@
-package de.bettinggame;
+package de.bettinggame.configuration;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,7 +25,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                     .logoutSuccessUrl("/index")
-                    .invalidateHttpSession(true)
                     .permitAll();
     }
 
