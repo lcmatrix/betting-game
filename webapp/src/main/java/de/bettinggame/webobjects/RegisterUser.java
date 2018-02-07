@@ -4,6 +4,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import de.bettinggame.model.User;
+import de.bettinggame.model.enums.UserRole;
+import de.bettinggame.model.enums.UserStatus;
 
 /**
  * Form object for registration.
@@ -23,8 +25,9 @@ public class RegisterUser {
 
     }
 
-    public RegisterUser(String username, String email) {
+    public RegisterUser(String username, String password, String email) {
         this.username = username;
+        this.password = password;
         this.email = email;
     }
 
@@ -53,7 +56,7 @@ public class RegisterUser {
     }
 
     public User createUser() {
-        User user = new User(username, password, email);
+        User user = new User(username, password, email, UserStatus.PENDING, UserRole.USER);
         return user;
     }
 }

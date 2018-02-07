@@ -3,6 +3,8 @@ CREATE TABLE users (
     username VARCHAR(150) NOT NULL,
     password VARCHAR(200) NOT NULL,
     email VARCHAR(255) NOT NULL,
+    status VARCHAR(100) NOT NULL,
+    role VARCHAR(100) NOT NULL,
     CONSTRAINT pk_user PRIMARY KEY (id),
     CONSTRAINT UNIQUE INDEX idx_user_email (email)
 );
