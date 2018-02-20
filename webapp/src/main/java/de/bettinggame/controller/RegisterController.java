@@ -3,6 +3,8 @@ package de.bettinggame.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +25,9 @@ import de.bettinggame.webobjects.RegisterUser;
 public class RegisterController extends AbstractController {
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     private UserRepository userRepository;
 
     @GetMapping("/")
@@ -40,6 +45,7 @@ public class RegisterController extends AbstractController {
         if (result.hasErrors()) {
             return "registration/register";
         }
+        registerUserForm.setPassword(passwordEncoder.encode(registerUserForm.getPassword()));
         User user = registerUserForm.createUser();
         user.create(userRepository);
         return "redirect:/register/confirmation";
