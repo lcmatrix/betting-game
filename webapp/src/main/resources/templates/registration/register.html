@@ -22,7 +22,8 @@
                             data-th-errorClass="errorFormElement"/>
                     </div>
                     <div class="col-xs-12 col-md-4">
-                        <p data-th-if="${#fields.hasErrors('username')}" data-th-errors="#{*[username}}">Fehler</li>
+                        <p data-th-each="err : ${#fields.errors('username')}" data-th-text="#{${err}}"
+                            data-th-class="errorMessage">Fehler</li>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -35,7 +36,7 @@
                                data-th-errorClass="errorFormElement"/>
                     </div>
                     <div class="col-xs-12 col-md-4">
-                        <p data-th-if="${#fields.hasErrors('password')}" data-th-text="*{password}" data-th-class="errorMessage">Incorrect</p>
+                        <p data-th-each="err : ${#fields.errors('password')}" data-th-text="#{${err}}" data-th-class="errorMessage">Incorrect</p>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -48,7 +49,7 @@
                            data-th-errorClass="errorFormElement"/>
                     </div>
                     <div class="col-xs-12 col-md-4">
-                        <p data-th-if="${#fields.hasErrors('email')}" data-th-text="*{email}" data-th-cass="errorMessage">Incorrect</p>
+                        <p data-th-each="err : ${#fields.errors('email')}" data-th-text="#{${err}}" data-th-cass="errorMessage">Incorrect</p>
                     </div>
                 </div>
                 <div class="form-group row">
