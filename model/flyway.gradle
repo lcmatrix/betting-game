@@ -2,6 +2,6 @@
 
 flyway {
     url = 'jdbc:mariadb://localhost/bettinggame'
-    user = 'root'
-    password = ''
+    user = 'betting'
+    password = 'game'
 }

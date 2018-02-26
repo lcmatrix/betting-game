@@ -5,8 +5,8 @@ spring:
   datasource:
     data-username:
     data-password:
-    username:
-    password:
+    username: betting
+    password: game
     schema:
     url: jdbc:mariadb://localhost/bettinggame
 
