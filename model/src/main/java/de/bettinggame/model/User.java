@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
  * User class.
  */
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User extends AbstractIdEntity {
 
     @NotNull

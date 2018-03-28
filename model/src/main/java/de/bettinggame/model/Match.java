@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
  * Created by norman on 02.05.2017.
  */
 @Entity
-@Table(name = "matches")
+@Table(name = "match")
 public class Match extends AbstractIdEntity {
     /**
      * Kick-off date and time.

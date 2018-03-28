@@ -10,7 +10,7 @@ import javax.persistence.Table;
  * Created by norman on 02.05.2017.
  */
 @Entity
-@Table(name = "teams")
+@Table(name = "team")
 public class Team extends AbstractIdEntity {
 
     /**
