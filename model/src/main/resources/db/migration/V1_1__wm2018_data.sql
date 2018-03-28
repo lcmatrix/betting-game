@@ -31,3 +31,17 @@ INSERT INTO team (`country`, `isocode`, `group_char`) VALUES
   ('Japan', 'JP', 'H'),
   ('Senegal', 'SN', 'H'),
   ('Colombia', 'CO', 'H');
+
+INSERT INTO location (`name`, `city`, `country`) VALUES
+  ('Olympiastadion Luschniki', 'Moskau', 'Russland'),
+  ('Spartak-Stadion', 'Moskau', 'Russland'),
+  ('Zentralstadion', 'Jekaterinburg', 'Russland'),
+  ('Kaliningrad-Stadion', 'Kaliningrad', 'Russland'),
+  ('Kasan-Arena', 'Kasan', 'Russland'),
+  ('Stadion Nischni Nowgorod', 'Nischni Nowgorod', 'Russland'),
+  ('Rostow Arena', 'Rostow am Don', 'Russland'),
+  ('Kosmos-Arena', 'Samara', 'Russland'),
+  ('Mordowia Arena', 'Saransk', 'Russland'),
+  ('Olympiastadion Sotschi', 'Sotschi', 'Russland'),
+  ('Sankt-Petersburg-Stadion', 'Sankt Petersburg', 'Russland'),
+  ('Wolgograd Arena', 'Wolgograd', 'Russland');

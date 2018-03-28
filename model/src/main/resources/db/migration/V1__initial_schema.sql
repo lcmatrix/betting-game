@@ -28,3 +28,11 @@ CREATE TABLE `match` (
     CONSTRAINT fk_team_a FOREIGN KEY (team_a_id) REFERENCES team(id),
     CONSTRAINT fk_team_b FOREIGN KEY (team_b_id) REFERENCES team(id)
 );
+
+CREATE TABLE location (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    country VARCHAR(255) NOT NULL,
+    CONSTRAINT pk_location PRIMARY KEY (id)
+);
