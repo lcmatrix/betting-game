@@ -13,6 +13,13 @@ import javax.validation.constraints.NotNull;
 public class Location extends AbstractIdEntity {
 
     /**
+     * Short unique key.
+     */
+    @NotNull
+    @Column(name = "short_key")
+    private String key;
+
+    /**
      * Name of the arena.
      */
     @NotNull
@@ -34,6 +41,10 @@ public class Location extends AbstractIdEntity {
     private String country;
 
     protected Location() {
+    }
+
+    public String getKey() {
+        return key;
     }
 
     public String getName() {

@@ -31,8 +31,10 @@ CREATE TABLE `match` (
 
 CREATE TABLE location (
     id INTEGER NOT NULL AUTO_INCREMENT,
+    short_key VARCHAR(20) NOT NULL,
     name VARCHAR(255) NOT NULL,
     city VARCHAR(255) NOT NULL,
     country VARCHAR(255) NOT NULL,
-    CONSTRAINT pk_location PRIMARY KEY (id)
+    CONSTRAINT pk_location PRIMARY KEY (id),
+    CONSTRAINT UNIQUE INDEX idx_short_key(short_key)
 );

@@ -32,16 +32,16 @@ INSERT INTO team (`country`, `isocode`, `group_char`) VALUES
   ('Senegal', 'SN', 'H'),
   ('Colombia', 'CO', 'H');
 
-INSERT INTO location (`name`, `city`, `country`) VALUES
-  ('Olympiastadion Luschniki', 'Moskau', 'Russland'),
-  ('Spartak-Stadion', 'Moskau', 'Russland'),
-  ('Zentralstadion', 'Jekaterinburg', 'Russland'),
-  ('Kaliningrad-Stadion', 'Kaliningrad', 'Russland'),
-  ('Kasan-Arena', 'Kasan', 'Russland'),
-  ('Stadion Nischni Nowgorod', 'Nischni Nowgorod', 'Russland'),
-  ('Rostow Arena', 'Rostow am Don', 'Russland'),
-  ('Kosmos-Arena', 'Samara', 'Russland'),
-  ('Mordowia Arena', 'Saransk', 'Russland'),
-  ('Olympiastadion Sotschi', 'Sotschi', 'Russland'),
-  ('Sankt-Petersburg-Stadion', 'Sankt Petersburg', 'Russland'),
-  ('Wolgograd Arena', 'Wolgograd', 'Russland');
+INSERT INTO location (`short_key`, `name`, `city`, `country`) VALUES
+  ('RUS_MOS_LUS', 'Olympiastadion Luschniki', 'Moskau', 'Russland'),
+  ('RUS_MOS_SPA', 'Spartak-Stadion', 'Moskau', 'Russland'),
+  ('RUS_JEK_ZEN', 'Zentralstadion', 'Jekaterinburg', 'Russland'),
+  ('RUS_KAL_KAL', 'Kaliningrad-Stadion', 'Kaliningrad', 'Russland'),
+  ('RUS_KAS_KAS', 'Kasan-Arena', 'Kasan', 'Russland'),
+  ('RUS_NIS_NOW', 'Stadion Nischni Nowgorod', 'Nischni Nowgorod', 'Russland'),
+  ('RUS_ROS_ROS', 'Rostow Arena', 'Rostow am Don', 'Russland'),
+  ('RUS_SAM_KOS', 'Kosmos-Arena', 'Samara', 'Russland'),
+  ('RUS_SAR_MOR', 'Mordowia Arena', 'Saransk', 'Russland'),
+  ('RUS_SOT_SOT', 'Olympiastadion Sotschi', 'Sotschi', 'Russland'),
+  ('RUS_PET_PET', 'Sankt-Petersburg-Stadion', 'Sankt Petersburg', 'Russland'),
+  ('RUS_WOL_WOL', 'Wolgograd Arena', 'Wolgograd', 'Russland');
