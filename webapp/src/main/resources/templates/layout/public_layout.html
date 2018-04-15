@@ -38,6 +38,11 @@
                         <li data-th-remove="all"><a href="#">Test 2</a></li>
                         <li data-th-remove="all"><a href="#">Test 3</a></li>
                         <li data-th-remove="all"><a href="#">Test 4</a></li>
+                        <li data-sec-authorize="isAuthenticated()">
+                            <form method="post" data-th-action="@{/logout}" action="/logout">
+                                <input type="submit" data-th-value="#{navigation.item.logout}" value="Logout"/>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
