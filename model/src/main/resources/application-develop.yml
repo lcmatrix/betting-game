@@ -1,0 +1,2 @@
+flyway:
+  locations: "db/migration", "db/migration/test"
