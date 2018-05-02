@@ -1,0 +1,48 @@
+// code style config
+
+checkstyle {
+    configFile = file("$rootProject.projectDir/config/checkstyle/checkstyle.xml")
+    ignoreFailures = true
+}
+
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled true
+        html.enabled true
+        html.stylesheet resources.text.fromFile("$rootProject.projectDir/config/checkstyle/checkstyle-noframes-severity-sorted.xsl")
+    }
+
+    onlyIf {
+        project.hasProperty("withChecks") && withChecks == "true"
+    }
+}
+
+findbugs {
+    ignoreFailures = true
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled true
+        html.enabled false
+        html.stylesheet resources.text.fromFile("$rootProject.projectDir/config/findbugs/default.xsl")
+    }
+
+    onlyIf {
+        project.hasProperty("withChecks") && withChecks == "true"
+    }
+}
+
+pmd {
+    ignoreFailures true
+    //ruleSets = ["basic", "braces", "unnecessary", "unusedcode"]
+    ruleSetFiles = files("$rootProject.projectDir/config/pmd/ruleset.xml")
+
+}
+
+tasks.withType(Pmd) {
+    onlyIf {
+        hasProperty("withChecks") && withChecks == "true"
+    }
+}

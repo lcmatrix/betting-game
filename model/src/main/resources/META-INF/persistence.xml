@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
-    <persistence-unit name="bettinggame">
-        <class>de.bettinggame.model.Match</class>
-        <class>de.bettinggame.model.Team</class>
-        <class>de.bettinggame.model.User</class>
-    </persistence-unit>
-</persistence>
