@@ -9,20 +9,20 @@ buildscript {
   }
 }
 
-repositories {
-  jcenter()
+plugins {
+  id 'java'
+  id 'org.springframework.boot' version '1.5.12.RELEASE'
+  id 'org.flywaydb.flyway' version '4.2.0'
+  //id "com.gorylenko.gradle-git-properties" version "1.4.17"
+  id 'checkstyle'
+  id 'pmd'
+  id 'findbugs'
+  id 'idea'
+  id 'eclipse'
 }
 
-plugins {
-    id 'java'
-    id 'org.springframework.boot' version '1.5.12.RELEASE'
-    id 'org.flywaydb.flyway' version '4.2.0'
-    //id "com.gorylenko.gradle-git-properties" version "1.4.17"
-    id 'checkstyle'
-    id 'pmd'
-    id 'findbugs'
-    id 'idea'
-    id 'eclipse'
+repositories {
+  jcenter()
 }
 
 apply from: 'flyway.gradle'
