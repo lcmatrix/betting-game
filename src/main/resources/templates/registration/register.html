@@ -3,6 +3,7 @@
 <body>
     <div class="container">
         <div data-th-fragment="mainContent">
+            <h1 data-th-text="#{register.header}">Registration</h1>
             <form method="post" action="register.html" data-th-action="@{/register/register}" data-th-object="${registerUser}">
                 <div class="from-group row" data-th-if="${#fields.hasAnyErrors()}">
                     <div class="alert alert-danger">

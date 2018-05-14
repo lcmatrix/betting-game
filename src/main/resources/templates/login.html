@@ -2,6 +2,7 @@
 <html data-th-replace="~{layout/public_layout :: layout}">
 <body>
     <div class="container">
+        <h1 data-th-text="#{login.header}">Login</h1>
         <div data-th-fragment="mainContent">
             <form method="post" action="index.html" data-th-action="@{/login}">
                 <div class="form-group row">
