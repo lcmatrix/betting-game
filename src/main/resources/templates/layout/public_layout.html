@@ -2,53 +2,48 @@
 <html data-th-fragment="layout">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="../../static/css/bootstrap.min.css" data-th-href="@{/static/css/bootstrap.min.css}"/>
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="../../static/css/bootstrap-theme.min.css" data-th-href="@{/static/css/bootstrap-theme.min.css}">
     <link rel="stylesheet" href="../../static/css/styles.css" data-th-href="@{/static/css/styles.css}" />
     <link rel="icon" href="../static/img/favicon.ico" data-th-href="@{/static/img/favicon.ico}" />
     <title data-th-text="#{app.title}">Betting Game</title>
 </head>
 <body>
 <div class="container">
-  <div class="jumbotron title-jumbotron">
-    <img src="../../static/img/maintitle.png" data-th-src="@{/static/img/maintitle.png}" class="img-responsive center-block"
-      alt="Betting game" data-th-alt="#{app.title}"/>
-  </div>
     <header>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menulinks" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" data-th-href="@{/}" href="#">
-                        <span data-th-text="#{app.title}">Titel</span>
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse" id="menulinks">
-                    <ul class="nav navbar-nav">
-                        <li data-th-each="navItem : ${navigation}">
-                            <a data-th-href="@{${navItem.url}}" href="#" data-th-text="#{${navItem.messageKey}}">
-                                Test
-                            </a>
-                        </li>
-                        <li data-th-remove="all"><a href="#">Test 2</a></li>
-                        <li data-th-remove="all"><a href="#">Test 3</a></li>
-                        <li data-th-remove="all"><a href="#">Test 4</a></li>
-                        <li data-sec-authorize="isAuthenticated()">
-                            <form method="post" data-th-action="@{/logout}" action="/logout">
-                                <input type="submit" data-th-value="#{navigation.item.logout}" value="Logout"/>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <img src="../../static/img/maintitle.png" data-th-src="@{/static/img/maintitle.png}" class="img-fluid"
+                alt="Betting game" data-th-alt="#{app.title}"/>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menulinks"
+                    aria-controls="menulinks" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menulinks">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="navbar-brand" data-th-text="#{app.title}" data-th-href="@{/}" href="#">Title</a>
+                    </li>
+                    <li class="nav-item" data-th-each="navItem : ${navigation}">
+                        <a class="nav-link" data-th-href="@{${navItem.url}}" href="#" data-th-text="#{${navItem.messageKey}}">
+                            Test
+                        </a>
+                    </li>
+                    <li class="nav-item" data-th-remove="all"><a class="nav-link" href="#">Test 2</a></li>
+                    <li class="nav-item" data-th-remove="all"><a class="nav-link" href="#">Test 3</a></li>
+                    <li class="nav-item" data-th-remove="all"><a class="nav-link" href="#">Test 4</a></li>
+                    <li class="nav-item" data-sec-authorize="isAuthenticated()">
+                        <form class="form-inline" method="post" data-th-action="@{/logout}" action="/logout">
+                            <input class="btn btn-link" type="submit" data-th-value="#{navigation.item.logout}" value="Logout"/>
+                        </form>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
@@ -62,6 +57,6 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="../../static/js/jquery.min.js" data-th-src="@{/static/js/jquery.min.js}"></script>
-<script src="../../static/js/bootstrap.min.js" data-th-src="@{/static/js/bootstrap.min.js}"></script>
+<script src="../../static/js/bootstrap.bundle.min.js" data-th-src="@{/static/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
