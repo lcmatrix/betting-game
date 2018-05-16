@@ -5,4 +5,4 @@ jdk:
 
 install: true
 
-script: gradle build
+script: ./gradlew build
