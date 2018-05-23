@@ -5,7 +5,9 @@ import de.bettinggame.domain.enums.UserStatus;
 import de.bettinggame.domain.repository.UserRepository;
 
 import javax.persistence.*;
+import javax.swing.text.html.Option;
 import javax.validation.constraints.NotNull;
+import java.util.Optional;
 
 /**
  * User class.
@@ -25,6 +27,12 @@ public class User extends AbstractIdEntity {
     @NotNull
     @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
+    private String firstname;
+
+    @Column(nullable = false)
+    private String surname;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -59,12 +67,30 @@ public class User extends AbstractIdEntity {
         return email;
     }
 
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
     public UserStatus getStatus() {
         return status;
     }
 
     public UserRole getRole() {
         return role;
+    }
+
+    public Optional<String> getFullname() {
+        if (firstname == null) {
+            return Optional.ofNullable(firstname);
+        }
+
+        String name = firstname;
+        name += (surname != null) ? " " + surname : "";
+        return Optional.of(name);
     }
 
     public void create(UserRepository repo) {
