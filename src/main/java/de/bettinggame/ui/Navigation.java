@@ -1,16 +1,15 @@
 package de.bettinggame.ui;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Enum with navigation links.
  */
 public enum Navigation {
 
-    INDEX("navigation.item.index", "/", false),
     LOGIN("navigation.item.login", "/login", false),
-    LOGOUT("navigation.item.logout", "/logout", true),
     REGISTER("navigation.item.register", "/register/register", false),
     GROUPS("navigation.item.groups", "/groups", false);
 
@@ -36,11 +35,9 @@ public enum Navigation {
         return onlyAuthenticatedVisible;
     }
 
-    public static List<Navigation> getNavigationListForAuthentication(boolean authenticated) {
-        List<Navigation> navList = new ArrayList<>();
-        for (Navigation nav : Navigation.values()) {
-
-        }
-        return navList;
+    public static List<Navigation> getNavigationListForAuthentication() {
+        return Stream.of(Navigation.values())
+                .filter(item -> item.onlyAuthenticatedVisible)
+                .collect(Collectors.toList());
     }
 }
