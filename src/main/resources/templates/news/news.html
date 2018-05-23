@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layout/public_layout :: layout}">
+<body>
+    <div class="container">
+        <h1 data-th-text="#{news.header}">News</h1>
+        <div data-th-fragment="mainContent">
+            <div class="row" data-th-each="news : ${newsList}">
+                <div class="col-12">
+                    <h3 data-th-text="${news.headline}">Heading</h3>
+                    <p data-th-text="#{news.author_date(${news.author}, ${{news.publishDate}})}">by user at 1970-01-01</p>
+                    <hr/>
+                    <p data-th-text="${news.content}">amazing content</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

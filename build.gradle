@@ -48,7 +48,8 @@ dependencies {
     compile("org.springframework.data:spring-data-jpa:1.11.11.RELEASE")
 
     compile group: 'org.flywaydb', name: 'flyway-core', version: '4.2.0'
-    compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.0.1'
+    compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.2.4'
+    compile group: 'org.hibernate', name: 'hibernate-java8'
     compile group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
     // both variants are possible to declare dependencies
     compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.9.RELEASE'

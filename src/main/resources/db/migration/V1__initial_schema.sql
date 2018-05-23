@@ -40,3 +40,14 @@ CREATE TABLE location (
     CONSTRAINT pk_location PRIMARY KEY (id),
     CONSTRAINT UNIQUE INDEX idx_short_key(short_key)
 );
+
+CREATE TABLE news (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    headline VARCHAR(255) NOT NULL,
+    content VARCHAR(2000) NOT NULL,
+    publish_date DATETIME NOT NULL,
+    author_username VARCHAR(150) NOT NULL,
+    author_id INTEGER,
+    CONSTRAINT pk_news PRIMARY KEY (id),
+    CONSTRAINT fk_user FOREIGN KEY (author_id) REFERENCES user(id)
+);
