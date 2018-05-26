@@ -2,8 +2,6 @@ package de.bettinggame.adapter;
 
 import de.bettinggame.domain.News;
 import de.bettinggame.domain.repository.NewsRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,7 +16,7 @@ import java.util.List;
  * Controller for index/startpage.
  */
 @Controller
-public class MainController extends AbstractController {
+public class MainController implements AbstractController {
 
     @Autowired
     private NewsRepository newsRepository;

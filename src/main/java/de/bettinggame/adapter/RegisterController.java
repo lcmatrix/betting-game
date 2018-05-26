@@ -21,7 +21,7 @@ import de.bettinggame.application.registration.RegisterUser;
  */
 @Controller
 @RequestMapping("/register")
-public class RegisterController extends AbstractController {
+public class RegisterController implements AbstractController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;

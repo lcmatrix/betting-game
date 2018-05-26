@@ -7,13 +7,13 @@ import de.bettinggame.ui.Navigation;
 /**
  * Abstract base controller.
  */
-public abstract class AbstractController {
+public interface AbstractController {
 
     /**
      * Returns navigation items
      */
     @ModelAttribute("navigation")
-    public Navigation[] getNavigation() {
+    default Navigation[] getNavigation() {
         Navigation.getNavigationListForAuthentication();
         return Navigation.values();
     }

@@ -18,7 +18,7 @@ import de.bettinggame.application.team.TeamService;
  * @author norman
  */
 @Controller
-public class GroupController extends AbstractController {
+public class GroupController implements AbstractController {
 
     @Resource
     private TeamService teamService;
