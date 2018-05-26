@@ -11,7 +11,8 @@ public enum Navigation {
 
     LOGIN("navigation.item.login", "/login", false),
     REGISTER("navigation.item.register", "/register/register", false),
-    GROUPS("navigation.item.groups", "/groups", false);
+    GROUPS("navigation.item.groups", "/groups", false),
+    MATCH("navigation.item.games", "/game", false);
 
     private String messageKey;
     private String url;

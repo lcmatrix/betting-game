@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layout/public_layout :: layout}">
+<body>
+    <div class="container">
+        <div data-th-fragment="mainContent">
+            <h1 data-th-text="#{games.header}">Groups overview</h1>
+            <div class="row" data-th-each="level : ${gamesByLevel}">
+                <div class="col">
+                    <h4 data-th-text="#{${level.key.messageKey}}">Test round</h4>
+                    <table class="table">
+                        <thead>
+                            <th data-th-text="#{games.table.header.kickoff}">Kick off time</th>
+                            <th data-th-text="#{games.table.header.location}">Location</th>
+                            <th data-th-text="#{games.table.header.game}">Match</th>
+                            <th data-th-text="#{games.table.header.result}">Result</th>
+                        </thead>
+                        <tbody>
+                            <tr data-th-each="match : ${level.value}">
+                                <td data-th-text="${{match.starttime}}">today</td>
+                                <td data-th-text="${match.location.name}">somewhere</td>
+                                <td data-th-text="${match.homeTeam.country} + ' vs. ' + ${match.guestTeam.country}">England vs. Brazil</td>
+                                <td data-th-text="${match.goalsHomeTeam} + ':' + ${match.goalsGuestTeam}">2:0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row" data-th-if="${#maps.isEmpty(gamesByLevel)}">
+                <div class="col">
+                    <p data-th-text="#{common.nodata}">no data</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

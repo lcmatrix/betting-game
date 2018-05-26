@@ -19,18 +19,6 @@ CREATE TABLE team (
     CONSTRAINT pk_team PRIMARY KEY (id)
 );
 
-CREATE TABLE `match` (
-    id INTEGER NOT NULL AUTO_INCREMENT,
-    starttime DATETIME NOT NULL,
-    location VARCHAR(200) NOT NULL,
-    level VARCHAR(50) NOT NULL,
-    team_a_id INTEGER NOT NULL,
-    team_b_id INTEGER NOT NULL,
-    CONSTRAINT pk_match PRIMARY KEY (id),
-    CONSTRAINT fk_team_a FOREIGN KEY (team_a_id) REFERENCES team(id),
-    CONSTRAINT fk_team_b FOREIGN KEY (team_b_id) REFERENCES team(id)
-);
-
 CREATE TABLE location (
     id INTEGER NOT NULL AUTO_INCREMENT,
     short_key VARCHAR(20) NOT NULL,
@@ -39,6 +27,21 @@ CREATE TABLE location (
     country VARCHAR(255) NOT NULL,
     CONSTRAINT pk_location PRIMARY KEY (id),
     CONSTRAINT UNIQUE INDEX idx_short_key(short_key)
+);
+
+CREATE TABLE game (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    starttime DATETIME NOT NULL,
+    location_id INTEGER NOT NULL,
+    level VARCHAR(50) NOT NULL,
+    home_team_id INTEGER NOT NULL,
+    guest_team_id INTEGER NOT NULL,
+    goals_home_team INTEGER,
+    goals_guest_team INTEGER,
+    CONSTRAINT pk_match PRIMARY KEY (id),
+    CONSTRAINT fk_location FOREIGN KEY (location_id) REFERENCES location(id),
+    CONSTRAINT fk_team_a FOREIGN KEY (home_team_id) REFERENCES team(id),
+    CONSTRAINT fk_team_b FOREIGN KEY (guest_team_id) REFERENCES team(id)
 );
 
 CREATE TABLE news (
