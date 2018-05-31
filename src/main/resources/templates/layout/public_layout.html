@@ -12,23 +12,19 @@
     <title data-th-text="#{app.title}">Betting Game</title>
 </head>
 <body>
-<div class="container">
-    <header>
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <img src="../../static/img/maintitle.png" data-th-src="@{/static/img/maintitle.png}" class="img-fluid"
-                alt="Betting game" data-th-alt="#{app.title}"/>
-            </div>
-        </div>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark nav-justified">
+        <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menulinks"
                     aria-controls="menulinks" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="menulinks">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="navbar-brand" data-th-text="#{app.title}" data-th-href="@{/}" href="#">Title</a>
+                        <a class="navbar-brand" data-th-href="@{/}" href="#">
+                            <img src="../../static/img/glyphicons/glyphicons-21-home.png" alt="Home" class="align-top"
+                                data-th-src="@{/static/img/glyphicons/glyphicons-21-home.png}" data-th-alt="#{app.title}" />
+                        </a>
                     </li>
                     <li class="nav-item" data-th-each="navItem : ${navigation}">
                         <a class="nav-link" data-th-href="@{${navItem.url}}" href="#" data-th-text="#{${navItem.messageKey}}">
@@ -45,18 +41,27 @@
                     </li>
                 </ul>
             </div>
-        </nav>
-    </header>
-    <section class="content">
-        <div data-th-replace="~{:: mainContent}">Content goes here</div>
-    </section>
+        </div>
+    </nav>
+    <div class="container">
+        <header>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <img src="../../static/img/maintitle.png" data-th-src="@{/static/img/maintitle.png}" class="img-fluid"
+                    alt="Betting game" data-th-alt="#{app.title}"/>
+                </div>
+            </div>
+        </header>
+        <section class="content">
+            <div data-th-replace="~{:: mainContent}">Content goes here</div>
+        </section>
+    </div>
     <footer data-th-insert="~{footer :: copy}">
-        <div>Copyright</div>
+        <div class="bg-dark text-light container">Copyright</div>
     </footer>
-</div>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="../../static/js/jquery.min.js" data-th-src="@{/static/js/jquery.min.js}"></script>
-<script src="../../static/js/bootstrap.bundle.min.js" data-th-src="@{/static/js/bootstrap.bundle.min.js}"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../../static/js/jquery.min.js" data-th-src="@{/static/js/jquery.min.js}"></script>
+    <script src="../../static/js/bootstrap.bundle.min.js" data-th-src="@{/static/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
