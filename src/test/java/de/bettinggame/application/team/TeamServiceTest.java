@@ -47,7 +47,7 @@ public class TeamServiceTest {
 
     @Before
     public void setUp() {
-        Mockito.doAnswer(a -> createListOfTeams()).when(teamRepository).findAll();
+        Mockito.doAnswer(a -> createListOfTeams()).when(teamRepository).findAllByGroupCharNotNull();
     }
 
     @Test
