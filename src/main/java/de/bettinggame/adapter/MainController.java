@@ -21,7 +21,7 @@ public class MainController implements AbstractController {
     @Autowired
     private NewsRepository newsRepository;
 
-    @GetMapping("/")
+    @RequestMapping("/")
     public String root(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {

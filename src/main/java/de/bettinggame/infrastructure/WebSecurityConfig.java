@@ -19,17 +19,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/static/**", "/index", "/favicon.ico", "/register*", "/groups*").permitAll()
+                    .antMatchers("/", "/static/**", "/favicon.ico", "/register*", "/groups*").permitAll()
                     .antMatchers("/secure/**").hasAnyRole("ROLE_USER", "ROLE_ADMIN")
                 .and()
                 .formLogin()
                     .loginPage("/login")
                     .failureForwardUrl("/error")
-                    .successForwardUrl("/index")
+                    .successForwardUrl("/")
                     .permitAll()
                 .and()
                 .logout()
-                    .logoutSuccessUrl("/index")
+                    .logoutSuccessUrl("/")
+                    .deleteCookies("JSESSIONID")
                     .permitAll();
     }
 
