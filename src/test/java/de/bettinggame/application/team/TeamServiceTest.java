@@ -14,7 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-import de.bettinggame.application.team.TeamService;
+import de.bettinggame.domain.support.Multilingual;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -52,22 +52,22 @@ public class TeamServiceTest {
 
     @Test
     public void testGetAllGroupsWithTeams() {
-        Collection<de.bettinggame.application.team.Group> allGroupsWithTeams = teamService.getAllGroupsWithTeams();
+        Collection<GroupTO> allGroupsWithTeams = teamService.getAllGroupsWithTeams();
         Assert.assertEquals("2 groups expected", 2, allGroupsWithTeams.size());
-        Iterator<de.bettinggame.application.team.Group> iterator = allGroupsWithTeams.iterator();
-        de.bettinggame.application.team.Group groupF = iterator.next();
+        Iterator<GroupTO> iterator = allGroupsWithTeams.iterator();
+        GroupTO groupF = iterator.next();
         assertLocalisedTeamName(new Locale("de","DE"), groupF.getTeams().get(0).getName());
         Assert.assertEquals(Group.F.name(), groupF.getGroupChar());
 
-        de.bettinggame.application.team.Group groupH = iterator.next();
+        GroupTO groupH = iterator.next();
         Assert.assertEquals(Group.H.name(), groupH.getGroupChar());
         assertLocalisedTeamName(new Locale("fr", "FR"), groupH.getTeams().get(0).getName());
 
     }
 
     private List<Team> createListOfTeams() {
-        Team a = new Team("Germany", "DE", Group.F);
-        Team b = new Team("France", "FR", Group.H);
+        Team a = new Team(new Multilingual("Deutschland", "Germany"), "DE", Group.F);
+        Team b = new Team(new Multilingual("Frankreich","France"), "FR", Group.H);
         List<Team> list = new ArrayList<>();
         list.add(a);
         list.add(b);

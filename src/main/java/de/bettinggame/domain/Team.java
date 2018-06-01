@@ -1,29 +1,42 @@
 package de.bettinggame.domain;
 
+import de.bettinggame.domain.support.Multilingual;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 
 /**
- * Created by norman on 02.05.2017.
+ * Entity team.
  */
 @Entity
-@Table(name = "team")
+@Table(name = "team", uniqueConstraints =
+    @UniqueConstraint(columnNames = "team_key", name = "team_key_unique"))
 public class Team extends AbstractIdEntity {
 
     /**
-     * Country.
+     * Team name or country if international.
      */
-    @Column(nullable = false)
-    private String country;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "de", column = @Column(name = "name_de")),
+            @AttributeOverride(name = "en", column = @Column(name = "name_en"))
+    })
+    private Multilingual name;
 
     /**
-     * ISO-3166-1 alpha-2 country code.
+     * Business key for team. Could be ISO Code for national teams.
      */
-    @Column(name = "isocode", nullable = false)
-    private String isoCode;
+    @NotNull
+    @Column(name = "team_key", nullable = false)
+    private String teamKey;
 
     /**
      * Group.
@@ -41,32 +54,32 @@ public class Team extends AbstractIdEntity {
     /**
      * Constructor with all arguments.
      *
-     * @param country country
-     * @param isocode ISO-3166-alpha-2 code
+     * @param name team name
+     * @param teamKey teamKey
      * @param groupChar group
      */
-    public Team(String country, String isocode, Group groupChar) {
-        this.country = country;
-        this.isoCode = isocode;
+    public Team(Multilingual name,  String teamKey, Group groupChar) {
+        this.name = name;
+        this.teamKey = teamKey;
         this.groupChar = groupChar;
     }
 
     /**
-     * Getter for country.
+     * Getter for name.
      *
-     * @return country
+     * @return multilingual team name
      */
-    public String getCountry() {
-        return country;
+    public Multilingual getName() {
+        return name;
     }
 
     /**
-     * Getter for ISO Code.
+     * Getter for team key.
      *
-     * @return isoCode
+     * @return teamKey
      */
-    public String getIsoCode() {
-        return isoCode;
+    public String getTeamKey() {
+        return teamKey;
     }
 
     /**

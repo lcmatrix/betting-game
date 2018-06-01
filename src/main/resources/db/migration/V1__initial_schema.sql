@@ -13,10 +13,12 @@ CREATE TABLE user (
 
 CREATE TABLE team (
     id INTEGER NOT NULL AUTO_INCREMENT,
-    country VARCHAR(150) NOT NULL,
-    isocode VARCHAR(2) NOT NULL,
-    group_char VARCHAR(1) NOT NULL,
-    CONSTRAINT pk_team PRIMARY KEY (id)
+    name_de VARCHAR(150),
+    name_en VARCHAR(150),
+    team_key VARCHAR(3) NOT NULL,
+    group_char VARCHAR(1),
+    CONSTRAINT pk_team PRIMARY KEY (id),
+    CONSTRAINT UNIQUE INDEX idx_team_team_key(team_key)
 );
 
 CREATE TABLE location (
@@ -54,3 +56,7 @@ CREATE TABLE news (
     CONSTRAINT pk_news PRIMARY KEY (id),
     CONSTRAINT fk_user FOREIGN KEY (author_id) REFERENCES user(id)
 );
+
+
+INSERT INTO team (id, name_de, name_en, team_key, group_char) VALUES
+  (-1, 'unbekannt', 'unknown', 'xxx', null);

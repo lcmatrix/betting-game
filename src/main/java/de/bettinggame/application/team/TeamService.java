@@ -1,6 +1,7 @@
 package de.bettinggame.application.team;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -22,24 +23,24 @@ public class TeamService {
     private TeamRepository teamRepository;
 
     /**
-     * Loads all teams and create representing {@link Group} objects containing their {@link Team}.
+     * Loads all teams and create representing {@link GroupTO} objects containing their {@link TeamTO}.
      *
      * @return collection of groups
      */
-    public Collection<Group> getAllGroupsWithTeams() {
-        Map<de.bettinggame.domain.Group, Group> groupMap = new TreeMap<>();
-        Iterable<de.bettinggame.domain.Team> teams = teamRepository.findAll();
+    public Collection<GroupTO> getAllGroupsWithTeams() {
+        Map<de.bettinggame.domain.Group, GroupTO> groupMap = new TreeMap<>();
+        List<de.bettinggame.domain.Team> teams = teamRepository.findAllByGroupCharNotNull();
         for(de.bettinggame.domain.Team team : teams) {
-            Group group = groupMap.get(team.getGroupChar());
+            GroupTO group = groupMap.get(team.getGroupChar());
             if (group == null) {
-                group = new Group(team.getGroupChar());
+                group = new GroupTO(team.getGroupChar());
             }
-            group.addTeam(new Team(team));
+            group.addTeam(new TeamTO(team));
             groupMap.put(team.getGroupChar(), group);
         }
 
         /*try(Stream<Team> allTeams = teamRepository.findAllTeams()) {
-            Map<de.bettinggame.domain.Group, List<Team>> collect =
+            Map<de.bettinggame.domain.GroupTO, List<Team>> collect =
                     allTeams.collect(Collectors.toMap(
                             Team::getGroupChar,
                             t -> new ArrayList<>(new Team(t)),

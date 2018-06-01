@@ -18,7 +18,11 @@
                         <tbody>
                             <tr data-th-class="${stat.index &lt; 2}? 'table-success' : ''" data-th-each="team,stat : ${group.teams}">
                                 <td data-th-text="${stat.count}">1.</td>
-                                <td data-th-text="${team.name}">Germany</td>
+                                <td>
+                                    <img src="/static/img/flags/DE.png" alt="Germany" class="img-fluid"
+                                         data-th-src="@{/static/img/flags/{icon}(icon=${team.logoIconPath})}" data-th-alt="${team.name}"/>
+                                    <span data-th-text="${team.name}"Germany</span>
+                                </td>
                                 <td data-th-text="${team.points}">9</td>
                                 <td data-th-text="${team.goals}">10</td>
                                 <td data-th-text="${team.goalsAgainst}">4</td>

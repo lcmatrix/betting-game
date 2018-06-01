@@ -1,7 +1,4 @@
 spring:
-  mvc:
-    static-path-pattern: /static/**
-
   datasource:
     data-username:
     data-password:

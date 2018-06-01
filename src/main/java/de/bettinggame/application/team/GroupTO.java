@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author norman
  */
-public class Group {
+public class GroupTO {
     /**
      * Groups character.
      */
@@ -17,12 +17,12 @@ public class Group {
     /**
      * Teams in this group.
      */
-    private List<Team> teams;
+    private List<TeamTO> teams;
 
     /**
      * No-args constructor.
      */
-    public Group() {
+    public GroupTO() {
         this.teams = new ArrayList<>();
     }
 
@@ -31,7 +31,7 @@ public class Group {
      *
      * @param group {@link de.bettinggame.domain.Group} value
      */
-    public Group(de.bettinggame.domain.Group group) {
+    public GroupTO(de.bettinggame.domain.Group group) {
         this(group.name());
     }
 
@@ -40,7 +40,7 @@ public class Group {
      *
      * @param groupChar string representing a {@link de.bettinggame.domain.Group} value
      */
-    public Group(String groupChar) {
+    public GroupTO(String groupChar) {
         this();
         this.groupChar = groupChar;
     }
@@ -52,13 +52,13 @@ public class Group {
     /**
      * Add a team to this group.
      *
-     * @param team team object
+     * @param teamTO team object
      */
-    public void addTeam(Team team) {
-        this.teams.add(team);
+    public void addTeam(TeamTO teamTO) {
+        this.teams.add(teamTO);
     }
 
-    public List<Team> getTeams() {
+    public List<TeamTO> getTeams() {
         return teams;
     }
 }

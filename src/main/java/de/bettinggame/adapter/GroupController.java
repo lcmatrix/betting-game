@@ -5,11 +5,11 @@ import java.util.Collection;
 
 import javax.annotation.Resource;
 
+import de.bettinggame.application.team.GroupTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import de.bettinggame.application.team.Group;
 import de.bettinggame.application.team.TeamService;
 
 /**
@@ -32,11 +32,11 @@ public class GroupController implements AbstractController {
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView("groups/groups");
 
-        Collection<Group> allGroups = teamService.getAllGroupsWithTeams();
+        Collection<GroupTO> allGroups = teamService.getAllGroupsWithTeams();
         mav.addObject("groups", allGroups);
 
         if (!mav.getModelMap().containsAttribute("groups")) {
-            mav.addObject("groups", new ArrayList<Group>());
+            mav.addObject("groups", new ArrayList<GroupTO>());
         }
         return mav;
     }
