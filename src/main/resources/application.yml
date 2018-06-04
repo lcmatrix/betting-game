@@ -26,9 +26,3 @@ logging:
   level:
     root: info
     de.bettinggame: debug
-
-endpoints:
-  flyway:
-    sensitive: false
-  metrics:
-    sensitive: false

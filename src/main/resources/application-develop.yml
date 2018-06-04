@@ -1,2 +1,8 @@
 flyway:
   locations: "db/migration, db/testdata"
+
+endpoints:
+  flyway:
+    sensitive: false
+  metrics:
+    sensitive: false
