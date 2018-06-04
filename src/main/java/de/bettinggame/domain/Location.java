@@ -1,6 +1,11 @@
 package de.bettinggame.domain;
 
+import de.bettinggame.domain.support.Multilingual;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -23,22 +28,34 @@ public class Location extends AbstractIdEntity {
      * Name of the arena.
      */
     @NotNull
-    @Column
-    private String name;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "de", column = @Column(name = "name_de")),
+            @AttributeOverride(name = "en", column = @Column(name = "name_en"))
+    })
+    private Multilingual name;
 
     /**
      * City of the arena.
      */
     @NotNull
-    @Column
-    private String city;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "de", column = @Column(name = "city_de")),
+            @AttributeOverride(name = "en", column = @Column(name = "city_en"))
+    })
+    private Multilingual city;
 
     /**
      * Country of the arena.
      */
     @NotNull
-    @Column
-    private String country;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "de", column = @Column(name = "country_de")),
+            @AttributeOverride(name = "en", column = @Column(name = "country_en"))
+    })
+    private Multilingual country;
 
     protected Location() {
     }
@@ -47,15 +64,15 @@ public class Location extends AbstractIdEntity {
         return key;
     }
 
-    public String getName() {
+    public Multilingual getName() {
         return name;
     }
 
-    public String getCity() {
+    public Multilingual getCity() {
         return city;
     }
 
-    public String getCountry() {
+    public Multilingual getCountry() {
         return country;
     }
 }

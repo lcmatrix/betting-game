@@ -32,16 +32,16 @@ INSERT INTO team (`name_de`, `name_en`, `team_key`, `group_char`) VALUES
   ('Senegal', 'Senegal', 'SN', 'H'),
   ('Kolumbien', 'Colombia', 'CO', 'H');
 
-INSERT INTO location (`short_key`, `name`, `city`, `country`) VALUES
-  ('RUS_MOS_LUS', 'Olympiastadion Luschniki', 'Moskau', 'Russland'),
-  ('RUS_MOS_SPA', 'Spartak-Stadion', 'Moskau', 'Russland'),
-  ('RUS_JEK_ZEN', 'Zentralstadion', 'Jekaterinburg', 'Russland'),
-  ('RUS_KAL_KAL', 'Kaliningrad-Stadion', 'Kaliningrad', 'Russland'),
-  ('RUS_KAS_KAS', 'Kasan-Arena', 'Kasan', 'Russland'),
-  ('RUS_NIS_NOW', 'Stadion Nischni Nowgorod', 'Nischni Nowgorod', 'Russland'),
-  ('RUS_ROS_ROS', 'Rostow Arena', 'Rostow am Don', 'Russland'),
-  ('RUS_SAM_KOS', 'Kosmos-Arena', 'Samara', 'Russland'),
-  ('RUS_SAR_MOR', 'Mordowia Arena', 'Saransk', 'Russland'),
-  ('RUS_SOT_SOT', 'Olympiastadion Sotschi', 'Sotschi', 'Russland'),
-  ('RUS_PET_PET', 'Sankt-Petersburg-Stadion', 'Sankt Petersburg', 'Russland'),
-  ('RUS_WOL_WOL', 'Wolgograd Arena', 'Wolgograd', 'Russland');
+INSERT INTO location (`short_key`, `name_de`, `name_en`, `city_de`, `city_en`, `country_de`, `country_en`) VALUES
+  ('RUS_MOS_LUS', 'Olympiastadion Luschniki', 'Luzhniki Stadium', 'Moskau', 'Moscow', 'Russland', 'Russian Federation'),
+  ('RUS_MOS_SPA', 'Spartak-Stadion', 'Spartak Stadium', 'Moskau', 'Moscow', 'Russland', 'Russian Federation'),
+  ('RUS_JEK_ZEN', 'Zentralstadion', 'Ekaterinburg Arena', 'Jekaterinburg', 'Yekaterinburg', 'Russland', 'Russian Federation'),
+  ('RUS_KAL_KAL', 'Kaliningrad-Stadion', 'Kaliningrad-Stadium', 'Kaliningrad', 'Kaliningrad', 'Russland', 'Russian Federation'),
+  ('RUS_KAS_KAS', 'Kasan-Arena', 'Kazan Arena', 'Kasan', 'Kazan', 'Russland', 'Russian Federation'),
+  ('RUS_NIS_NOW', 'Stadion Nischni Nowgorod', 'Nizhny Novgorod Stadium', 'Nischni Nowgorod', 'Nizhny Novgorod', 'Russland', 'Russian Federation'),
+  ('RUS_ROS_ROS', 'Rostow Arena', 'Rostov Arena', 'Rostow am Don', 'Rostov-on-Don', 'Russland', 'Russian Federation'),
+  ('RUS_SAM_KOS', 'Kosmos-Arena', 'Cosmos Arena', 'Samara', 'Samara', 'Russland', 'Russian Federation'),
+  ('RUS_SAR_MOR', 'Mordowia Arena', 'Mordovia Arena', 'Saransk', 'Saransk', 'Russland', 'Russian Federation'),
+  ('RUS_SOT_SOT', 'Olympiastadion Sotschi', 'Fisht Stadium', 'Sotschi', 'Sochi', 'Russland', 'Russian Federation'),
+  ('RUS_PET_PET', 'Sankt-Petersburg-Stadion', 'Saint Petersburg Stadium', 'Sankt Petersburg', 'Saint Petersburg', 'Russland', 'Russian Federation'),
+  ('RUS_WOL_WOL', 'Wolgograd Arena', 'Volgograd Arena', 'Wolgograd', 'Volgograd', 'Russland', 'Russian Federation');
