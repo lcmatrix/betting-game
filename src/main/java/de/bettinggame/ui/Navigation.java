@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public enum Navigation {
 
     LOGIN("navigation.item.login", "/login", false),
-    REGISTER("navigation.item.register", "/register/register", false),
+    REGISTER("navigation.item.registration", "/registration", false),
     GROUPS("navigation.item.groups", "/groups", false),
     MATCH("navigation.item.games", "/game", false);
 

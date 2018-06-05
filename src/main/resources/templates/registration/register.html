@@ -3,21 +3,13 @@
 <body>
     <div class="container">
         <div data-th-fragment="mainContent">
-            <h1 data-th-text="#{register.header}">Registration</h1>
-            <form method="post" action="register.html" data-th-action="@{/register/register}" data-th-object="${registerUser}">
-                <div class="from-group row" data-th-if="${#fields.hasAnyErrors()}">
-                    <div class="alert alert-danger">
-                        <p data-th-text="#{common.form.error}">Fehler</p>
-                        <ul>
-                            <li data-th-each="error : ${#fields.errors()}" data-th-text="#{${error}}"></li>
-                        </ul>
-                    </div>
-                </div>
+            <h1 data-th-text="#{registration.header}">Registration</h1>
+            <form method="post" action="registration.html" data-th-action="@{/registration}" data-th-object="${registerUser}">
                 <div class="form-group row">
-                    <label class="col-sm-12 col-md-3 col-form-label" for="username" data-th-text="#{register.form.label.username}">Username:</label>
+                    <label class="col-sm-12 col-md-3 col-form-label" for="username" data-th-text="#{registration.form.label.username}">Username:</label>
                     <div class="col-sm-12 col-md-4">
                         <input type="text" id="username" name="username" data-th-field="*{username}"
-                           placeholder="Username" data-th-placeholder="#{register.form.label.username}"
+                           placeholder="Username" data-th-placeholder="#{registration.form.label.username}"
                             data-th-errorClass="errorFormElement" class="form-control"/>
                     </div>
                     <div class="col-sm-12 col-md-5">
@@ -26,10 +18,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-12 col-md-3 col-form-label" for="email" data-th-text="#{register.form.label.password}">Password:</label>
+                    <label class="col-sm-12 col-md-3 col-form-label" for="email" data-th-text="#{registration.form.label.password}">Password:</label>
                     <div class="col-sm-12 col-md-4">
                         <input type="password" id="password" name="password" data-th-field="*{password}"
-                               placeholder="Password" data-th-placeholder="#{register.form.label.password}"
+                               placeholder="Password" data-th-placeholder="#{registration.form.label.password}"
                                data-th-errorClass="errorFormElement" class="form-control"/>
                     </div>
                     <div class="col-sm-12 col-md-5">
@@ -37,10 +29,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-12 col-md-3 col-form-label" for="email" data-th-text="#{register.form.label.email}">E-Mail:</label>
+                    <label class="col-sm-12 col-md-3 col-form-label" for="email" data-th-text="#{registration.form.label.email}">E-Mail:</label>
                     <div class="col-sm-12 col-md-4">
-                        <input type="input" id="email" name="email" data-th-field="*{email}"
-                           placeholder="E-Mail" data-th-placeholder="#{register.form.label.email}"
+                        <input type="email" id="email" name="email" data-th-field="*{email}"
+                           placeholder="E-Mail" data-th-placeholder="#{registration.form.label.email}"
                            data-th-errorClass="errorFormElement" class="form-control"/>
                     </div>
                     <div class="col-sm-12 col-md-5">
@@ -50,7 +42,7 @@
                 <div class="form-group row">
                     <div class="col-sm-12 col-md-3"></div>
                     <div class="col-sm-12 col-md-4">
-                        <input class="btn btn-primary" type="submit" value="Register" data-th-attr="value=#{register.submit.button}"/>
+                        <input class="btn btn-primary" type="submit" value="Register" data-th-attr="value=#{registration.submit.button}"/>
                     </div>
                 </div>
             </form>
