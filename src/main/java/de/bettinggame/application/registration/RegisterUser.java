@@ -56,7 +56,7 @@ public class RegisterUser {
     }
 
     public User createUser() {
-        User user = new User(username, password, email, UserStatus.PENDING, UserRole.USER);
+        User user = new User(username, password, email, UserStatus.ACTIVE, UserRole.USER);
         return user;
     }
 }
