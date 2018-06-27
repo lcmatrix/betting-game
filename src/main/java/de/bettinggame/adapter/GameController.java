@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Controller
@@ -23,7 +25,8 @@ public class GameController implements AbstractController {
         ModelAndView mav = new ModelAndView("game/all-games");
         List<Game> games = gameRepository.findByOrderByStarttime();
         Map<TournamentLevel, List<Game>> matchesByLevel = games.stream()
-                .collect(Collectors.groupingBy(Game::getLevel));
+                .collect(Collectors.groupingBy(Game::getLevel, TreeMap::new,
+                        Collectors.mapping(Function.identity(), Collectors.toList())));
         mav.addObject("gamesByLevel", matchesByLevel);
         return mav;
     }
