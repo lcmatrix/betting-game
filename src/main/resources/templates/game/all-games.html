@@ -29,7 +29,7 @@
                                          data-th-alt="${{match.guestTeam.name}}" />
                                     <span data-th-text="${{match.guestTeam.name}}">Brazil</span>
                                 </td>
-                                <td data-th-text="${match.goalsHomeTeam} + ':' + ${match.goalsGuestTeam}">2:0</td>
+                                <td data-th-text="|${match.goalsHomeTeam?: '?'} : ${match.goalsGuestTeam?: '?'}|">2:0</td>
                             </tr>
                         </tbody>
                     </table>
