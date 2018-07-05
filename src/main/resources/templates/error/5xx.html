@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layout/public_layout :: layout}">
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li>Test</li>
+                </ul>
+            </nav>
+        </header>
+        <div data-th-fragment="mainContent">
+            <div>
+                <h3 data-th-text="#{error.5xx.headline}">Server error</h3>
+                <p data-th-text="#{error.5xx.message}">Something went wrong</p>
+                <a href="index.html" data-th-href="@{/}" data-th-text="#{error.index.link.text}">Back to Home Page</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
