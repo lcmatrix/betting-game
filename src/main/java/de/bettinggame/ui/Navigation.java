@@ -9,19 +9,19 @@ import java.util.stream.Stream;
  */
 public enum Navigation {
 
-    LOGIN("navigation.item.login", "/login", false),
-    REGISTER("navigation.item.registration", "/registration", false),
-    GROUPS("navigation.item.groups", "/groups", false),
-    MATCH("navigation.item.games", "/game", false);
+    LOGIN("navigation.item.login", "/login", Restriction.ALL),
+    REGISTER("navigation.item.registration", "/registration", Restriction.ALL),
+    GROUPS("navigation.item.groups", "/groups", Restriction.ALL),
+    MATCH("navigation.item.games", "/game", Restriction.ALL);
 
     private String messageKey;
     private String url;
-    private boolean onlyAuthenticatedVisible;
+    private Restriction restriction;
 
-    Navigation(String messageKey, String url, boolean onlyAuthenticatedVisible) {
+    Navigation(String messageKey, String url, Restriction restriction) {
         this.messageKey = messageKey;
         this.url = url;
-        this.onlyAuthenticatedVisible = onlyAuthenticatedVisible;
+        this.restriction = restriction;
     }
 
     public String getMessageKey() {
@@ -32,13 +32,27 @@ public enum Navigation {
         return url;
     }
 
-    public boolean isOnlyAuthenticatedVisible() {
-        return onlyAuthenticatedVisible;
+    public static List<Navigation> getNonRestrictedNavigation() {
+        return Stream.of(Navigation.values())
+                .filter(nav -> nav.restriction == Restriction.ALL)
+                .collect(Collectors.toList());
     }
 
-    public static List<Navigation> getNavigationListForAuthentication() {
+    public static List<Navigation> getUserRestrictedNavigation() {
         return Stream.of(Navigation.values())
-                .filter(item -> item.onlyAuthenticatedVisible)
+                .filter(nav -> nav.restriction == Restriction.ALL || nav.restriction == Restriction.USER)
                 .collect(Collectors.toList());
+    }
+
+    public static List<Navigation> getAdminRestrictedNavigation() {
+        return Stream.of(Navigation.values())
+                .filter(nav -> nav.restriction == Restriction.ADMIN)
+                .collect(Collectors.toList());
+    }
+
+    private enum Restriction {
+        ALL,
+        USER,
+        ADMIN
     }
 }
