@@ -5,13 +5,13 @@ buildscript {
     }
   }
   dependencies {
-    classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.12.RELEASE"
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.14.RELEASE"
   }
 }
 
 plugins {
   id 'java'
-  id 'org.springframework.boot' version '1.5.12.RELEASE'
+  id 'org.springframework.boot' version '1.5.14.RELEASE'
   id 'org.flywaydb.flyway' version '4.2.0'
   //id "com.gorylenko.gradle-git-properties" version "1.4.17"
   id 'checkstyle'
@@ -43,9 +43,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-starter-security")
-    //compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.5.12.RELEASE'
-    compile("org.springframework.data:spring-data-jpa:1.11.11.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.5.14.RELEASE'
+    compile("org.springframework.data:spring-data-jpa:1.11.13.RELEASE")
 
     compile group: 'org.flywaydb', name: 'flyway-core', version: '4.2.0'
     compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.2.4'
