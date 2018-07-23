@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layout/public_layout :: layout}">
+<body>
+    <div class="container">
+        <div data-th-fragment="mainContent">
+            <h1 data-th-text="#{admin.user.management.header}">User management</h1>
+            <div class="table-responsive-lg">
+                <table class="table">
+                    <thead>
+                        <th data-th-text="#{admin.user.table.header.username}">username</th>
+                        <th data-th-text="#{admin.user.table.header.email}">e-Mail</th>
+                        <th data-th-text="#{admin.user.table.header.firstname}">firstname</th>
+                        <th data-th-text="#{admin.user.table.header.surname}">surname</th>
+                        <th data-th-text="#{admin.user.table.header.status}">status</th>
+                        <th data-th-text="#{admin.user.table.header.role}">role</th>
+                        <th data-th-text="#{admin.user.table.header.action}">actions</th>
+                    </thead>
+                    <tbody>
+                        <tr data-th-each="user : ${allUsers}">
+                            <td data-th-text="${user.username}">user</td>
+                            <td data-th-text="${user.email}">me@example.org</td>
+                            <td data-th-text="${user.firstname}">John</td>
+                            <td data-th-text="${user.surname}">Doe</td>
+                            <td data-th-text="${user.status}">active</td>
+                            <td data-th-text="${user.role}">user</td>
+                            <td><a data-th-each="action : ${user.actions}" data-th-href="@{${action.link}}" href="#">
+                                <img data-th-src="@{${action.icon}}"
+                                     data-th-title="${action.name}" data-th-alt="${action.name}"
+                                     src="/static/img/glyphicons/glyphicons-204-lock.png" alt="lock"
+                                     title="" class="img-fluid"/></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
