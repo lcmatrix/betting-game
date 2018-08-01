@@ -12,7 +12,7 @@ buildscript {
 plugins {
   id 'java'
   id 'org.springframework.boot' version '1.5.14.RELEASE'
-  id 'org.flywaydb.flyway' version '4.2.0'
+  id 'org.flywaydb.flyway' version '5.1.4'
   //id "com.gorylenko.gradle-git-properties" version "1.4.17"
   id 'checkstyle'
   id 'pmd'
@@ -32,7 +32,7 @@ group = 'de.betting-game'
 version = '0.1.0'
 description = "Root project for betting game"
 
-sourceCompatibility = 1.8
+sourceCompatibility = 10
 
 bootRun {
     addResources = true
@@ -47,7 +47,7 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.5.14.RELEASE'
     compile("org.springframework.data:spring-data-jpa:1.11.13.RELEASE")
 
-    compile group: 'org.flywaydb', name: 'flyway-core', version: '4.2.0'
+    compile group: 'org.flywaydb', name: 'flyway-core', version: '5.+'
     compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.2.4'
     compile group: 'org.hibernate', name: 'hibernate-java8'
     compile group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
