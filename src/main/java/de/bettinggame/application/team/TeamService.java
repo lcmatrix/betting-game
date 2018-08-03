@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import de.bettinggame.domain.repository.TeamRepository;
@@ -19,7 +18,7 @@ import de.bettinggame.domain.repository.TeamRepository;
 @Service
 public class TeamService {
 
-    @Resource
+    @Autowired
     private TeamRepository teamRepository;
 
     /**
