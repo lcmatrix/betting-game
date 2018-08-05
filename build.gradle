@@ -1,24 +1,25 @@
 buildscript {
-  repositories {
-    maven {
-      url "https://plugins.gradle.org/m2/"
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
-  }
-  dependencies {
-    classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.14.RELEASE"
-  }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE"
+    }
 }
 
 plugins {
-  id 'java'
-  id 'org.springframework.boot' version '1.5.14.RELEASE'
-  id 'org.flywaydb.flyway' version '4.2.0'
-  //id "com.gorylenko.gradle-git-properties" version "1.4.17"
-  id 'checkstyle'
-  id 'pmd'
-  id 'findbugs'
-  id 'idea'
-  id 'eclipse'
+    id 'java'
+    id 'org.springframework.boot' version '2.0.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+    id 'org.flywaydb.flyway' version '5.1.4'
+    //id "com.gorylenko.gradle-git-properties" version "1.4.17"
+    id 'checkstyle'
+    id 'pmd'
+    id 'findbugs'
+    id 'idea'
+    id 'eclipse'
 }
 
 repositories {
@@ -32,10 +33,10 @@ group = 'de.betting-game'
 version = '0.1.0'
 description = "Root project for betting game"
 
-sourceCompatibility = 1.8
+sourceCompatibility = 10
 
 bootRun {
-    addResources = true
+    sourceResources sourceSets.main
 }
 
 dependencies {
@@ -44,22 +45,18 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.5.14.RELEASE'
-    compile("org.springframework.data:spring-data-jpa:1.11.13.RELEASE")
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
 
-    compile group: 'org.flywaydb', name: 'flyway-core', version: '4.2.0'
-    compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.2.4'
+    compile group: 'org.flywaydb', name: 'flyway-core', version: '5.1.4'
+    compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.2.6'
     compile group: 'org.hibernate', name: 'hibernate-java8'
-    compile group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
+    compile "javax.xml.bind:jaxb-api"
     // both variants are possible to declare dependencies
-    compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.9.RELEASE'
-    compile("org.thymeleaf:thymeleaf-spring4:3.0.9.RELEASE")
     compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE")
-    compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.2.2'
+
+    runtime("org.springframework.boot:spring-boot-properties-migrator")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
-    testCompile "org.mockito:mockito-core:2.13.0"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
 // just to understand gradle :)
