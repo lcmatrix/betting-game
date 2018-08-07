@@ -1,6 +1,8 @@
 package de.bettinggame.application.admin;
 
 import de.bettinggame.domain.User;
+import de.bettinggame.domain.enums.UserRole;
+import de.bettinggame.domain.enums.UserStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +15,8 @@ public class UserTo {
     private String email;
     private String firstname;
     private String surname;
-    private String status;
-    private String role;
+    private UserStatus status;
+    private UserRole role;
     private List<UserAction> actions;
 
     public UserTo(User user) {
@@ -22,8 +24,8 @@ public class UserTo {
         this.email = user.getEmail();
         this.firstname = user.getFirstname();
         this.surname = user.getSurname();
-        this.status = user.getStatus().name().toLowerCase();
-        this.role = user.getRole().name().toLowerCase();
+        this.status = user.getStatus();
+        this.role = user.getRole();
         initActions(user);
     }
 
@@ -60,11 +62,11 @@ public class UserTo {
         return surname;
     }
 
-    public String getStatus() {
+    public UserStatus getStatus() {
         return status;
     }
 
-    public String getRole() {
+    public UserRole getRole() {
         return role;
     }
 

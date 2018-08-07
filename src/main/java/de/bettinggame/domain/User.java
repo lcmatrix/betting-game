@@ -96,4 +96,19 @@ public class User extends AbstractIdEntity {
     public void create(UserRepository repo) {
         repo.save(this);
     }
+
+    public void updateData(
+            String username,
+            String firstname,
+            String surname,
+            String email,
+            UserRole role,
+            UserStatus status) {
+        this.username = username;
+        this.firstname = firstname;
+        this.surname = surname;
+        this.email = email;
+        this.role = role;
+        this.status = status;
+    }
 }

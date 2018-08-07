@@ -1,5 +1,6 @@
 package de.bettinggame.infrastructure;
 
+import de.bettinggame.infrastructure.formatter.MessageKeyFormatter;
 import de.bettinggame.infrastructure.formatter.MultilingualFormatter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,5 +28,10 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public MultilingualFormatter multilingualFormatter() {
         return new MultilingualFormatter();
+    }
+
+    @Bean
+    public MessageKeyFormatter messageKeyFormatter() {
+        return new MessageKeyFormatter();
     }
 }

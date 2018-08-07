@@ -21,8 +21,8 @@
                             <td data-th-text="${user.email}">me@example.org</td>
                             <td data-th-text="${user.firstname}">John</td>
                             <td data-th-text="${user.surname}">Doe</td>
-                            <td data-th-text="${user.status}">active</td>
-                            <td data-th-text="${user.role}">user</td>
+                            <td data-th-text="${{user.status}}">active</td>
+                            <td data-th-text="${{user.role}}">user</td>
                             <td><a data-th-each="action : ${user.actions}" data-th-href="@{${action.link}}" href="#">
                                 <img data-th-src="@{${action.icon}}"
                                      data-th-title="${action.name}" data-th-alt="${action.name}"
