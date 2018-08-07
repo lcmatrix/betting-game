@@ -26,7 +26,7 @@
                                 data-th-src="@{/static/img/glyphicons/glyphicons-21-home.png}" data-th-alt="#{app.title}" />
                         </a>
                     </li>
-                    <li class="nav-item" data-th-each="navItem : ${navigation}">
+                    <li class="nav-item" data-th-each="navItem : ${nonRestrictedNavigation}">
                         <a class="nav-link" data-th-href="@{${navItem.url}}" href="#" data-th-text="#{${navItem.messageKey}}">
                             Test
                         </a>
@@ -34,6 +34,15 @@
                     <li class="nav-item" data-th-remove="all"><a class="nav-link" href="#">Test 2</a></li>
                     <li class="nav-item" data-th-remove="all"><a class="nav-link" href="#">Test 3</a></li>
                     <li class="nav-item" data-th-remove="all"><a class="nav-link" href="#">Test 4</a></li>
+                    <li class="nav-item dropdown" data-sec-authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#" data-th-each="navItem : ${adminRestrictedNavigation}"
+                                data-th-href="@{${navItem.url}}" data-th-text="#{${navItem.messageKey}}">
+                                User management
+                            </a>
+                        </div>
+                    </li>
                     <li class="nav-item" data-sec-authorize="isAuthenticated()">
                         <form class="form-inline" method="post" data-th-action="@{/logout}" action="/logout">
                             <input class="btn btn-link nav-link" type="submit" data-th-value="#{navigation.item.logout}" value="Logout"/>

@@ -13,7 +13,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-    show-sql: true
 
   messages:
     basename: i18n/AdminMessages,i18n/CommonMessages
