@@ -59,11 +59,27 @@ dependencies {
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
-// just to understand gradle :)
-/*task showconfig {
-    description = "Inspecting subprojects"
-    project.subprojects.each {proj ->
-        println("Subproject Path: " + proj.path)
-        println("Subproject Buildfile: " + proj.buildFile)
+
+task gitversion(type: Exec) {
+    commandLine 'git', 'describe'
+    standardOutput = new ByteArrayOutputStream()
+    ext.version = {
+        return standardOutput.toString()
     }
-}*/
+}
+
+exec {
+    commandLine 'git', 'describe'
+    standardOutput = new ByteArrayOutputStream()
+    ext.gitversion = {
+      return standardOutput.toString()
+    }
+}
+
+logger.quiet("Current Git version: {}", gitversion())
+
+processResources {
+    from sourceSets.main.resources.srcDirTrees
+    include '**/*'
+    filter org.apache.tools.ant.filters.ReplaceTokens, tokens: ['version.tag': gitversion()]
+}
