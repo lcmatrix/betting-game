@@ -68,20 +68,24 @@ task gitversion(type: Exec) {
     }
 }
 
-ext.versionnumber = gitversion.version()
+exec {
+    commandLine 'git', 'describe'
+    standardOutput = new ByteArrayOutputStream()
+    ext.gitversion = {
+      return standardOutput.toString()
+    }
+}
 
-/*afterEvaluate {
-    processResources.filter org.apache.tools.ant.filters.ReplaceTokens, tokens: ['version.tag': gitversion.version()]
-}*/
+logger.quiet("Current Git version: {}", gitversion())
 
-/*processResources {
-    dependsOn gitversion
+processResources {
+    /*dependsOn gitversion
     mustRunAfter gitversion*/
     //def a = {-> gitversion.version()}
-    //from sourceSets.main.resources.srcDirTrees
-    //include '**/*'
-    //filter org.apache.tools.ant.filters.ReplaceTokens, tokens: ['version.tag': versionnumber]
-//}
+    from sourceSets.main.resources.srcDirTrees
+    include '**/*'
+    filter org.apache.tools.ant.filters.ReplaceTokens, tokens: ['version.tag': gitversion()]
+}
 
 // just to understand gradle :)
 /*task showconfig {
