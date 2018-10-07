@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html data-th-replace="~{layout/public_layout :: layout}">
+<body>
+    <div class="container">
+        <div data-th-fragment="mainContent">
+            <h1 data-th-text="#{admin.user.management.header}">User management</h1>
+            <form method="post" action="#" data-th-action="@{|/admin/user/${userkey}/action/${action}|}" data-th-object="${editUserCommand}">
+                <div class="form-group row">
+                    <div class="col-12">
+                        <p data-th-text="#{${actionMessage}(${userkey})}">Do you really want to do it?</p>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12 col-md-3"></div>
+                    <div class="col-sm-12 col-md-4">
+                        <input class="btn btn-secondary" type="button" value="Back" data-th-value="#{admin.user.form.back}"
+                               data-th-onclick="@{'window.location.href=\'/admin/user\''}" onclick="window.location.href='/admin/user'" />
+                        <input class="btn btn-primary" type="submit" value="Save" data-th-attr="value=#{admin.user.form.confirm}"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

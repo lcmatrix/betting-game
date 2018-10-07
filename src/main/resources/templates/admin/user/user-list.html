@@ -4,6 +4,9 @@
     <div class="container">
         <div data-th-fragment="mainContent">
             <h1 data-th-text="#{admin.user.management.header}">User management</h1>
+            <div class="alert alert-success" data-th-if="${confirmMessage}">
+                <p data-th-text="#{${confirmMessage}}">Success</p>
+            </div>
             <div class="table-responsive-lg">
                 <table class="table">
                     <thead>

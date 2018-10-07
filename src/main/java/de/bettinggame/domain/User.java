@@ -3,9 +3,9 @@ package de.bettinggame.domain;
 import de.bettinggame.domain.enums.UserRole;
 import de.bettinggame.domain.enums.UserStatus;
 import de.bettinggame.domain.repository.UserRepository;
+import org.springframework.util.Assert;
 
 import javax.persistence.*;
-import javax.swing.text.html.Option;
 import javax.validation.constraints.NotNull;
 import java.util.Optional;
 
@@ -79,6 +79,11 @@ public class User extends AbstractIdEntity {
         return status;
     }
 
+    private void setStatus(UserStatus status) {
+        Assert.notNull(status, "UserStatus was null");
+        this.status = status;
+    }
+
     public UserRole getRole() {
         return role;
     }
@@ -110,5 +115,13 @@ public class User extends AbstractIdEntity {
         this.email = email;
         this.role = role;
         this.status = status;
+    }
+
+    public void lock() {
+        setStatus(UserStatus.LOCKED);
+    }
+
+    public void unlock() {
+        setStatus(UserStatus.ACTIVE);
     }
 }
