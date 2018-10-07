@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  bettingdb:
+    image: mariadb:latest
+    environment:
+      MYSQL_DATABASE: bettinggame
+      MYSQL_USER: betting
+      MYSQL_PASSWORD: game
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+  app:
+    image: lcmatrix/betting-game:latest
+    depends_on:
+      - bettingdb
+    ports:
+      - 8080:8080
