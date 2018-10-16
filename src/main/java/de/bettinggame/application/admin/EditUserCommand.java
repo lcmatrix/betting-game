@@ -15,17 +15,24 @@ public class EditUserCommand {
     @NotBlank(message = "field.not.blank")
     @Size(max = 50, message = "field.max.50.characters")
     private String username;
+
     @NotBlank(message = "field.not.blank")
     @Size(max = 200, message = "field.max.200.characters")
     private String email;
+
+    @Size(max = 200, message = "field.max.200.characters")
     private String firstname;
+
+    @Size(max = 200, message = "field.max.200.characters")
     private String surname;
+
     @NotNull(message = "field.not.blank")
     private UserStatus status;
+
     @NotNull(message = "field.not.blank")
     private UserRole role;
 
-    public  EditUserCommand() {
+    public EditUserCommand() {
 
     }
 

@@ -8,8 +8,8 @@
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-3 col-form-label" for="username" data-th-text="#{registration.form.label.username}">Username:</label>
                     <div class="col-sm-12 col-md-4">
-                        <input type="text" id="username" name="username" data-th-field="*{username}"
-                           placeholder="Username" data-th-placeholder="#{registration.form.label.username}"
+                        <input type="text" id="username" name="username" data-th-field="*{username}"  maxlength="50"
+                            placeholder="Username" data-th-placeholder="#{registration.form.label.username}"
                             data-th-errorClass="errorFormElement" class="form-control"/>
                     </div>
                     <div class="col-sm-12 col-md-5">
@@ -31,7 +31,7 @@
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-3 col-form-label" for="email" data-th-text="#{registration.form.label.email}">E-Mail:</label>
                     <div class="col-sm-12 col-md-4">
-                        <input type="email" id="email" name="email" data-th-field="*{email}"
+                        <input type="email" id="email" name="email" data-th-field="*{email}" maxlength="200"
                            placeholder="E-Mail" data-th-placeholder="#{registration.form.label.email}"
                            data-th-errorClass="errorFormElement" class="form-control"/>
                     </div>

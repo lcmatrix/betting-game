@@ -3,10 +3,10 @@ package de.bettinggame.domain;
 import de.bettinggame.domain.enums.UserRole;
 import de.bettinggame.domain.enums.UserStatus;
 import de.bettinggame.domain.repository.UserRepository;
-import org.springframework.util.Assert;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Optional;
 
 /**
@@ -17,6 +17,7 @@ import java.util.Optional;
 public class User extends AbstractIdEntity {
 
     @NotNull
+    @Size(max = 50, message = "field.max.50.characters")
     @Column(nullable = false)
     private String username;
 
@@ -25,12 +26,15 @@ public class User extends AbstractIdEntity {
     private String password;
 
     @NotNull
+    @Size(max = 200, message = "field.max.200.characters")
     @Column(nullable = false)
     private String email;
 
+    @Size(max = 200, message = "field.max.200.characters")
     @Column(nullable = false)
     private String firstname;
 
+    @Size(max = 200, message = "field.max.200.characters")
     @Column(nullable = false)
     private String surname;
 
@@ -80,7 +84,9 @@ public class User extends AbstractIdEntity {
     }
 
     private void setStatus(UserStatus status) {
-        Assert.notNull(status, "UserStatus was null");
+        if (status == null) {
+            throw new IllegalArgumentException("UserStatus was null");
+        }
         this.status = status;
     }
 
@@ -114,7 +120,7 @@ public class User extends AbstractIdEntity {
         this.surname = surname;
         this.email = email;
         this.role = role;
-        this.status = status;
+        setStatus(status);
     }
 
     public void lock() {
