@@ -10,7 +10,7 @@ import de.bettinggame.domain.enums.UserStatus;
 /**
  * Form object for registration.
  */
-public class RegisterUser {
+public class RegisterUserCommand {
     @NotNull
     @Size(min = 1, max = 50, message = "registration.form.username.size")
     private String username;
@@ -21,11 +21,11 @@ public class RegisterUser {
     @Size(min = 1, max = 200, message = "registration.form.email.size")
     private String email;
 
-    public RegisterUser() {
+    public RegisterUserCommand() {
 
     }
 
-    public RegisterUser(String username, String password, String email) {
+    public RegisterUserCommand(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -56,7 +56,7 @@ public class RegisterUser {
     }
 
     public User createUser() {
-        User user = new User(username, password, email, UserStatus.ACTIVE, UserRole.USER);
+        User user = new User(username, password, email, UserStatus.PENDING, UserRole.USER);
         return user;
     }
 }

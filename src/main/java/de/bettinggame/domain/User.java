@@ -2,7 +2,6 @@ package de.bettinggame.domain;
 
 import de.bettinggame.domain.enums.UserRole;
 import de.bettinggame.domain.enums.UserStatus;
-import de.bettinggame.domain.repository.UserRepository;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -67,6 +66,13 @@ public class User extends AbstractIdEntity {
         return password;
     }
 
+    private void setPassword(String password) {
+        if (password == null) {
+            throw new IllegalArgumentException("Password was null");
+        }
+        this.password = password;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -104,10 +110,6 @@ public class User extends AbstractIdEntity {
         return Optional.of(name);
     }
 
-    public void create(UserRepository repo) {
-        repo.save(this);
-    }
-
     public void updateData(
             String username,
             String firstname,
@@ -129,5 +131,9 @@ public class User extends AbstractIdEntity {
 
     public void unlock() {
         setStatus(UserStatus.ACTIVE);
+    }
+
+    public void updatePassword(String encodedPassword) {
+        setPassword(encodedPassword);
     }
 }

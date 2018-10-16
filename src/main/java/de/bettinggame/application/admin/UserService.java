@@ -1,10 +1,12 @@
 package de.bettinggame.application.admin;
 
+import de.bettinggame.application.registration.RegisterUserCommand;
 import de.bettinggame.domain.User;
 import de.bettinggame.domain.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -17,6 +19,17 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Transactional
+    public void registerUser(RegisterUserCommand registerUserCommand) {
+        User user = registerUserCommand.createUser();
+        user.updatePassword(passwordEncoder.encode(registerUserCommand.getPassword()));
+        userRepository.save(user);
+        LOG.info("New user registered [{}]", registerUserCommand.getUsername());
+    }
 
     @Transactional
     public void updateUser(EditUserCommand userCommand, String userId) {
