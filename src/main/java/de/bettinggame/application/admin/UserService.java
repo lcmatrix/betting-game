@@ -61,4 +61,14 @@ public class UserService {
         user.ifPresent(User::unlock);
         LOG.info("Unlock user [{}]", userId);
     }
+
+    @Transactional
+    public void activateUser(String userId) {
+        Optional<User> user = userRepository.findByUsername(userId);
+        if (!user.isPresent()) {
+            throw new EntityNotFoundException();
+        }
+        user.ifPresent(User::activate);
+        LOG.info("Activate user [{}]", userId);
+    }
 }

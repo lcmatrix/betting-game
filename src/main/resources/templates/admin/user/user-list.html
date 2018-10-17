@@ -28,7 +28,8 @@
                             <td data-th-text="${{user.role}}">user</td>
                             <td><a data-th-each="action : ${user.actions}" data-th-href="@{${action.link}}" href="#">
                                 <img data-th-src="@{${action.icon}}"
-                                     data-th-title="${action.name}" data-th-alt="${action.name}"
+                                     data-th-title="|#{admin.user.table.header.action. + ${action.name}}|"
+                                     data-th-alt="|#{admin.user.table.header.action. + ${action.name}}|"
                                      src="/static/img/glyphicons/glyphicons-204-lock.png" alt="lock"
                                      title="" class="img-fluid"/></a></td>
                         </tr>

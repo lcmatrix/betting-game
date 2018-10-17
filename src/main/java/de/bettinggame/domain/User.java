@@ -136,4 +136,8 @@ public class User extends AbstractIdEntity {
     public void updatePassword(String encodedPassword) {
         setPassword(encodedPassword);
     }
+
+    public void activate() {
+        setStatus(UserStatus.ACTIVE);
+    }
 }

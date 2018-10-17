@@ -4,7 +4,7 @@
     <div class="container">
         <div data-th-fragment="mainContent">
             <h1 data-th-text="#{admin.user.management.header}">User management</h1>
-            <form method="post" action="#" data-th-action="@{|/admin/user/${userkey}/action/${action}|}" data-th-object="${editUserCommand}">
+            <form method="post" action="#" data-th-action="@{|/admin/user/${userkey}/${action}|}" data-th-object="${editUserCommand}">
                 <div class="form-group row">
                     <div class="col-12">
                         <p data-th-text="#{${actionMessage}(${userkey})}">Do you really want to do it?</p>

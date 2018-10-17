@@ -7,19 +7,20 @@ import de.bettinggame.application.admin.UserTo;
 import de.bettinggame.domain.enums.UserRole;
 import de.bettinggame.domain.enums.UserStatus;
 import de.bettinggame.domain.repository.UserRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
@@ -40,12 +41,12 @@ public class UserMgmtController implements AbstractController {
      * List all users.
      */
     @GetMapping("/admin/user")
-    public ModelAndView getAllUsers(@RequestParam Map<String, String> params) {
+    public ModelAndView getAllUsers(@ModelAttribute("confirm") String messageKey) {
         List<UserTo> allUsers = userRepository.findAll().stream().map(UserTo::new).collect(toList());
         ModelAndView mav = new ModelAndView("admin/user/user-list");
         mav.addObject("allUsers", allUsers);
-        if (params.containsKey("confirm")) {
-            mav.addObject("confirmMessage", "admin.user.action.confirm." + params.get("confirm"));
+        if (StringUtils.isNotBlank(messageKey)) {
+            mav.addObject("confirmMessage", "admin.user.action." + messageKey + ".confirm");
         }
         return mav;
     }
@@ -81,31 +82,44 @@ public class UserMgmtController implements AbstractController {
         return "redirect:/admin/user?confirm";
     }
 
-    @GetMapping("/admin/user/{userId}/lock")
-    public String lockUser(@PathVariable String userId, Model model) {
-        model.addAttribute("action", "lock");
+    @GetMapping("/admin/user/{userId}/{action}")
+    public String activateUser(@PathVariable String userId, @PathVariable String action,  Model model) {
+        model.addAttribute("action", action);
         model.addAttribute("userkey", userId);
-        model.addAttribute("actionMessage", "admin.user.action.lock.message");
+        switch (action) {
+            case "lock":
+                model.addAttribute("actionMessage", "admin.user.action.lock.message");
+                break;
+            case "unlock":
+                model.addAttribute("actionMessage", "admin.user.action.lock.message");
+                break;
+            case "activate":
+                model.addAttribute("actionMessage", "admin.user.action.activate.message");
+                break;
+            default:
+                throw new IllegalArgumentException("action not found");
+        }
         return "admin/user/user-action";
     }
 
-    @PostMapping("/admin/user/{userId}/action/lock")
-    public String doLock(@PathVariable String userId) {
+    @PostMapping("/admin/user/{userId}/lock")
+    public String doLock(@PathVariable String userId, RedirectAttributes redirectAttributes) {
         userService.lockUser(userId);
-        return "redirect:/admin/user?confirm=lock";
+        redirectAttributes.addFlashAttribute("confirm", "lock");
+        return "redirect:/admin/user";
     }
 
-    @GetMapping("/admin/user/{userId}/unlock")
-    public String unlockUser(@PathVariable String userId, Model model) {
-        model.addAttribute("action", "unlock");
-        model.addAttribute("userkey", userId);
-        model.addAttribute("actionMessage", "admin.user.action.unlock.message");
-        return "admin/user/user-action";
-    }
-
-    @PostMapping("/admin/user/{userId}/action/unlock")
-    public String doUnlock(@PathVariable String userId) {
+    @PostMapping("/admin/user/{userId}/unlock")
+    public String doUnlock(@PathVariable String userId, RedirectAttributes redirectAttributes) {
         userService.unlockUser(userId);
-        return "redirect:/admin/user?confirm=unlock";
+        redirectAttributes.addFlashAttribute("confirm", "unlock");
+        return "redirect:/admin/user";
+    }
+
+    @PostMapping("/admin/user/{userId}/activate")
+    public String doActivate(@PathVariable String userId, RedirectAttributes attributes) {
+        userService.activateUser(userId);
+        attributes.addFlashAttribute("confirm", "activate");
+        return "redirect:/admin/user";
     }
 }
