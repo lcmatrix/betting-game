@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://bettingdb/bettinggame
+logging:
+  level:
+    root: info
+    de.bettinggame: debug
