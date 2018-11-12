@@ -70,8 +70,8 @@ public class UserMgmtController implements AbstractController {
     }
 
     @PostMapping("/admin/user/{userId}/edit")
-    public String saveUser(@PathVariable String userId, @Valid EditUserCommand user, BindingResult result,
-                           Model model) {
+    public String saveUserChanges(@PathVariable String userId, @Valid EditUserCommand user, BindingResult result,
+                                  Model model, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             model.addAttribute("userroles", UserRole.values());
             model.addAttribute("userstatus", UserStatus.values());
@@ -79,11 +79,12 @@ public class UserMgmtController implements AbstractController {
             return "admin/user/user-edit";
         }
         userService.updateUser(user, userId);
-        return "redirect:/admin/user?confirm";
+        redirectAttributes.addFlashAttribute("confirm", "edit");
+        return "redirect:/admin/user";
     }
 
     @GetMapping("/admin/user/{userId}/{action}")
-    public String activateUser(@PathVariable String userId, @PathVariable String action,  Model model) {
+    public String openUserAction(@PathVariable String userId, @PathVariable String action,  Model model) {
         model.addAttribute("action", action);
         model.addAttribute("userkey", userId);
         switch (action) {
