@@ -1,10 +1,7 @@
 spring:
   datasource:
-    data-username:
-    data-password:
     username: betting
     password: game
-    schema:
     url: jdbc:mariadb://localhost/bettinggame
 
   jpa:
@@ -15,7 +12,7 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
   messages:
-    basename: i18n/AdminMessages,i18n/CommonMessages
+    basename: i18n/AdminMessages,i18n/CommonMessages,i18n/ErrorMessages
 
   thymeleaf:
     mode: HTML

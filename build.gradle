@@ -46,13 +46,13 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+    compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE")
 
     compile group: 'org.flywaydb', name: 'flyway-core', version: '5.1.4'
     compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.2.6'
     compile group: 'org.hibernate', name: 'hibernate-java8'
     compile "javax.xml.bind:jaxb-api"
-    // both variants are possible to declare dependencies
-    compile("org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE")
+    compile ("org.apache.commons:commons-lang3:3.+")
 
     runtime("org.springframework.boot:spring-boot-properties-migrator")
 

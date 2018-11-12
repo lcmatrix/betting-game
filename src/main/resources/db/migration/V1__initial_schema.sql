@@ -8,6 +8,7 @@ CREATE TABLE user (
     status VARCHAR(100) NOT NULL,
     role VARCHAR(100) NOT NULL,
     CONSTRAINT pk_user PRIMARY KEY (id),
+    CONSTRAINT UNIQUE INDEX idx_user_username (username),
     CONSTRAINT UNIQUE INDEX idx_user_email (email)
 );
 

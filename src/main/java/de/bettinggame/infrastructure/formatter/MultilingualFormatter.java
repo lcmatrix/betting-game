@@ -8,6 +8,9 @@ import java.util.Locale;
 
 import static java.util.Locale.*;
 
+/**
+ * Formatter for instances of {@link Multilingual}.
+ */
 public class MultilingualFormatter implements Formatter<Multilingual> {
     @Override
     public Multilingual parse(String text, Locale locale) throws ParseException {
