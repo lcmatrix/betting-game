@@ -1,5 +1,7 @@
 package de.bettinggame.domain;
 
+import org.apache.commons.lang3.Validate;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,13 +20,13 @@ public abstract class AbstractIdEntity {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer dbId;
 
     /**
-     * Identifier for an entity.
+     * Identifier for an entity. It's an UUID.
      */
-    private UUID identifier;
+    private String identifier;
 
     /**
      * Getter for dbId.
@@ -39,14 +41,15 @@ public abstract class AbstractIdEntity {
     }
 
     /**
-     *
+     * Get entity identifier which is an UUID.
      * @return entity identifier
      */
-    public UUID getIdentifier() {
+    public String getIdentifier() {
         return identifier;
     }
 
-    public void setIdentifier(UUID identifier) {
+    protected void setIdentifier(String identifier) {
+        Validate.notBlank(identifier, "Not a valid entity identifier");
         this.identifier = identifier;
     }
 }

@@ -1,13 +1,14 @@
 package de.bettinggame.domain.repository;
 
 import de.bettinggame.domain.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
 /**
  * Repository for {@link User} entity.
  */
-public interface UserRepository extends IdentifierRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer>, IdentifierRepository {
 
     /**
      * Find a user by its e-mail address
