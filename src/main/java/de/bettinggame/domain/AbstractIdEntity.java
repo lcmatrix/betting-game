@@ -5,30 +5,48 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import java.util.UUID;
 
 /**
- * Abstract class for entities. Provides id attribute.
+ * Abstract class for entities. Provides dbId attribute.
  */
 @MappedSuperclass
 public abstract class AbstractIdEntity {
 
     /**
-     * The id.
+     * Id column for Hibernate.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private Integer id;
+    private Integer dbId;
 
     /**
-     * Getter for id.
-     * @return id
+     * Identifier for an entity.
      */
-    public Integer getId() {
-        return id;
+    private UUID identifier;
+
+    /**
+     * Getter for dbId.
+     * @return dbId
+     */
+    public Integer getDbId() {
+        return dbId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    private void setDbId(Integer dbId) {
+        this.dbId = dbId;
+    }
+
+    /**
+     *
+     * @return entity identifier
+     */
+    public UUID getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(UUID identifier) {
+        this.identifier = identifier;
     }
 }
