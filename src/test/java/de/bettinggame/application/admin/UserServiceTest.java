@@ -15,6 +15,7 @@ import org.mockito.junit.MockitoRule;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.mockito.BDDMockito.given;
 
@@ -31,7 +32,7 @@ public class UserServiceTest {
 
     @Test
     public void testLockUser() {
-        User user = new User("user", "password", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
+        User user = new User(UUID.randomUUID().toString().toLowerCase(),"user", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
         given(userRepository.findByUsername(user.getUsername())).willReturn(Optional.of(user));
         given(userRepository.findByUsername("notexist")).willReturn(Optional.empty());
 
@@ -48,7 +49,7 @@ public class UserServiceTest {
 
     @Test
     public void testUnlockUser() {
-        User user = new User("user", "password", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
+        User user = new User(UUID.randomUUID().toString().toLowerCase(),"user", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
         given(userRepository.findByUsername(user.getUsername())).willReturn(Optional.of(user));
         given(userRepository.findByUsername("notexist")).willReturn(Optional.empty());
 

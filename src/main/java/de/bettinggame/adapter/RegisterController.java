@@ -41,7 +41,7 @@ public class RegisterController implements AbstractController {
     }
 
     @ModelAttribute
-    public RegisterUserCommand createRegisterUser() {
+    public RegisterUserCommand createRegisterUserCommand() {
         return new RegisterUserCommand();
     }
 }

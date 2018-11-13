@@ -55,8 +55,8 @@ public class RegisterUserCommand {
         this.password = password;
     }
 
-    public User createUser() {
-        User user = new User(username, password, email, UserStatus.PENDING, UserRole.USER);
+    public User createUser(String identifier) {
+        User user = new User(identifier, username, email, UserStatus.PENDING, UserRole.USER);
         return user;
     }
 }

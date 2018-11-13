@@ -2,6 +2,7 @@ package de.bettinggame.domain;
 
 import de.bettinggame.domain.enums.UserRole;
 import de.bettinggame.domain.enums.UserStatus;
+import org.apache.commons.lang3.Validate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -47,12 +48,12 @@ public class User extends AbstractIdEntity {
     @Column(nullable = false)
     private UserRole role;
 
-    public User() {
+    protected User() {
     }
 
-    public User(String username, String password, String email, UserStatus status, UserRole role) {
+    public User(String identifier, String username, String email, UserStatus status, UserRole role) {
+        this.setIdentifier(identifier);
         this.username = username;
-        this.password = password;
         this.email = email;
         this.status = status;
         this.role = role;
@@ -67,9 +68,7 @@ public class User extends AbstractIdEntity {
     }
 
     private void setPassword(String password) {
-        if (password == null) {
-            throw new IllegalArgumentException("Password was null");
-        }
+        Validate.notBlank(password, "Not a valid password");
         this.password = password;
     }
 
