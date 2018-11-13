@@ -24,11 +24,6 @@ public abstract class AbstractIdEntity {
     private Integer dbId;
 
     /**
-     * Identifier for an entity. It's an UUID.
-     */
-    private String identifier;
-
-    /**
      * Getter for dbId.
      * @return dbId
      */
@@ -38,18 +33,5 @@ public abstract class AbstractIdEntity {
 
     private void setDbId(Integer dbId) {
         this.dbId = dbId;
-    }
-
-    /**
-     * Get entity identifier which is an UUID.
-     * @return entity identifier
-     */
-    public String getIdentifier() {
-        return identifier;
-    }
-
-    protected void setIdentifier(String identifier) {
-        Validate.notBlank(identifier, "Not a valid entity identifier");
-        this.identifier = identifier;
     }
 }

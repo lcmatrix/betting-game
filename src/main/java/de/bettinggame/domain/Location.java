@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "location")
-public class Location extends AbstractIdEntity {
+public class Location extends AbstractIdentifiableEntity {
 
     /**
      * Short unique key.

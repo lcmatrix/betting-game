@@ -14,7 +14,7 @@ import java.util.Optional;
  */
 @Entity
 @Table(name = "user")
-public class User extends AbstractIdEntity {
+public class User extends AbstractIdentifiableEntity {
 
     @NotNull
     @Size(max = 50, message = "field.max.50.characters")
@@ -101,7 +101,7 @@ public class User extends AbstractIdEntity {
 
     public Optional<String> getFullname() {
         if (firstname == null) {
-            return Optional.ofNullable(firstname);
+            return Optional.empty();
         }
 
         String name = firstname;

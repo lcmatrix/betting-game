@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "game")
-public class Game extends AbstractIdEntity {
+public class Game extends AbstractIdentifiableEntity {
     /**
      * Kick-off date and time.
      */

@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
  */
 @Entity
 @Table(name = "news")
-public class News extends AbstractIdEntity {
+public class News extends AbstractIdentifiableEntity {
 
     @NotNull
     @Column(nullable = false)

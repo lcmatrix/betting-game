@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "team", uniqueConstraints =
     @UniqueConstraint(columnNames = "team_key", name = "team_key_unique"))
-public class Team extends AbstractIdEntity {
+public class Team extends AbstractIdentifiableEntity {
 
     /**
      * Team name or country if international.
