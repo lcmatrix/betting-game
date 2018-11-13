@@ -12,7 +12,7 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
   messages:
-    basename: i18n/AdminMessages,i18n/CommonMessages,i18n/ErrorMessages
+    basename: i18n/AdminMessages,i18n/CommonMessages,i18n/ErrorMessages,i18n/Version.properties
 
   thymeleaf:
     mode: HTML

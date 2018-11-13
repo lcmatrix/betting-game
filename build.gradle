@@ -60,10 +60,10 @@ dependencies {
 }
 
 
-task gitversion(type: Exec) {
+task evalGitversion(type: Exec) {
     commandLine 'git', 'describe'
     standardOutput = new ByteArrayOutputStream()
-    ext.version = {
+    ext.gitversion = {
         return standardOutput.toString()
     }
 }
@@ -78,8 +78,13 @@ exec {
 
 logger.quiet("Current Git version: {}", gitversion())
 
-processResources {
+task setGitversion(type: Copy) {
+    description = "Set the current Git version into properties file"
+    dependsOn evalGitversion
     from sourceSets.main.resources.srcDirTrees
-    include '**/*'
+    into sourceSets.main.output.resourcesDir
+    include '**/Version*.properties'
     filter org.apache.tools.ant.filters.ReplaceTokens, tokens: ['version.tag': gitversion()]
 }
+
+tasks.findByName("classes").dependsOn(setGitversion)
