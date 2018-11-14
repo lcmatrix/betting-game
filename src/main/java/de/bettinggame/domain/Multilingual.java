@@ -1,4 +1,4 @@
-package de.bettinggame.domain.support;
+package de.bettinggame.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

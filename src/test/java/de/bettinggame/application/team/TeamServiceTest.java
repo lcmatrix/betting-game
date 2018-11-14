@@ -14,7 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-import de.bettinggame.domain.support.Multilingual;
+import de.bettinggame.domain.Multilingual;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -25,8 +25,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import de.bettinggame.domain.Group;
-import de.bettinggame.domain.Team;
+import de.bettinggame.domain.team.Group;
+import de.bettinggame.domain.team.Team;
 import de.bettinggame.domain.repository.TeamRepository;
 
 /**

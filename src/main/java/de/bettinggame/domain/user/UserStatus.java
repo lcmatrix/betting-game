@@ -1,6 +1,6 @@
-package de.bettinggame.domain.enums;
+package de.bettinggame.domain.user;
 
-import de.bettinggame.domain.support.MessageKeyAware;
+import de.bettinggame.domain.MessageKeyAware;
 
 public enum UserStatus implements MessageKeyAware {
     ACTIVE("user.status.active"),

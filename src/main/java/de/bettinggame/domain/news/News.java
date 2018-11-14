@@ -1,4 +1,7 @@
-package de.bettinggame.domain;
+package de.bettinggame.domain.news;
+
+import de.bettinggame.domain.AbstractIdentifiableEntity;
+import de.bettinggame.domain.user.User;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

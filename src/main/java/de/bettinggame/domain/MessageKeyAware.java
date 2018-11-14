@@ -1,4 +1,4 @@
-package de.bettinggame.domain.support;
+package de.bettinggame.domain;
 
 /**
  * Instances of this interface have a message key for their representation.

@@ -1,7 +1,7 @@
 package de.bettinggame.adapter;
 
-import de.bettinggame.domain.Game;
-import de.bettinggame.domain.TournamentLevel;
+import de.bettinggame.domain.game.Game;
+import de.bettinggame.domain.game.TournamentLevel;
 import de.bettinggame.domain.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

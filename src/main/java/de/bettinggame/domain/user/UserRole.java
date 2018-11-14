@@ -1,6 +1,6 @@
-package de.bettinggame.domain.enums;
+package de.bettinggame.domain.user;
 
-import de.bettinggame.domain.support.MessageKeyAware;
+import de.bettinggame.domain.MessageKeyAware;
 
 public enum UserRole implements MessageKeyAware {
     USER("user.role.user"),

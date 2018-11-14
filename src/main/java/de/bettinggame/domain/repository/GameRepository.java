@@ -1,6 +1,6 @@
 package de.bettinggame.domain.repository;
 
-import de.bettinggame.domain.Game;
+import de.bettinggame.domain.game.Game;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

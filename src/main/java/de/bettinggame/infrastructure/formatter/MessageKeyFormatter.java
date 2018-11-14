@@ -1,6 +1,6 @@
 package de.bettinggame.infrastructure.formatter;
 
-import de.bettinggame.domain.support.MessageKeyAware;
+import de.bettinggame.domain.MessageKeyAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.format.Formatter;

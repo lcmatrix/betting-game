@@ -1,4 +1,4 @@
-package de.bettinggame.domain;
+package de.bettinggame.domain.team;
 
 /**
  * Enumeration of groups.

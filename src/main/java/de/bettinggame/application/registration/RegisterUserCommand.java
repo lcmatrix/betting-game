@@ -3,9 +3,9 @@ package de.bettinggame.application.registration;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import de.bettinggame.domain.User;
-import de.bettinggame.domain.enums.UserRole;
-import de.bettinggame.domain.enums.UserStatus;
+import de.bettinggame.domain.user.User;
+import de.bettinggame.domain.user.UserRole;
+import de.bettinggame.domain.user.UserStatus;
 
 /**
  * Form object for registration.

@@ -1,6 +1,7 @@
-package de.bettinggame.domain;
+package de.bettinggame.domain.game;
 
-import de.bettinggame.domain.support.Multilingual;
+import de.bettinggame.domain.AbstractIdentifiableEntity;
+import de.bettinggame.domain.Multilingual;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;

@@ -1,8 +1,8 @@
 package de.bettinggame.application.admin;
 
-import de.bettinggame.domain.User;
-import de.bettinggame.domain.enums.UserRole;
-import de.bettinggame.domain.enums.UserStatus;
+import de.bettinggame.domain.user.User;
+import de.bettinggame.domain.user.UserRole;
+import de.bettinggame.domain.user.UserStatus;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

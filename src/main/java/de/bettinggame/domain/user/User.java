@@ -1,7 +1,6 @@
-package de.bettinggame.domain;
+package de.bettinggame.domain.user;
 
-import de.bettinggame.domain.enums.UserRole;
-import de.bettinggame.domain.enums.UserStatus;
+import de.bettinggame.domain.AbstractIdentifiableEntity;
 import org.apache.commons.lang3.Validate;
 
 import javax.persistence.*;

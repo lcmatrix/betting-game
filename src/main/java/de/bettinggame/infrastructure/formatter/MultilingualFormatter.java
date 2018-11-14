@@ -1,6 +1,6 @@
 package de.bettinggame.infrastructure.formatter;
 
-import de.bettinggame.domain.support.Multilingual;
+import de.bettinggame.domain.Multilingual;
 import org.springframework.format.Formatter;
 
 import java.text.ParseException;

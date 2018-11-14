@@ -1,8 +1,8 @@
 package de.bettinggame.application.admin;
 
-import de.bettinggame.domain.User;
-import de.bettinggame.domain.enums.UserRole;
-import de.bettinggame.domain.enums.UserStatus;
+import de.bettinggame.domain.user.User;
+import de.bettinggame.domain.user.UserRole;
+import de.bettinggame.domain.user.UserStatus;
 import de.bettinggame.domain.repository.UserRepository;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
@@ -13,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 import java.util.UUID;
 

@@ -1,6 +1,7 @@
 package de.bettinggame.application.team;
 
 
+import de.bettinggame.domain.team.Team;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 /**
@@ -46,7 +47,7 @@ public class TeamTO {
      *
      * @param team team
      */
-    public TeamTO(de.bettinggame.domain.Team team) {
+    public TeamTO(Team team) {
         this.name = team.getName().getValueForLocale(LocaleContextHolder.getLocale());
         this.teamKey = team.getTeamKey();
     }

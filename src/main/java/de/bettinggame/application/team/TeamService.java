@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import de.bettinggame.domain.team.Group;
+import de.bettinggame.domain.team.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +29,9 @@ public class TeamService {
      * @return collection of groups
      */
     public Collection<GroupTO> getAllGroupsWithTeams() {
-        Map<de.bettinggame.domain.Group, GroupTO> groupMap = new TreeMap<>();
-        List<de.bettinggame.domain.Team> teams = teamRepository.findAllByGroupCharNotNull();
-        for(de.bettinggame.domain.Team team : teams) {
+        Map<Group, GroupTO> groupMap = new TreeMap<>();
+        List<Team> teams = teamRepository.findAllByGroupCharNotNull();
+        for(Team team : teams) {
             GroupTO group = groupMap.get(team.getGroupChar());
             if (group == null) {
                 group = new GroupTO(team.getGroupChar());
