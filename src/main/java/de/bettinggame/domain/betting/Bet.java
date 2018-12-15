@@ -20,6 +20,7 @@ public class Bet extends AbstractIdentifiableEntity {
     private int goalsGuestTeam;
 
     @Embedded
+    @AttributeOverride(name = "value", column = @Column(name = "quota"))
     private Quota quota;
 
     @Embedded
