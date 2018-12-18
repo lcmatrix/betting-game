@@ -3,6 +3,7 @@ package de.bettinggame.application.registration;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import de.bettinggame.domain.Identity;
 import de.bettinggame.domain.user.User;
 import de.bettinggame.domain.user.UserRole;
 import de.bettinggame.domain.user.UserStatus;
@@ -56,7 +57,6 @@ public class RegisterUserCommand {
     }
 
     public User createUser(String identifier) {
-        User user = new User(identifier, username, email, UserStatus.PENDING, UserRole.USER);
-        return user;
+        return new User(new Identity(identifier), username, email, UserStatus.PENDING, UserRole.USER);
     }
 }

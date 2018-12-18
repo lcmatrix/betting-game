@@ -13,18 +13,18 @@ public abstract class AbstractIdentifiableEntity extends AbstractIdEntity {
     /**
      * Identifier for an entity. It's an UUID.
      */
-    private String identifier;
+    private Identity identifier;
 
     /**
      * Get entity identifier which is an UUID.
      * @return entity identifier
      */
-    public String getIdentifier() {
+    public Identity identifier() {
         return identifier;
     }
 
-    protected void setIdentifier(String identifier) {
-        Validate.notBlank(identifier, "Not a valid entity identifier");
+    protected void setIdentifier(Identity identifier) {
+        Validate.notBlank(identifier.identifier(), "Not a valid entity identifier");
         this.identifier = identifier;
     }
 }

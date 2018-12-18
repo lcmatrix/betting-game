@@ -60,7 +60,7 @@ public class Game extends AbstractIdentifiableEntity {
     @Column(name = "goals_guest_team")
     private Integer goalsGuestTeam;
 
-    public Game() {
+    protected Game() {
     }
 
     /**

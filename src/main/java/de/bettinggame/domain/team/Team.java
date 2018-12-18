@@ -49,7 +49,7 @@ public class Team extends AbstractIdentifiableEntity {
     /**
      * Constructor.
      */
-    public Team() {
+    protected Team() {
     }
 
     /**

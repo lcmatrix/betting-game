@@ -1,6 +1,7 @@
 package de.bettinggame.domain.user;
 
 import de.bettinggame.domain.AbstractIdentifiableEntity;
+import de.bettinggame.domain.Identity;
 import org.apache.commons.lang3.Validate;
 
 import javax.persistence.*;
@@ -50,7 +51,7 @@ public class User extends AbstractIdentifiableEntity {
     protected User() {
     }
 
-    public User(String identifier, String username, String email, UserStatus status, UserRole role) {
+    public User(Identity identifier, String username, String email, UserStatus status, UserRole role) {
         this.setIdentifier(identifier);
         this.username = username;
         this.email = email;

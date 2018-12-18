@@ -1,5 +1,6 @@
 package de.bettinggame.application.admin;
 
+import de.bettinggame.domain.Identity;
 import de.bettinggame.domain.user.User;
 import de.bettinggame.domain.user.UserRole;
 import de.bettinggame.domain.user.UserStatus;
@@ -31,7 +32,7 @@ public class UserServiceTest {
 
     @Test
     public void testLockUser() {
-        User user = new User(UUID.randomUUID().toString().toLowerCase(),"user", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
+        User user = new User(generateIdentity(),"user", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
         given(userRepository.findByUsername(user.getUsername())).willReturn(Optional.of(user));
         given(userRepository.findByUsername("notexist")).willReturn(Optional.empty());
 
@@ -48,7 +49,7 @@ public class UserServiceTest {
 
     @Test
     public void testUnlockUser() {
-        User user = new User(UUID.randomUUID().toString().toLowerCase(),"user", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
+        User user = new User(generateIdentity(),"user", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
         given(userRepository.findByUsername(user.getUsername())).willReturn(Optional.of(user));
         given(userRepository.findByUsername("notexist")).willReturn(Optional.empty());
 
@@ -61,5 +62,9 @@ public class UserServiceTest {
         } catch (Exception e) {
             //Assert.assertThat(e, CoreMatchers.isA(EntityNotFoundException.class));
         }
+    }
+
+    private Identity generateIdentity() {
+        return new Identity(UUID.randomUUID().toString().toLowerCase());
     }
 }
