@@ -7,13 +7,13 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 
-@Service
+/**
+ * Authentication provider.
+ */
 public class BettingGameAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -22,7 +22,7 @@ public class BettingGameAuthenticationProvider implements AuthenticationProvider
     private UserDetailsService userDetailsService;
 
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    public Authentication authenticate(Authentication authentication) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(authentication.getName());
         if (!userDetails.isEnabled()) {
             throw new DisabledException("User is locked");
