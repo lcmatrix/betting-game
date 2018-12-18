@@ -1,7 +1,8 @@
 package de.bettinggame.adapter;
 
-import de.bettinggame.domain.betting.Bet;
-import de.bettinggame.domain.repository.BetRepository;
+import de.bettinggame.application.bet.BetService;
+import de.bettinggame.application.bet.BetTo;
+import de.bettinggame.domain.Identity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +15,11 @@ import java.util.List;
 public class BetController implements AbstractController {
 
     @Autowired
-    private BetRepository betRepository;
+    private BetService betService;
 
     @GetMapping("/game/{gameIdentifier}/bet")
     public ModelAndView allBetsForGame(@PathVariable String gameIdentifier) {
-        List<Bet> allBetsForGame = betRepository.findAllByGameIdentifier(gameIdentifier);
+        List<BetTo> allBetsForGame = betService.findBetsForGame(new Identity(gameIdentifier));
         ModelAndView mav = new ModelAndView("bet/bet-list");
         mav.addObject("allBets", allBetsForGame);
         return mav;

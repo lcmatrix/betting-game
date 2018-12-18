@@ -13,6 +13,7 @@
                             <th data-th-text="#{games.table.header.location}">Location</th>
                             <th data-th-text="#{games.table.header.game}">Match</th>
                             <th data-th-text="#{games.table.header.result}">Result</th>
+                            <th data-th-text="#{games.table.header.bets}">Bets</th>
                         </thead>
                         <tbody>
                             <tr data-th-each="match : ${level.value}">
@@ -30,6 +31,13 @@
                                     <span data-th-text="${{match.guestTeam.name}}">Brazil</span>
                                 </td>
                                 <td data-th-text="|${match.goalsHomeTeam?: '?'} : ${match.goalsGuestTeam?: '?'}|">2:0</td>
+                                <td>
+                                    <a data-th-href="@{/game/{gameId}/bet(gameId=${match.identifier().identifier()})}">
+                                        <img src="/static/img/glyphicons/glyphicons-459-money.png"
+                                            title="Bets" class="img-fluid" alt="Bets"
+                                            data-th-title="#{games.table.header.bets}" data-th-alt="#{games.table.header.bets}"/>
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

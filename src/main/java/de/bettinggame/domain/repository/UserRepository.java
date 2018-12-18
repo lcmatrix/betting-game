@@ -1,5 +1,6 @@
 package de.bettinggame.domain.repository;
 
+import de.bettinggame.domain.Identity;
 import de.bettinggame.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -32,4 +33,11 @@ public interface UserRepository extends JpaRepository<User, Integer>, Identifier
      * @return user
      */
     Optional<User> findByUsernameOrEmail(String username, String email);
+
+    /**
+     * Find a user by its identifier.
+     * @param identity identifier
+     * @return user, if found
+     */
+    Optional<User> findByIdentifier(Identity identity);
 }
