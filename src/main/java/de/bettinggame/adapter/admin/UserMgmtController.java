@@ -6,7 +6,7 @@ import de.bettinggame.application.admin.UserService;
 import de.bettinggame.application.admin.UserTo;
 import de.bettinggame.domain.user.UserRole;
 import de.bettinggame.domain.user.UserStatus;
-import de.bettinggame.domain.repository.UserRepository;
+import de.bettinggame.domain.user.UserRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,12 +30,14 @@ import static java.util.stream.Collectors.toList;
  */
 @Controller()
 public class UserMgmtController implements AbstractController {
-
-    @Autowired
     private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    private UserService userService;
+    public UserMgmtController(UserRepository userRepository, UserService userService) {
+        this.userRepository = userRepository;
+        this.userService = userService;
+    }
 
     /**
      * List all users.

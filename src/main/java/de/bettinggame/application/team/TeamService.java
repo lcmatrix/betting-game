@@ -10,7 +10,7 @@ import de.bettinggame.domain.team.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import de.bettinggame.domain.repository.TeamRepository;
+import de.bettinggame.domain.team.TeamRepository;
 
 /**
  * Team service.
@@ -19,9 +19,12 @@ import de.bettinggame.domain.repository.TeamRepository;
  */
 @Service
 public class TeamService {
+    private TeamRepository teamRepository;
 
     @Autowired
-    private TeamRepository teamRepository;
+    public TeamService(TeamRepository teamRepository) {
+        this.teamRepository = teamRepository;
+    }
 
     /**
      * Loads all teams and create representing {@link GroupTO} objects containing their {@link TeamTO}.

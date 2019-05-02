@@ -2,7 +2,7 @@ package de.bettinggame.infrastructure;
 
 import de.bettinggame.domain.user.User;
 import de.bettinggame.domain.user.UserStatus;
-import de.bettinggame.domain.repository.UserRepository;
+import de.bettinggame.domain.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User.UserBuilder;

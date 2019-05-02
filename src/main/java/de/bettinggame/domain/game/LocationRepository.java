@@ -1,6 +1,5 @@
-package de.bettinggame.domain.repository;
+package de.bettinggame.domain.game;
 
-import de.bettinggame.domain.game.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

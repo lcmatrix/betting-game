@@ -2,7 +2,7 @@ package de.bettinggame.application.admin;
 
 import de.bettinggame.application.registration.RegisterUserCommand;
 import de.bettinggame.domain.user.User;
-import de.bettinggame.domain.repository.UserRepository;
+import de.bettinggame.domain.user.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,14 @@ import java.util.Optional;
 public class UserService {
     private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
-    @Autowired
     private UserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Transactional
     public void registerUser(RegisterUserCommand registerUserCommand) {

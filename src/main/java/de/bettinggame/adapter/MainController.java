@@ -1,7 +1,7 @@
 package de.bettinggame.adapter;
 
 import de.bettinggame.domain.news.News;
-import de.bettinggame.domain.repository.NewsRepository;
+import de.bettinggame.domain.news.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,9 +16,12 @@ import java.util.List;
  */
 @Controller
 public class MainController implements AbstractController {
+    private NewsRepository newsRepository;
 
     @Autowired
-    private NewsRepository newsRepository;
+    public MainController(NewsRepository newsRepository) {
+        this.newsRepository = newsRepository;
+    }
 
     @RequestMapping("/")
     public String root(Model model) {

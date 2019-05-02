@@ -1,6 +1,5 @@
-package de.bettinggame.domain.repository;
+package de.bettinggame.domain.news;
 
-import de.bettinggame.domain.news.News;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

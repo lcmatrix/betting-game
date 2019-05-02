@@ -1,4 +1,4 @@
-package de.bettinggame.domain.repository;
+package de.bettinggame.domain;
 
 import java.util.UUID;
 

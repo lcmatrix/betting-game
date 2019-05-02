@@ -3,9 +3,9 @@ package de.bettinggame.application.bet;
 import de.bettinggame.domain.Identity;
 import de.bettinggame.domain.betting.Bet;
 import de.bettinggame.domain.game.Game;
-import de.bettinggame.domain.repository.BetRepository;
-import de.bettinggame.domain.repository.GameRepository;
-import de.bettinggame.domain.repository.UserRepository;
+import de.bettinggame.domain.betting.BetRepository;
+import de.bettinggame.domain.game.GameRepository;
+import de.bettinggame.domain.user.UserRepository;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,15 +19,16 @@ import java.util.stream.Collectors;
  */
 @Service
 public class BetService {
-
-    @Autowired
     private BetRepository betRepository;
-
-    @Autowired
     private GameRepository gameRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    public BetService(BetRepository betRepository, GameRepository gameRepository, UserRepository userRepository) {
+        this.betRepository = betRepository;
+        this.gameRepository = gameRepository;
+        this.userRepository = userRepository;
+    }
 
     public List<BetTo> findBetsForGame(final Identity gameIdentifier) {
         Optional<Game> game = gameRepository.findByIdentifier(gameIdentifier);

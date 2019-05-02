@@ -2,7 +2,7 @@ package de.bettinggame.adapter;
 
 import de.bettinggame.domain.game.Game;
 import de.bettinggame.domain.game.TournamentLevel;
-import de.bettinggame.domain.repository.GameRepository;
+import de.bettinggame.domain.game.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +16,12 @@ import java.util.stream.Collectors;
 
 @Controller
 public class GameController implements AbstractController {
+    private GameRepository gameRepository;
 
     @Autowired
-    private GameRepository gameRepository;
+    public GameController(GameRepository gameRepository) {
+        this.gameRepository = gameRepository;
+    }
 
     @GetMapping("/game")
     public ModelAndView list() {

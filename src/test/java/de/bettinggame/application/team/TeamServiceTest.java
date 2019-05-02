@@ -27,7 +27,7 @@ import org.mockito.junit.MockitoRule;
 
 import de.bettinggame.domain.team.Group;
 import de.bettinggame.domain.team.Team;
-import de.bettinggame.domain.repository.TeamRepository;
+import de.bettinggame.domain.team.TeamRepository;
 
 /**
  * Unit test for {@link TeamService}.
@@ -35,7 +35,6 @@ import de.bettinggame.domain.repository.TeamRepository;
  * @author norman
  */
 public class TeamServiceTest {
-
     @Rule
     public MockitoRule mockito = MockitoJUnit.rule();
 
@@ -43,7 +42,7 @@ public class TeamServiceTest {
     private TeamRepository teamRepository;
 
     @InjectMocks
-    private TeamService teamService = new TeamService();
+    private TeamService teamService = new TeamService(teamRepository);
 
     @Before
     public void setUp() {
@@ -62,7 +61,6 @@ public class TeamServiceTest {
         GroupTO groupH = iterator.next();
         Assert.assertEquals(Group.H.name(), groupH.getGroupChar());
         assertLocalisedTeamName(new Locale("fr", "FR"), groupH.getTeams().get(0).getName());
-
     }
 
     private List<Team> createListOfTeams() {

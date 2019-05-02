@@ -4,7 +4,7 @@ import de.bettinggame.domain.Identity;
 import de.bettinggame.domain.user.User;
 import de.bettinggame.domain.user.UserRole;
 import de.bettinggame.domain.user.UserStatus;
-import de.bettinggame.domain.repository.UserRepository;
+import de.bettinggame.domain.user.UserRepository;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Rule;
@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -20,7 +21,6 @@ import java.util.UUID;
 import static org.mockito.BDDMockito.given;
 
 public class UserServiceTest {
-
     @Rule
     public MockitoRule mockito = MockitoJUnit.rule();
 
@@ -28,7 +28,7 @@ public class UserServiceTest {
     private UserRepository userRepository;
 
     @InjectMocks
-    private UserService userService = new UserService();
+    private UserService userService = new UserService(userRepository, new BCryptPasswordEncoder());
 
     @Test
     public void testLockUser() {
