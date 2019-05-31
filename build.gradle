@@ -1,29 +1,30 @@
 buildscript {
     repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
+        gradlePluginPortal()
+        jcenter() 
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.1.1.RELEASE"
+        classpath "org.mariadb.jdbc:mariadb-java-client:2.3.0"
+        //classpath("gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:1.7.1")
     }
 }
 
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.1.1.RELEASE'
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.6.RELEASE'
     id 'org.flywaydb.flyway' version '5.2.1'
     //id "com.gorylenko.gradle-git-properties" version "1.4.17"
     id 'checkstyle'
     id 'pmd'
-    id 'findbugs'
+    //id 'findbugs'
     id 'idea'
     id 'eclipse'
+    //id "com.github.spotbugs" version "1.7.1"
 }
 
 repositories {
-  jcenter()
+    jcenter()
 }
 
 apply from: 'flyway.gradle'
@@ -33,7 +34,10 @@ group = 'de.betting-game'
 version = '0.2.0'
 description = "Betting game"
 
-sourceCompatibility = 11
+tasks.withType(JavaCompile) {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
 
 bootRun {
     sourceResources sourceSets.main
@@ -59,15 +63,6 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
-
-task evalGitversion(type: Exec) {
-    commandLine 'git', 'describe'
-    standardOutput = new ByteArrayOutputStream()
-    ext.gitversion = {
-        return standardOutput.toString()
-    }
-}
-
 exec {
     commandLine 'git', 'describe'
     standardOutput = new ByteArrayOutputStream()
@@ -78,13 +73,12 @@ exec {
 
 logger.quiet("Current Git version: {}", gitversion())
 
-task setGitversion(type: Copy) {
-    description = "Set the current Git version into properties file"
-    dependsOn evalGitversion
-    from sourceSets.main.resources.srcDirTrees
-    into sourceSets.main.output.resourcesDir
-    include '**/Version*.properties'
-    filter org.apache.tools.ant.filters.ReplaceTokens, tokens: ['version.tag': gitversion()]
+processResources {
+    filesMatching('**/Version_*.properties') {
+        expand 'gitversion': gitversion()
+    }
 }
 
-tasks.findByName("classes").dependsOn(setGitversion)
+wrapper {
+    gradleVersion = "5.4.1"
+}

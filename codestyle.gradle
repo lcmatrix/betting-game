@@ -18,7 +18,7 @@ tasks.withType(Checkstyle) {
     }
 }
 
-findbugs {
+/*findbugs {
     ignoreFailures = true
 }
 
@@ -32,7 +32,7 @@ tasks.withType(FindBugs) {
     onlyIf {
         project.hasProperty("withChecks") && withChecks == "true"
     }
-}
+}*/
 
 pmd {
     ignoreFailures true
@@ -46,3 +46,18 @@ tasks.withType(Pmd) {
         hasProperty("withChecks") && withChecks == "true"
     }
 }
+
+/*spotbugs {
+    ignoreFailures true
+}
+
+tasks.withType("com.github.spotbugs.SpotBugsTask") {
+    reports {
+        xml.enabled true
+        html.enabled false
+        html.stylesheet resources.text.fromFile("$rootProject.projectDir/config/findbugs/default.xsl")
+    }
+    onlyIf {
+        hasProperty("withChecks") && withChecks == "true"
+    }
+}*/
