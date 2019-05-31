@@ -28,7 +28,7 @@ public class UserService {
 
     @Transactional
     public void registerUser(RegisterUserCommand registerUserCommand) {
-        User user = registerUserCommand.createUser(userRepository.nextIdentifier());
+        User user = registerUserCommand.createUser();
         user.updatePassword(passwordEncoder.encode(registerUserCommand.getPassword()));
         userRepository.save(user);
         LOG.info("New user registered [{}]", registerUserCommand.getUsername());

@@ -30,11 +30,11 @@ public class BetService {
         this.userRepository = userRepository;
     }
 
-    public List<BetTo> findBetsForGame(final Identity gameIdentifier) {
-        Optional<Game> game = gameRepository.findByIdentifier(gameIdentifier);
+    public List<BetTo> findBetsForGame(final String gameIdentifier) {
+        Optional<Game> game = gameRepository.findByIdentifier(Identity.buildIdentifier(gameIdentifier));
         final Identity gameId = game.orElseThrow( () ->
                 new IllegalArgumentException(String.format("Game with Identifier %1$s not found", gameIdentifier))
-        ).identifier();
+        ).rawIdentifier();
         List<Bet> betsForGame = betRepository.findAllByGameIdentifier(gameId);
         return betsForGame.stream()
                 .map(bet -> Pair.of(bet, userRepository.findByIdentifier(bet.getUserIdentifier())))

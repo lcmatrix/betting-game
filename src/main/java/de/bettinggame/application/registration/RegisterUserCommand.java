@@ -56,7 +56,7 @@ public class RegisterUserCommand {
         this.password = password;
     }
 
-    public User createUser(String identifier) {
-        return new User(new Identity(identifier), username, email, UserStatus.PENDING, UserRole.USER);
+    public User createUser() {
+        return new User(Identity.buildNewIdentity(), username, email, UserStatus.PENDING, UserRole.USER);
     }
 }

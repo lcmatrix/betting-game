@@ -19,8 +19,16 @@ public abstract class AbstractIdentifiableEntity extends AbstractIdEntity {
      * Get entity identifier which is an UUID.
      * @return entity identifier
      */
-    public Identity identifier() {
+    public Identity rawIdentifier() {
         return identifier;
+    }
+
+    /**
+     * Get entity identifier as String
+     * @return identifier as String
+     */
+    public String identifier() {
+        return identifier.identifier();
     }
 
     protected void setIdentifier(Identity identifier) {

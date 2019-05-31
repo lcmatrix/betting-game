@@ -32,7 +32,7 @@
                                 </td>
                                 <td data-th-text="|${match.goalsHomeTeam?: '?'} : ${match.goalsGuestTeam?: '?'}|">2:0</td>
                                 <td>
-                                    <a data-th-href="@{/game/{gameId}/bet(gameId=${match.identifier().identifier()})}">
+                                    <a data-th-href="@{/game/{gameId}/bet(gameId=${match.identifier()})}">
                                         <img src="/static/img/glyphicons/glyphicons-459-money.png"
                                             title="Bets" class="img-fluid" alt="Bets"
                                             data-th-title="#{games.table.header.bets}" data-th-alt="#{games.table.header.bets}"/>

@@ -1,13 +1,10 @@
 package de.bettinggame.domain;
 
-import org.apache.commons.lang3.Validate;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import java.util.UUID;
 
 /**
  * Abstract class for entities. Provides dbId attribute.

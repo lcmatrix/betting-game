@@ -16,7 +16,6 @@ import org.mockito.junit.MockitoRule;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
-import java.util.UUID;
 
 import static org.mockito.BDDMockito.given;
 
@@ -32,7 +31,7 @@ public class UserServiceTest {
 
     @Test
     public void testLockUser() {
-        User user = new User(generateIdentity(),"user", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
+        User user = new User(Identity.buildNewIdentity(),"user", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
         given(userRepository.findByUsername(user.getUsername())).willReturn(Optional.of(user));
         given(userRepository.findByUsername("notexist")).willReturn(Optional.empty());
 
@@ -49,7 +48,7 @@ public class UserServiceTest {
 
     @Test
     public void testUnlockUser() {
-        User user = new User(generateIdentity(),"user", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
+        User user = new User(Identity.buildNewIdentity(),"user", "user@example.org", UserStatus.ACTIVE, UserRole.USER);
         given(userRepository.findByUsername(user.getUsername())).willReturn(Optional.of(user));
         given(userRepository.findByUsername("notexist")).willReturn(Optional.empty());
 
@@ -62,9 +61,5 @@ public class UserServiceTest {
         } catch (Exception e) {
             //Assert.assertThat(e, CoreMatchers.isA(EntityNotFoundException.class));
         }
-    }
-
-    private Identity generateIdentity() {
-        return new Identity(UUID.randomUUID().toString().toLowerCase());
     }
 }

@@ -2,6 +2,7 @@ package de.bettinggame.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -13,12 +14,19 @@ public class Identity {
     @Column
     private String identifier;
 
-    public Identity(String identifier) {
+    private Identity(String identifier) {
         this.identifier = identifier;
     }
 
     protected Identity() {
+    }
 
+    public static Identity buildNewIdentity() {
+        return buildIdentifier(UUID.randomUUID().toString().toLowerCase());
+    }
+
+    public static Identity buildIdentifier(final String identifier) {
+        return new Identity(identifier);
     }
 
     public String identifier() {
