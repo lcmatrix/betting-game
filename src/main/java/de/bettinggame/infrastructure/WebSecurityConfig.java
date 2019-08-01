@@ -47,16 +47,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(bettingGameAuthenticationProvider());
-    }
-
-    @Bean
-    public AuthenticationProvider bettingGameAuthenticationProvider() {
-        return new BettingGameAuthenticationProvider();
-    }
-
     @Bean
     public UserDetailsService userDetailsService() {
         return new CustomUserDetailService();

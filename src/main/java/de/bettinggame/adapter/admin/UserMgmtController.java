@@ -28,7 +28,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * Controller for user management available only for administration users.
  */
-@Controller()
+@Controller
 public class UserMgmtController implements AbstractController {
     private UserRepository userRepository;
     private UserService userService;
