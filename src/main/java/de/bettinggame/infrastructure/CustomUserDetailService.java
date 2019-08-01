@@ -26,7 +26,7 @@ public class CustomUserDetailService implements UserDetailsService {
         Optional<User> user = userRepository.findByUsernameOrEmail(userOrEMail, userOrEMail);
         User userInstance = user.orElseThrow(() ->
                 new UsernameNotFoundException("User: " + userOrEMail + " not found"));
-        UserBuilder userBuilder = withUsername(userInstance.getUsername());
+        UserBuilder userBuilder = withUsername(userInstance.identifier());
         userBuilder.password(userInstance.getPassword());
         userBuilder.disabled(userInstance.getStatus() != UserStatus.ACTIVE);
         userBuilder.accountLocked(userInstance.getStatus() == UserStatus.LOCKED);
