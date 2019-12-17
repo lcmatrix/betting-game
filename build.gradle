@@ -11,7 +11,7 @@ buildscript {
 
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id 'org.springframework.boot' version '2.1.11.RELEASE'
     id 'io.spring.dependency-management' version '1.0.6.RELEASE'
     id 'org.flywaydb.flyway' version '5.2.4'
     //id "com.gorylenko.gradle-git-properties" version "1.4.17"
@@ -56,7 +56,7 @@ dependencies {
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.3.0'
     implementation group: 'org.hibernate', name: 'hibernate-java8'
     implementation "javax.xml.bind:jaxb-api"
-    implementation ("org.apache.commons:commons-lang3:3.+")
+    implementation ("org.apache.commons:commons-lang3:3.9")
 
     runtime("org.springframework.boot:spring-boot-properties-migrator")
 
@@ -80,5 +80,5 @@ processResources {
 }
 
 wrapper {
-    gradleVersion = "5.4.1"
+    gradleVersion = "6.0.1"
 }
