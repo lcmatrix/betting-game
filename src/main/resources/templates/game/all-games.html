@@ -18,21 +18,21 @@
                         <tbody>
                             <tr data-th-each="match : ${level.value}">
                                 <td data-th-text="${{match.starttime}}">today</td>
-                                <td data-th-text="${{match.location.name}}">somewhere</td>
+                                <td data-th-text="${{match.location}}">somewhere</td>
                                 <td>
                                     <img src="/static/img/flags/EN.png" class="img-fluid" alt="England"
                                          data-th-src="@{/static/img/flags/{icon}(icon=${match.homeTeam.teamKey} + '.png')}"
-                                         data-th-alt="${{match.homeTeam.name}}"/>
-                                    <span data-th-text="${{match.homeTeam.name}}">England</span>
+                                         data-th-alt="${match.homeTeam.name}"/>
+                                    <span data-th-text="${match.homeTeam.name}">England</span>
                                     <span> vs. </span>
                                     <img src="/static/img/flags/EN.png" class="img-fluid" alt="England"
                                          data-th-src="@{/static/img/flags/{icon}(icon=${match.guestTeam.teamKey} + '.png')}"
-                                         data-th-alt="${{match.guestTeam.name}}" />
-                                    <span data-th-text="${{match.guestTeam.name}}">Brazil</span>
+                                         data-th-alt="${match.guestTeam.name}" />
+                                    <span data-th-text="${match.guestTeam.name}">Brazil</span>
                                 </td>
                                 <td data-th-text="|${match.goalsHomeTeam?: '?'} : ${match.goalsGuestTeam?: '?'}|">2:0</td>
                                 <td>
-                                    <a data-th-href="@{/game/{gameId}/bet(gameId=${match.identifier()})}">
+                                    <a data-th-href="@{/game/{gameId}/bets(gameId=${match.id})}">
                                         <img src="/static/img/glyphicons/glyphicons-459-money.png"
                                             title="Bets" class="img-fluid" alt="Bets"
                                             data-th-title="#{games.table.header.bets}" data-th-alt="#{games.table.header.bets}"/>

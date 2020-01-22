@@ -35,11 +35,7 @@ public class TeamTO {
      */
     private int goalsAgainst;
 
-    /**
-     * No-arg constructor.
-     */
-    public TeamTO() {
-
+    protected TeamTO() {
     }
 
     /**
@@ -89,4 +85,7 @@ public class TeamTO {
         return goalsAgainst;
     }
 
+    public String getTeamKey() {
+        return teamKey;
+    }
 }
