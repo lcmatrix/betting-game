@@ -9,7 +9,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import java.util.Locale;
 
 public class BetTo {
-    private String result;
+    private String userTip;
     private String user;
     private String game;
 
@@ -18,14 +18,14 @@ public class BetTo {
         Validate.notNull(game);
         Validate.notNull(user);
         Locale locale = LocaleContextHolder.getLocale();
-        result = bet.getGoalsHomeTeam() + ":" + bet.getGoalsGuestTeam();
+        userTip = bet.getGoalsHomeTeam() + ":" + bet.getGoalsGuestTeam();
         this.user = user.getUsername();
         this.game = game.getHomeTeam().getName().getValueForLocale(locale) + " vs. "
                 + game.getGuestTeam().getName().getValueForLocale(locale);
     }
 
-    public String getResult() {
-        return result;
+    public String getUserTip() {
+        return userTip;
     }
 
     public String getUser() {

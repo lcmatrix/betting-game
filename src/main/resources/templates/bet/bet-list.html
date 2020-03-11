@@ -1,26 +1,52 @@
 <!DOCTYPE html>
 <html data-th-replace="~{layout/public_layout :: layout}">
 <body>
-<div class="container">
-    <div data-th-fragment="mainContent">
-        <h1 data-th-text="#{bets.header}">Bets overview</h1>
-        <div class="row" data-th-each="bet : ${allBets}">
-            <div class="col-12">
-                <p data-th-text="${bet.game}">Game: x vs. y</p>
+    <div class="container">
+        <div data-th-fragment="mainContent">
+            <h1 data-th-text="#{bets.header}">Bets overview</h1>
+            <div class="row">
+                <div class="col-12">
+                    <p data-th-text="${game}">Game: x vs. y</p>
+                </div>
             </div>
-            <div class="col-3">
-                <p data-th-text="${bet.user}">User x</p>
+            <form method="post" action="#" data-th-action="@{/bet}" data-th-object="${myBetCommand}">
+                <div class="form-group row">
+                    <p class="col-5" data-th-text="#{bets.form.label}">my bet:</p>
+                    <div class="col-sm-3 col-md-3">
+                        <input type="text" id="goalsHomeTeam" name="goalsHomeTeam" data-th-field="*{goalsHomeTeam}"
+                               maxlength="2" size="2" data-th-errorClass="errorFormElement" class="form-control"/>
+                    </div>
+                    <div class="col-sm-1 col-md-1">
+                        <span>:</span>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <input type="text" id="goalsGuestTeam" name="goalsGuestTeam" data-th-field="*{goalsGuestTeam}"
+                               maxlength="2" size="2" data-th-errorClass="errorFormElement" class="form-control"/>
+                    </div>
+                    <div class="col-sm-12 col-md-5">
+                        <p data-th-each="err : ${#fields.errors('goalsHomeTeam')}" data-th-text="#{${err}}"
+                           data-th-class="errorMessage">Fehler</p>
+                    </div>
+                    <div class="col-sm-12 col-md-5">
+                        <p data-th-each="err : ${#fields.errors('goalsGuestTeam')}" data-th-text="#{${err}}"
+                           data-th-class="errorMessage">Fehler</p>
+                    </div>
+                </div>
+            </form>
+            <div class="row" data-th-each="bet : ${allBets}">
+                <div class="col-3">
+                    <p data-th-text="${bet.user}">User x</p>
+                </div>
+                <div class="col-9">
+                    <p data-th-text="${bet.userTip}">3:0</p>
+                </div>
             </div>
-            <div class="col-9">
-                <p data-th-text="${bet.result}">3:0</p>
-            </div>
-        </div>
-        <div class="row" data-th-if="${#lists.isEmpty(allBets)}">
-            <div class="col">
-                <p data-th-text="#{common.nodata}">no data</p>
+            <div class="row" data-th-if="${#lists.isEmpty(allBets)}">
+                <div class="col">
+                    <p data-th-text="#{common.nodata}">no data</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
