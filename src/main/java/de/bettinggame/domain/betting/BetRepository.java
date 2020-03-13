@@ -13,4 +13,6 @@ public interface BetRepository extends JpaRepository<Bet, Integer> {
     List<Bet> findAllByGameIdentifierAndUserIdentifierIsNot(Identity gameIdentifier, Identity userIdentifier);
 
     Optional<Bet> findByUserIdentifier(Identity userIdentifier);
+
+    Optional<Bet> findByIdentifier(Identity betIdentifier);
 }

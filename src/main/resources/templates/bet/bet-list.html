@@ -9,28 +9,46 @@
                     <p data-th-text="${game}">Game: x vs. y</p>
                 </div>
             </div>
-            <form method="post" action="#" data-th-action="@{/bet}" data-th-object="${myBetCommand}">
-                <div class="form-group row">
-                    <p class="col-5" data-th-text="#{bets.form.label}">my bet:</p>
-                    <div class="col-sm-3 col-md-3">
+            <form method="post" action="#"
+                  data-th-action="@{/game/{gameId}/bet/{betId}(gameId=${gameIdentifier},betId=${betIdentifier})}"
+                  data-th-object="${betCommand}">
+                <div class="form-row">
+                    <p class="col-12" data-th-text="#{bets.form.label}">my bet:</p>
+                    <div class="col-2">
                         <input type="text" id="goalsHomeTeam" name="goalsHomeTeam" data-th-field="*{goalsHomeTeam}"
                                maxlength="2" size="2" data-th-errorClass="errorFormElement" class="form-control"/>
                     </div>
-                    <div class="col-sm-1 col-md-1">
-                        <span>:</span>
+                    <div class="col-1">
+                        <p class="text-center">:</p>
                     </div>
-                    <div class="col-sm-3 col-md-3">
+                    <div class="col-2">
                         <input type="text" id="goalsGuestTeam" name="goalsGuestTeam" data-th-field="*{goalsGuestTeam}"
                                maxlength="2" size="2" data-th-errorClass="errorFormElement" class="form-control"/>
                     </div>
-                    <div class="col-sm-12 col-md-5">
+                    <div class="col"></div>
+                </div>
+                <div class="form-row">
+                    <div class="col-2">
                         <p data-th-each="err : ${#fields.errors('goalsHomeTeam')}" data-th-text="#{${err}}"
                            data-th-class="errorMessage">Fehler</p>
                     </div>
-                    <div class="col-sm-12 col-md-5">
+                    <div class="col-1"></div>
+                    <div class="col-2">
                         <p data-th-each="err : ${#fields.errors('goalsGuestTeam')}" data-th-text="#{${err}}"
                            data-th-class="errorMessage">Fehler</p>
                     </div>
+                    <div class="col"></div>
+                </div>
+                <div class="form-row"></div>
+                <div class="form-row">
+                    <div class="col-3">
+                        <input type="button" class="btn btn-secondary" value="Back" data-th-value="#{bets.form.label.back}"
+                               action="javascript:history.back()" data-th-action="@{/game/{gameId}(gameId=${gameIdentifier})}"/>
+                    </div>
+                    <div class="col-3">
+                        <input type="submit" class="btn btn-primary" value="Save" data-th-value="#{bets.form.label.save}"/>
+                    </div>
+                    <div class="col"></div>
                 </div>
             </form>
             <div class="row" data-th-each="bet : ${allBets}">

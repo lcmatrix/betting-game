@@ -34,15 +34,36 @@ public class Bet extends AbstractIdentifiableEntity {
     @AttributeOverride(name = "identifier", column = @Column(name = "user_identifier"))
     private Identity userIdentifier;
 
-    public Bet(final Identity gameIdentifier, final Identity userIdentifier, final int goalsHomeTeam, final int goalsGuestTeam) {
+    public Bet(final String identifier, final String gameIdentifier, final String userIdentifier,
+               final int goalsHomeTeam, final int goalsGuestTeam) {
+        setIdentifier(Identity.buildIdentifier(identifier));
         this.goalsHomeTeam = goalsHomeTeam;
         this.goalsGuestTeam = goalsGuestTeam;
-        this.gameIdentifier = gameIdentifier;
-        this.userIdentifier = userIdentifier;
+        this.gameIdentifier = Identity.buildIdentifier(gameIdentifier);
+        this.userIdentifier = Identity.buildIdentifier(userIdentifier);
     }
 
     protected Bet() {
 
+    }
+
+    public void updateGoals(final int goalsHomeTeam, final int goalsGuestTeam) {
+        setGoalsHomeTeam(goalsHomeTeam);
+        setGoalsGuestTeam(goalsGuestTeam);
+    }
+
+    private void setGoalsHomeTeam(int goalsHomeTeam) {
+        if (goalsHomeTeam < 0) {
+            throw new IllegalArgumentException("Negative values not allowed");
+        }
+        this.goalsHomeTeam = goalsHomeTeam;
+    }
+
+    private void setGoalsGuestTeam(int goalsGuestTeam) {
+        if (goalsGuestTeam < 0) {
+            throw new IllegalArgumentException("Negative values not allowed");
+        }
+        this.goalsGuestTeam = goalsGuestTeam;
     }
 
     public int getGoalsHomeTeam() {

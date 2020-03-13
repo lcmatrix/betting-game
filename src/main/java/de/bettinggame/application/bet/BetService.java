@@ -43,4 +43,16 @@ public class BetService {
                 .collect(Collectors.toList());
     }
 
+    public void saveBet(final BetCommand betCommand, final String betIdentifier, final String gameIdentifier,
+                        final String userIdentifier) {
+        final Optional<Bet> optionalBet = betRepository.findByIdentifier(Identity.buildIdentifier(betIdentifier));
+        final Bet bet = optionalBet.orElseGet(() -> new Bet(
+                betIdentifier,
+                gameIdentifier,
+                userIdentifier,
+                betCommand.getGoalsHomeTeam(),
+                betCommand.getGoalsGuestTeam()));
+        bet.updateGoals(betCommand.getGoalsHomeTeam(), betCommand.getGoalsGuestTeam());
+        betRepository.save(bet);
+    }
 }
