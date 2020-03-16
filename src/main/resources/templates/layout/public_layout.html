@@ -61,8 +61,8 @@
                 </div>
             </div>
         </header>
-        <section class="content">
-            <div data-th-replace="~{:: mainContent}">Content goes here</div>
+        <section class="content" data-th-include="~{:: mainContent}">
+            <div>Content goes here</div>
         </section>
     </div>
     <footer data-th-insert="~{footer :: copy}">
