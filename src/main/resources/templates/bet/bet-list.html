@@ -4,6 +4,9 @@
     <div class="container">
         <div data-th-fragment="mainContent">
             <h1 data-th-text="#{bets.header}">Bets overview</h1>
+            <div class="alert alert-success" data-th-if="${confirmMessage}">
+                <p data-th-text="#{${confirmMessage}}">Success</p>
+            </div>
             <div class="row">
                 <div class="col-12">
                     <p data-th-text="${game}">Game: x vs. y</p>
@@ -43,7 +46,7 @@
                 <div class="form-row">
                     <div class="col-3">
                         <input type="button" class="btn btn-secondary" value="Back" data-th-value="#{bets.form.label.back}"
-                               action="javascript:history.back()" data-th-action="@{/game/{gameId}(gameId=${gameIdentifier})}"/>
+                               data-th-onclick="@{window.location.href='/game/'}"/>
                     </div>
                     <div class="col-3">
                         <input type="submit" class="btn btn-primary" value="Save" data-th-value="#{bets.form.label.save}"/>
