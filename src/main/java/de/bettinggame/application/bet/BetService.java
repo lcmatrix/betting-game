@@ -2,15 +2,17 @@ package de.bettinggame.application.bet;
 
 import de.bettinggame.domain.Identity;
 import de.bettinggame.domain.betting.Bet;
-import de.bettinggame.domain.game.Game;
 import de.bettinggame.domain.betting.BetRepository;
+import de.bettinggame.domain.game.Game;
 import de.bettinggame.domain.game.GameRepository;
 import de.bettinggame.domain.user.UserRepository;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -30,21 +32,23 @@ public class BetService {
         this.userRepository = userRepository;
     }
 
-    public List<BetTo> findBetsForGame(final String gameIdentifier, final String userIdentifier) {
+    public BetListTO findBetsForGame(final String gameIdentifier, final String userIdentifier) {
         Optional<Game> optionalGame = gameRepository.findByIdentifier(Identity.buildIdentifier(gameIdentifier));
         final Game game = optionalGame.orElseThrow(() ->
                 new IllegalArgumentException(String.format("Game with Identifier %1$s not found", gameIdentifier))
         );
+        Locale locale = LocaleContextHolder.getLocale();
         List<Bet> betsForGame = betRepository.findAllByGameIdentifierAndUserIdentifierIsNot(
                 game.rawIdentifier(), Identity.buildIdentifier(userIdentifier));
-        return betsForGame.stream()
+        List<BetTO> betTos = betsForGame.stream()
                 .map(bet -> Pair.of(bet, userRepository.findByIdentifier(bet.getUserIdentifier())))
-                .map(pair -> new BetTo(pair.getLeft(), optionalGame.get(), pair.getRight().get()))
+                .map(pair -> new BetTO(pair.getLeft(), pair.getRight().get()))
                 .collect(Collectors.toList());
+        return new BetListTO(optionalGame.get(), betTos, locale);
     }
 
     public void saveBet(final BetCommand betCommand, final String betIdentifier, final String gameIdentifier,
-                        final String userIdentifier) {
+            final String userIdentifier) {
         final Optional<Bet> optionalBet = betRepository.findByIdentifier(Identity.buildIdentifier(betIdentifier));
         final Bet bet = optionalBet.orElseGet(() -> new Bet(
                 betIdentifier,

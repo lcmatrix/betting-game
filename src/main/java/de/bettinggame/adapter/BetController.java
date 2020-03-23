@@ -1,8 +1,8 @@
 package de.bettinggame.adapter;
 
 import de.bettinggame.application.bet.BetCommand;
+import de.bettinggame.application.bet.BetListTO;
 import de.bettinggame.application.bet.BetService;
-import de.bettinggame.application.bet.BetTo;
 import de.bettinggame.domain.AbstractIdentifiableEntity;
 import de.bettinggame.domain.Identity;
 import de.bettinggame.domain.betting.Bet;
@@ -19,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -36,27 +35,24 @@ public class BetController implements AbstractController {
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     @GetMapping("/game/{gameIdentifier}/bets")
     public ModelAndView allBetsForGame(@PathVariable String gameIdentifier, Principal principal,
-                                       RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes) {
         ModelAndView mav = new ModelAndView("bet/bet-list");
-        List<BetTo> allBetsForGame = betService.findBetsForGame(gameIdentifier, principal.getName());
-        Optional<Bet> myBet =
-                betRepository.findByUserIdentifier(Identity.buildIdentifier(principal.getName()));
-        final Optional<String> gameLabel = allBetsForGame.stream().findFirst().map(BetTo::getGame);
+        BetListTO betList = betService.findBetsForGame(gameIdentifier, principal.getName());
+        Optional<Bet> myBet = betRepository.findByUserIdentifier(Identity.buildIdentifier(principal.getName()));
         mav.addObject("betCommand", myBet.map(BetCommand::new).orElse(new BetCommand()));
-        mav.addObject("allBets", allBetsForGame);
+        mav.addObject("betList", betList);
         mav.addObject("gameIdentifier", gameIdentifier);
         mav.addObject("betIdentifier", myBet.map(AbstractIdentifiableEntity::identifier)
-                        .orElse(Identity.buildNewIdentity().identifier()));
+                .orElse(Identity.buildNewIdentity().identifier()));
         mav.addAllObjects(redirectAttributes.getFlashAttributes());
-        gameLabel.ifPresent(label -> mav.addObject("game", label));
         return mav;
     }
 
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     @PostMapping("/game/{gameIdentifier}/bet/{betIdentifier}")
     public String saveBet(@PathVariable String betIdentifier, @PathVariable String gameIdentifier,
-                          @Valid BetCommand betCommand, BindingResult bindingResult, Principal principal,
-                          RedirectAttributes redirectAttributes) {
+            @Valid BetCommand betCommand, BindingResult bindingResult, Principal principal,
+            RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return "bet/bet-list";
         }
