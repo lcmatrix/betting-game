@@ -5,6 +5,7 @@ image:https://travis-ci.com/lcmatrix/betting-game.svg?branch=develop[Build Statu
 Small betting tool for private use
 
 === Technology
+* Kotlin
 * Spring Boot
 * Thymeleaf
 * Gradle
