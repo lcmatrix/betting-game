@@ -16,16 +16,16 @@ public interface AbstractController {
      */
     @ModelAttribute("nonRestrictedNavigation")
     default List<Navigation> getNonRestrictedNavigation() {
-        return Navigation.getNonRestrictedNavigation();
+        return Navigation.Companion.getNonRestrictedNavigation();
     }
 
     @ModelAttribute("userRestrictedNavigation")
     default List<Navigation> getUserRestrictedNavigation() {
-        return Navigation.getUserRestrictedNavigation();
+        return Navigation.Companion.getUserRestrictedNavigation();
     }
 
     @ModelAttribute("adminRestrictedNavigation")
     default List<Navigation> getAdminRestrictedNavigation() {
-        return Navigation.getAdminRestrictedNavigation();
+        return Navigation.Companion.getAdminRestrictedNavigation();
     }
 }
