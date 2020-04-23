@@ -1,0 +1,16 @@
+== Betting game
+image:https://travis-ci.com/lcmatrix/betting-game.svg?branch=develop[Build Status, title=Build Status, link=https://travis-ci
+.com/lcmatrix/betting-game]
+
+Small betting tool for private use
+
+=== Technology
+* Spring Boot
+* Thymeleaf
+* Gradle
+
+=== Usage
+
+=== Native
+
+=== Docker
