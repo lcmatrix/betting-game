@@ -10,6 +10,7 @@ import de.bettinggame.domain.betting.BetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,9 +52,10 @@ public class BetController implements AbstractController {
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     @PostMapping("/game/{gameIdentifier}/bet/{betIdentifier}")
     public String saveBet(@PathVariable String betIdentifier, @PathVariable String gameIdentifier,
-            @Valid BetCommand betCommand, BindingResult bindingResult, Principal principal,
+            @Valid BetCommand betCommand, BindingResult bindingResult, Principal principal, Model model,
             RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("betList", betService.findBetsForGame(gameIdentifier, principal.getName()));
             return "bet/bet-list";
         }
         betService.saveBet(betCommand, betIdentifier, gameIdentifier, principal.getName());
