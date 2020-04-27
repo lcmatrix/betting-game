@@ -14,6 +14,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
+import de.bettinggame.application.GroupTo;
+import de.bettinggame.application.TeamService;
 import de.bettinggame.domain.Multilingual;
 import org.junit.Assert;
 import org.junit.Before;
@@ -27,7 +29,6 @@ import org.mockito.junit.MockitoRule;
 
 import de.bettinggame.domain.team.Group;
 import de.bettinggame.domain.team.Team;
-import de.bettinggame.domain.repository.TeamRepository;
 
 /**
  * Unit test for {@link TeamService}.
@@ -40,10 +41,10 @@ public class TeamServiceTest {
     public MockitoRule mockito = MockitoJUnit.rule();
 
     @Mock
-    private TeamRepository teamRepository;
+    private de.bettinggame.domain.TeamRepository teamRepository;
 
     @InjectMocks
-    private TeamService teamService = new TeamService();
+    private TeamService teamService = new TeamService(teamRepository);
 
     @Before
     public void setUp() {
@@ -52,14 +53,14 @@ public class TeamServiceTest {
 
     @Test
     public void testGetAllGroupsWithTeams() {
-        Collection<GroupTO> allGroupsWithTeams = teamService.getAllGroupsWithTeams();
+        Collection<GroupTo> allGroupsWithTeams = teamService.getAllGroupsWithTeams();
         Assert.assertEquals("2 groups expected", 2, allGroupsWithTeams.size());
-        Iterator<GroupTO> iterator = allGroupsWithTeams.iterator();
-        GroupTO groupF = iterator.next();
+        Iterator<GroupTo> iterator = allGroupsWithTeams.iterator();
+        GroupTo groupF = iterator.next();
         assertLocalisedTeamName(new Locale("de","DE"), groupF.getTeams().get(0).getName());
         Assert.assertEquals(Group.F.name(), groupF.getGroupChar());
 
-        GroupTO groupH = iterator.next();
+        GroupTo groupH = iterator.next();
         Assert.assertEquals(Group.H.name(), groupH.getGroupChar());
         assertLocalisedTeamName(new Locale("fr", "FR"), groupH.getTeams().get(0).getName());
 
