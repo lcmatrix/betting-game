@@ -65,6 +65,8 @@ dependencies {
     runtimeOnly("org.springframework.boot:spring-boot-properties-migrator")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation(kotlin("test"))
+    testImplementation(kotlin("test-junit"))
 }
 
 tasks.named<KotlinCompile>("compileKotlin") {
