@@ -10,16 +10,13 @@ import java.util.TreeMap
 data class TeamTo(
         val name: String,
         val teamKey: String,
-        val points: Int,
-        val goals: Int,
-        val goalsAgainst: Int
+        val points: Int = 0,
+        val goals: Int = 0,
+        val goalsAgainst: Int = 0
 ) {
     constructor(team: Team) : this(
             team.name.getValueForLocale(LocaleContextHolder.getLocale()),
-            team.teamKey,
-            0,
-            0,
-            0)
+            team.teamKey)
 }
 
 data class GroupTo(
@@ -44,7 +41,7 @@ class TeamService(private val teamRepository: TeamRepository) {
         val groups: TreeMap<Group, GroupTo> = TreeMap()
         val allTeams = teamRepository.findAllByGroupCharNotNull()
         allTeams.forEach {
-            var group: GroupTo = groups[it.groupChar] ?: GroupTo(it.groupChar.name, mutableListOf(TeamTo(it)))
+            val group: GroupTo = groups[it.groupChar] ?: GroupTo(it.groupChar.name, mutableListOf(TeamTo(it)))
             groups[it.groupChar] = group
         }
         return groups.values
