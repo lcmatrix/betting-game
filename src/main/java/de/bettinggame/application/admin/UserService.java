@@ -1,6 +1,6 @@
 package de.bettinggame.application.admin;
 
-import de.bettinggame.application.registration.RegisterUserCommand;
+import de.bettinggame.application.RegisterUserCommand;
 import de.bettinggame.domain.user.User;
 import de.bettinggame.domain.repository.UserRepository;
 import org.slf4j.Logger;
