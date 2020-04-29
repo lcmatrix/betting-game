@@ -6,6 +6,7 @@ import de.bettinggame.domain.user.UserStatus
 import org.springframework.context.MessageSource
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.format.FormatterRegistry
 import org.springframework.http.CacheControl
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -30,17 +31,17 @@ class WebConfig : WebMvcConfigurer {
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/")
-                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS));
+                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS))
     }
 
     @Bean
-    fun messageKeyFormatter(messageSource: MessageSource): MessageKeyFormatter {
-        return MessageKeyFormatter(messageSource)
+    fun messageKeyPrinter(messageSource: MessageSource): MessageKeyPrinter {
+        return MessageKeyPrinter(messageSource)
     }
 
     @Bean
-    fun multilingualFormatter(): MultilingualFormatter {
-        return MultilingualFormatter()
+    fun multilingualPrinter(): MultilingualPrinter {
+        return MultilingualPrinter()
     }
 }
 
@@ -61,11 +62,11 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 ?.logout()
                 ?.logoutSuccessUrl("/")
                 ?.deleteCookies("JSESSIONID")
-                ?.permitAll();
+                ?.permitAll()
     }
 
     override fun configure(web: WebSecurity?) {
-        web?.ignoring()?.antMatchers("/static/**");
+        web?.ignoring()?.antMatchers("/static/**")
     }
 
     @Bean
@@ -81,17 +82,17 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 
 class CustomUserDetailService(private val userRepository: UserRepository) : UserDetailsService {
     override fun loadUserByUsername(userOrEMail: String?): UserDetails {
-        val user: Optional<User> = userRepository.findByUsernameOrEmail(userOrEMail, userOrEMail);
+        val user: Optional<User> = userRepository.findByUsernameOrEmail(userOrEMail, userOrEMail)
         val userInstance: User = user.orElseThrow {
             UsernameNotFoundException("User: $userOrEMail not found")
         }
 
-        val userBuilder: UserBuilder = withUsername(userInstance.identifier);
-        userBuilder.password(userInstance.password);
-        userBuilder.disabled(userInstance.status != UserStatus.ACTIVE);
-        userBuilder.accountLocked(userInstance.status == UserStatus.LOCKED);
-        userBuilder.authorities(AuthorityUtils.createAuthorityList(userInstance.role.name));
-        return userBuilder.build();
+        val userBuilder: UserBuilder = withUsername(userInstance.identifier)
+        userBuilder.password(userInstance.password)
+        userBuilder.disabled(userInstance.status != UserStatus.ACTIVE)
+        userBuilder.accountLocked(userInstance.status == UserStatus.LOCKED)
+        userBuilder.authorities(AuthorityUtils.createAuthorityList(userInstance.role.name))
+        return userBuilder.build()
     }
 
 }
