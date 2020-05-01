@@ -1,9 +1,9 @@
 package de.bettinggame.adapter.admin;
 
 import de.bettinggame.adapter.AbstractController;
-import de.bettinggame.application.admin.EditUserCommand;
-import de.bettinggame.application.admin.UserService;
-import de.bettinggame.application.admin.UserTo;
+import de.bettinggame.application.EditUserCommand;
+import de.bettinggame.application.UserService;
+import de.bettinggame.application.UserTo;
 import de.bettinggame.domain.user.UserRole;
 import de.bettinggame.domain.user.UserStatus;
 import de.bettinggame.domain.repository.UserRepository;
@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -78,7 +79,7 @@ public class UserMgmtController implements AbstractController {
             model.addAttribute("userkey", userId);
             return "admin/user/user-edit";
         }
-        userService.updateUser(user, userId);
+        userService.updateUser(userId, user);
         redirectAttributes.addFlashAttribute("confirm", "edit");
         return "redirect:/admin/user";
     }

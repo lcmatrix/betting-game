@@ -1,7 +1,7 @@
 package de.bettinggame.adapter
 
 import de.bettinggame.application.RegisterUserCommand
-import de.bettinggame.application.admin.UserService
+import de.bettinggame.application.UserService
 import org.springframework.stereotype.Controller
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.GetMapping
