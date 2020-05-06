@@ -19,17 +19,17 @@ data class LocationTo(val name: String, val city: String, val country: String) {
 
 data class GameTo(
         val identifier: String,
-        val homeTeam: String,
-        val guestTeam: String,
+        val homeTeam: TeamTo,
+        val guestTeam: TeamTo,
         val location: LocationTo,
         val starttime: OffsetDateTime,
-        val goalsHomeTeam: Int,
-        val goalsGuestGuest: Int
+        val goalsHomeTeam: Int?,
+        val goalsGuestTeam: Int?
 ) {
     constructor(game: Game, locale: Locale) : this(
             game.identifier,
-            game.homeTeam.name.getValueForLocale(locale),
-            game.guestTeam.name.getValueForLocale(LocaleContextHolder.getLocale()),
+            TeamTo(game.homeTeam),
+            TeamTo(game.guestTeam),
             LocationTo(game.location, locale),
             game.starttime,
             game.goalsHomeTeam,
