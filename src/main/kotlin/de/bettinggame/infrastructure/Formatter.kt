@@ -20,6 +20,6 @@ class MultilingualPrinter : Printer<Multilingual?> {
  */
 class MessageKeyPrinter(private val messageSource: MessageSource) : Printer<MessageKeyAware> {
     override fun print(obj: MessageKeyAware, locale: Locale): String? {
-        return messageSource.getMessage(obj.messageKey(), null, locale)
+        return messageSource.getMessage(obj.messageKey, null, locale)
     }
 }

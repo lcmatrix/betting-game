@@ -11,7 +11,7 @@ interface MessageKeyAware {
      * Returns the message key for this instance.
      * @return message key
      */
-    fun messageKey(): String
+    val messageKey: String
 }
 
 /**
