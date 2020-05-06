@@ -18,6 +18,7 @@ plugins {
     id("java")
     kotlin("jvm").version( "1.3.72")
     kotlin("plugin.spring").version("1.3.72")
+    kotlin("plugin.jpa") version "1.3.72"
     id("org.springframework.boot").version("2.2.6.RELEASE")
     id("io.spring.dependency-management").version("1.0.9.RELEASE")
     id("org.flywaydb.flyway").version("5.2.4")
@@ -55,6 +56,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE")
+
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     implementation("org.flywaydb:flyway-core:5.2.4")
     implementation("org.mariadb.jdbc:mariadb-java-client:2.3.0")

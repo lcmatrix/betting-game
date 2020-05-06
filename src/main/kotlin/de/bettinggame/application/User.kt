@@ -1,9 +1,9 @@
 package de.bettinggame.application
 
 import de.bettinggame.domain.UserRepository
-import de.bettinggame.domain.user.User
-import de.bettinggame.domain.user.UserRole
-import de.bettinggame.domain.user.UserStatus
+import de.bettinggame.domain.User
+import de.bettinggame.domain.UserRole
+import de.bettinggame.domain.UserStatus
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -22,11 +22,11 @@ class UserService(
     private val LOG: Logger = LoggerFactory.getLogger(UserService::class.java)
 
     @Transactional
-    fun registerUser(registerUserCommand: RegisterUserCommand) {
-        val newUser = registerUserCommand.createUser(userRepository.nextIdentifier())
-        newUser.updatePassword(passwordEncoder.encode(registerUserCommand.password))
+    fun registerUser(command: RegisterUserCommand) {
+        val newUser = User(userRepository.nextIdentifier(), command.username, command.email, UserRole.USER, UserStatus.PENDING)
+        newUser.updatePassword(passwordEncoder.encode(command.password))
         userRepository.save(newUser)
-        LOG.info("New user registered [{}]", registerUserCommand.username)
+        LOG.info("New user registered [{}]", command.username)
     }
 
     @Transactional
@@ -35,9 +35,9 @@ class UserService(
         if (user != null) {
             user.updateData(
                     command.username,
+                    command.email,
                     command.firstname,
                     command.surname,
-                    command.email,
                     command.role,
                     command.status)
         } else {
@@ -84,8 +84,8 @@ class UserService(
 data class UserTo(
         val username: String,
         val email: String,
-        val firstname: String,
-        val surname: String,
+        val firstname: String?,
+        val surname: String?,
         val status: UserStatus,
         val role: UserRole
 ) {
