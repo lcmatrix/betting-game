@@ -20,7 +20,7 @@ class GroupController(private val teamService: TeamService) : AbstractController
     @GetMapping("/groups")
     fun index(): ModelAndView {
         val mav = ModelAndView("groups/groups")
-        teamService.getAllGroupsWithTeams()
+        mav.addObject("groups", teamService.getAllGroupsWithTeams())
         return mav
     }
 }

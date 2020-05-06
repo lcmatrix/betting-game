@@ -14,15 +14,18 @@ data class TeamTo(
         val goals: Int = 0,
         val goalsAgainst: Int = 0
 ) {
+    val logoIconPath = "$teamKey.png"
+
     constructor(team: Team) : this(
             team.name.getValueForLocale(LocaleContextHolder.getLocale()),
             team.teamKey)
 }
 
 data class GroupTo(
-        val groupChar: String,
-        val teams: List<TeamTo>
-)
+        val groupChar: String
+) {
+    val teams = mutableListOf<TeamTo>()
+}
 
 /**
  * Team service.
@@ -41,7 +44,8 @@ class TeamService(private val teamRepository: TeamRepository) {
         val groups: TreeMap<Group, GroupTo> = TreeMap()
         val allTeams = teamRepository.findAllByGroupCharNotNull()
         allTeams.forEach {
-            val group: GroupTo = groups[it.groupChar] ?: GroupTo(it.groupChar.name, mutableListOf(TeamTo(it)))
+            val group: GroupTo = groups[it.groupChar] ?: GroupTo(it.groupChar.name)
+            group.teams.add(TeamTo(it))
             groups[it.groupChar] = group
         }
         return groups.values
