@@ -109,7 +109,7 @@ data class UserTo(
 
 data class UserAction(val name: String, val link: String, val icon: String) {
     constructor(adminUserLink: AdminUserLink, username: String) : this(
-            adminUserLink.name,
+            adminUserLink.linkname,
             String.format(adminUserLink.urlTemplate, username),
             adminUserLink.icon
     )
@@ -132,10 +132,10 @@ data class EditUserCommand(
         var email: String,
 
         @Size(max = 200, message = "field.max.200.characters")
-        var firstname: String,
+        var firstname: String?,
 
         @Size(max = 200, message = "field.max.200.characters")
-        var surname: String,
+        var surname: String?,
 
         @NotNull(message = "field.not.blank")
         var status: UserStatus,

@@ -5,8 +5,9 @@ import de.bettinggame.application.EditUserCommand
 import de.bettinggame.application.UserService
 import de.bettinggame.application.UserTo
 import de.bettinggame.domain.UserRepository
-import de.bettinggame.domain.user.UserRole
-import de.bettinggame.domain.user.UserStatus
+import de.bettinggame.domain.UserRole
+import de.bettinggame.domain.UserStatus
+import org.apache.commons.lang3.StringUtils
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
@@ -36,7 +37,7 @@ class UserMgmtController(
         val mav = ModelAndView("admin/user/user-list")
         val users = userRepository.findAll().map(::UserTo)
         mav.addObject("allUsers", users)
-        if (messageKey != null) {
+        if (StringUtils.isNotBlank(messageKey)) {
             mav.addObject("confirmMessage", "admin.user.action.$messageKey.confirm")
         }
         return mav
@@ -108,12 +109,12 @@ class UserMgmtController(
         return "redirect:/admin/user"
     }
 
-    @ModelAttribute
+    @ModelAttribute("userroles")
     fun userroles(): Array<UserRole> {
         return UserRole.values()
     }
 
-    @ModelAttribute
+    @ModelAttribute("userstatus")
     fun userstatus(): Array<UserStatus> {
         return UserStatus.values()
     }
