@@ -28,7 +28,11 @@ abstract class AbstractIdentifiableEntity(
 ) : AbstractIdEntity(null)
 
 interface IdentifierRepository {
-    fun nextIdentifier(): String {
+    fun nextIdentifier(): String
+}
+
+class IdentifierRepositoryImpl : IdentifierRepository {
+    override fun nextIdentifier(): String {
         return UUID.randomUUID().toString().toLowerCase()
     }
 }
