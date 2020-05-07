@@ -1,9 +1,9 @@
 package de.bettinggame.application
 
 import de.bettinggame.domain.GameRepository
-import de.bettinggame.domain.game.Game
-import de.bettinggame.domain.game.Location
-import de.bettinggame.domain.game.TournamentLevel
+import de.bettinggame.domain.Game
+import de.bettinggame.domain.Location
+import de.bettinggame.domain.TournamentLevel
 import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.stereotype.Service
 import java.time.OffsetDateTime
