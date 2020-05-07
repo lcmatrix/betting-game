@@ -2,8 +2,8 @@ package de.bettinggame.application
 
 import de.bettinggame.domain.Multilingual
 import de.bettinggame.domain.TeamRepository
-import de.bettinggame.domain.team.Group
-import de.bettinggame.domain.team.Team
+import de.bettinggame.domain.Group
+import de.bettinggame.domain.Team
 import org.junit.Before
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -45,8 +45,8 @@ class TeamServiceTest {
 
     private fun createListOfTeams(): List<Team> {
         return listOf(
-                Team(Multilingual("Deutschland", "Germany"), "DE", Group.F),
-                Team(Multilingual("Frankreich", "France"), "FR", Group.H)
+                Team(UUID.randomUUID().toString(), Multilingual("Deutschland", "Germany"), "DE", Group.F),
+                Team(UUID.randomUUID().toString(), Multilingual("Frankreich", "France"), "FR", Group.H)
         )
     }
 }

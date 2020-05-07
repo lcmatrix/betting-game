@@ -1,8 +1,8 @@
 package de.bettinggame.application
 
 import de.bettinggame.domain.TeamRepository
-import de.bettinggame.domain.team.Group
-import de.bettinggame.domain.team.Team
+import de.bettinggame.domain.Group
+import de.bettinggame.domain.Team
 import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.stereotype.Service
 import java.util.TreeMap

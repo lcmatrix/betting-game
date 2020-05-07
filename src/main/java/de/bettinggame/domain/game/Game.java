@@ -1,7 +1,7 @@
 package de.bettinggame.domain.game;
 
 import de.bettinggame.domain.AbstractIdentifiableEntity;
-import de.bettinggame.domain.team.Team;
+import de.bettinggame.domain.Team;
 
 import java.time.OffsetDateTime;
 
