@@ -78,18 +78,13 @@ tasks.named<KotlinCompile>("compileKotlin") {
 
 var gitversion: Gitversion = Gitversion()
 
-var git = "test"
-val process = ProcessBuilder().command("git", "describe").start()
-process.outputStream.bufferedWriter(StandardCharsets.UTF_8).write(git)
-
 exec {
     commandLine("git", "describe")
     standardOutput = ByteArrayOutputStream()
     gitversion.text = standardOutput.toString()
-    logger.quiet("Test {}", gitversion)
 }
 
-logger.quiet("Current Git version: {}", git)
+logger.quiet("Current Git version: {}", gitversion)
 
 task<JavaCompile>("JavaCompile") {
     sourceCompatibility = JavaVersion.VERSION_11.name
