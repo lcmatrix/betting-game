@@ -1,6 +1,6 @@
 package de.bettinggame.adapter
 
-import de.bettinggame.domain.repository.NewsRepository
+import de.bettinggame.domain.NewsRepository
 import de.bettinggame.ui.Navigation
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
