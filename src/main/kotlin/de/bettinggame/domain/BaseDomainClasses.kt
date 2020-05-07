@@ -27,6 +27,12 @@ abstract class AbstractIdentifiableEntity(
         val identifier: String
 ) : AbstractIdEntity(null)
 
+interface IdentifierRepository {
+    fun nextIdentifier(): String {
+        return UUID.randomUUID().toString().toLowerCase()
+    }
+}
+
 /**
  * Instances of this interface have a message key for their representation.
  */

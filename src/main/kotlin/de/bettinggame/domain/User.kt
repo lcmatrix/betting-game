@@ -1,6 +1,5 @@
 package de.bettinggame.domain
 
-import de.bettinggame.domain.repository.IdentifierRepository
 import org.springframework.data.jpa.repository.JpaRepository
 import javax.persistence.*
 import javax.validation.constraints.NotNull
