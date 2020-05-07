@@ -35,7 +35,7 @@ interface UserRepository : JpaRepository<User, Int>, IdentifierRepository {
 }
 
 @Entity
-class User(
+class User(identifier: String,
         @NotNull
         @Size(max = 50, message = "field.max.50.characters")
         @Column(nullable = false)
@@ -65,7 +65,7 @@ class User(
         @Enumerated(EnumType.STRING)
         @Column(nullable = false)
         var status: UserStatus
-) : AbstractIdentifiableEntity() {
+) : AbstractIdentifiableEntity(identifier) {
     val fullname: String?
         get() {
             if (firstname != null && surname != null) {
@@ -81,9 +81,7 @@ class User(
             email: String?,
             role: UserRole,
             status: UserStatus
-    ) : this(username as String, "", email as String, null, null, role, status) {
-        this.identifier = identifier
-    }
+    ) : this(identifier, username as String, "", email as String, null, null, role, status)
 
     fun updateData(
             username: String,
