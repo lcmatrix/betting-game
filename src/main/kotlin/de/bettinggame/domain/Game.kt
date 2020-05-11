@@ -50,7 +50,7 @@ interface GameRepository : JpaRepository<Game, Int> {
     fun findAllByOrderByStarttime(): List<Game>
 }
 
-enum class TournamentLevel(private val messageKey: String) {
+enum class TournamentLevel(override val messageKey: String) : MessageKeyAware {
     PRELIMINARY("tournament.level.preliminary"),
     EIGTH_FINAL("tournament.level.eigth_final"),
     QUARTER_FINAL("tournament.level.quarter_final"),

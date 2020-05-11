@@ -12,6 +12,7 @@ class Location(identifier: String,
                 * Short unique key.
                 */
                @NotNull
+               @Column(name = "short_key")
                val key: String,
 
                /**
