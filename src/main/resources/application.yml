@@ -17,8 +17,15 @@ spring:
   thymeleaf:
     mode: HTML
 
+security:
+  oauth2:
+    client:
+      client-id: frontend
+      client-secret: secret
+
 logging:
-  file: application.log
+  file:
+    name: application.log
   level:
     root: info
     de.bettinggame: debug
