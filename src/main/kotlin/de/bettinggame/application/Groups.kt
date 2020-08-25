@@ -1,11 +1,9 @@
 package de.bettinggame.application
 
-import de.bettinggame.domain.TeamRepository
-import de.bettinggame.domain.Group
 import de.bettinggame.domain.Team
+import de.bettinggame.domain.TeamRepository
 import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.stereotype.Service
-import java.util.TreeMap
 
 data class TeamTo(
         val name: String,
@@ -22,10 +20,9 @@ data class TeamTo(
 }
 
 data class GroupTo(
-        val groupChar: String
-) {
-    val teams = mutableListOf<TeamTo>()
-}
+        val groupChar: String,
+        val teams: List<TeamTo>
+)
 
 /**
  * Team service.
@@ -41,13 +38,9 @@ class TeamService(private val teamRepository: TeamRepository) {
      * @return collection of groups
      */
     fun getAllGroupsWithTeams(): Collection<GroupTo> {
-        val groups: TreeMap<Group, GroupTo> = TreeMap()
         val allTeams = teamRepository.findAllByGroupCharNotNull()
-        allTeams.forEach {
-            val group: GroupTo = groups[it.groupChar] ?: GroupTo(it.groupChar.name)
-            group.teams.add(TeamTo(it))
-            groups[it.groupChar] = group
-        }
-        return groups.values
+        return allTeams.groupBy { it.groupChar }
+                .mapValues { entry -> entry.value.map { team -> TeamTo(team) } }
+                .map { entry -> GroupTo(entry.key.name, entry.value) }
     }
 }
