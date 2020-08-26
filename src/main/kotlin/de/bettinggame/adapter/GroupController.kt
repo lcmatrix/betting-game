@@ -1,8 +1,10 @@
 package de.bettinggame.adapter
 
+import de.bettinggame.application.GroupTo
 import de.bettinggame.application.TeamService
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.ModelAndView
 
 /**
@@ -22,5 +24,12 @@ class GroupController(private val teamService: TeamService) : AbstractController
         val mav = ModelAndView("groups/groups")
         mav.addObject("groups", teamService.getAllGroupsWithTeams())
         return mav
+    }
+}
+@RestController
+class ApiGroupController(private val teamService: TeamService) {
+    @GetMapping("/api/groups")
+    fun listGroups(): Collection<GroupTo> {
+        return teamService.getAllGroupsWithTeams()
     }
 }
