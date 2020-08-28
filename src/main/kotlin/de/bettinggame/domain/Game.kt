@@ -44,10 +44,47 @@ class Game(identifier: String,
 
            @Column(name = "goals_guest_team")
            val goalsGuestTeam: Int?
-) : AbstractIdentifiableEntity(identifier)
+) : AbstractIdentifiableEntity(identifier) {
+
+    /**
+     * Gets the goals scored by the given team.
+     */
+    fun goalsForTeam(team: Team): Int {
+        return if (homeTeam == team) goalsHomeTeam ?: 0 else goalsGuestTeam ?: 0
+    }
+
+    /**
+     * Gets the goals scored againts the given team.
+     */
+    fun goalsAgainstTeam(team: Team): Int {
+        return if (homeTeam == team) goalsGuestTeam ?: 0 else goalsHomeTeam ?: 0
+    }
+
+    /**
+     * Calculates points for the given team in this game.
+     */
+    fun pointsForTeam(team: Team): Int {
+        val goalsForTeam = goalsForTeam(team)
+        val goalsAgainstTeam = goalsAgainstTeam(team)
+        // TODO: move this calculation into service if the points can be configured in future
+        if (goalsAgainstTeam < goalsForTeam) {
+            return 3
+        } else if (goalsAgainstTeam == goalsForTeam) {
+            return 1
+        }
+        return 0
+    }
+}
 
 interface GameRepository : JpaRepository<Game, Int> {
     fun findAllByOrderByStarttime(): List<Game>
+
+    @JvmDefault
+    fun findByTeamInPreliminaryLevel(team: Team): List<Game> {
+        return findByHomeTeamOrGuestTeam(team, team).filter { it.level == TournamentLevel.PRELIMINARY }
+    }
+
+    fun findByHomeTeamOrGuestTeam(homeTeam: Team, guestTeam: Team): List<Game>
 }
 
 enum class TournamentLevel(override val messageKey: String) : MessageKeyAware {
