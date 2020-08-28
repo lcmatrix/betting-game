@@ -14,9 +14,9 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm").version( "1.3.72")
-    kotlin("plugin.spring").version("1.3.72")
-    kotlin("plugin.jpa") version "1.3.72"
+    kotlin("jvm").version( "1.4.0")
+    kotlin("plugin.spring").version("1.4.0")
+    kotlin("plugin.jpa") version "1.4.0"
     id("org.springframework.boot").version("2.3.3.RELEASE")
     id("io.spring.dependency-management").version("1.0.9.RELEASE")
     id("org.flywaydb.flyway").version("5.2.4")
@@ -46,7 +46,7 @@ version = "0.2.0"
 description = "Betting game"
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72")
+    // implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.0")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-devtools")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
@@ -85,11 +85,6 @@ exec {
 }
 
 logger.quiet("Current Git version: {}", gitversion)
-
-task<JavaCompile>("JavaCompile") {
-    sourceCompatibility = JavaVersion.VERSION_11.name
-    targetCompatibility = JavaVersion.VERSION_11.name
-}
 
 val processResources: ProcessResources by tasks
 processResources.filesMatching("**/Version_*.properties") {
