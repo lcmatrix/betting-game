@@ -1,5 +1,6 @@
 package de.bettinggame.domain
 
+import org.springframework.data.repository.CrudRepository
 import javax.persistence.*
 import javax.validation.constraints.NotNull
 
@@ -48,3 +49,5 @@ class Location(identifier: String,
                )
                val country: Multilingual
 ) : AbstractIdentifiableEntity(identifier)
+
+interface LocationRepository : CrudRepository<Location, Int>
