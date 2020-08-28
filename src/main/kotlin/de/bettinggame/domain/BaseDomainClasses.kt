@@ -25,7 +25,18 @@ abstract class AbstractIdentifiableEntity(
          * Identifier for an entity. It's an UUID.
          */
         val identifier: String
-) : AbstractIdEntity(null)
+) : AbstractIdEntity(null) {
+    override fun equals(other: Any?): Boolean {
+        if (other != null && other is AbstractIdentifiableEntity) {
+            return identifier == other.identifier
+        }
+        return false
+    }
+
+    override fun hashCode(): Int {
+        return identifier.hashCode()
+    }
+}
 
 interface IdentifierRepository {
     fun nextIdentifier(): String
