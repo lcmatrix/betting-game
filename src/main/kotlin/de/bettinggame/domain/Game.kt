@@ -77,6 +77,8 @@ class Game(identifier: String,
 }
 
 interface GameRepository : JpaRepository<Game, Int> {
+    fun findByIdentifier(identifier: String): Game?
+
     fun findAllByOrderByStarttime(): List<Game>
 
     @JvmDefault

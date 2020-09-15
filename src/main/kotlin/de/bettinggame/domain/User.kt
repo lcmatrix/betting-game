@@ -31,6 +31,7 @@ interface UserRepository : JpaRepository<User, Int>, IdentifierRepository {
      * @return user
      */
     fun findByUsernameOrEmail(username: String?, email: String?): User?
+    fun findByIdentifier(userIdentifier: String): User?
 }
 
 @Entity
