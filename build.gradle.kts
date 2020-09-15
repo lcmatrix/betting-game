@@ -14,8 +14,8 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm").version( "1.4.0")
-    kotlin("plugin.spring").version("1.4.0")
+    kotlin("jvm").version( "1.4.10")
+    kotlin("plugin.spring").version("1.4.10")
     kotlin("plugin.jpa") version "1.4.0"
     id("org.springframework.boot").version("2.3.3.RELEASE")
     id("io.spring.dependency-management").version("1.0.9.RELEASE")
@@ -92,7 +92,7 @@ processResources.filesMatching("**/Version_*.properties") {
     }
 
 tasks.named<Wrapper>("wrapper") {
-    gradleVersion = "6.3"
+    gradleVersion = "6.6.1"
 }
 
 class Gitversion {
