@@ -7,7 +7,7 @@
             <div class="row" data-th-each="news : ${newsList}">
                 <div class="col-12">
                     <h3 data-th-text="${news.headline}">Heading</h3>
-                    <p class="border-bottom" data-th-text="#{news.author_date(${news.author}, ${{news.publishDate}})}">by user at 1970-01-01</p>
+                    <p class="border-bottom" data-th-text="#{news.author_date(${news.authorName}, ${{news.publishDate}})}">by user at 1970-01-01</p>
                     <p data-th-text="${news.content}">amazing content</p>
                 </div>
             </div>

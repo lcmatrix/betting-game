@@ -24,7 +24,8 @@ spring:
     mode: HTML
 
 logging:
-  file: application.log
+  file:
+    name: application.log
   level:
     root: info
     de.bettinggame: debug
